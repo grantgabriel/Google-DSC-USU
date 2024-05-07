@@ -12,7 +12,7 @@ return new class extends Migration
             $table->string('survey_id', 255)->primary();
             $table->enum('rating', ['1', '2', '3', '4', '5']);
             $table->string('review', 255);
-            $table->enum('speaker-rating', ['1', '2', '3', '4', '5']);
+            $table->enum('speaker_rating', ['1', '2', '3', '4', '5']);
             $table->string('suggestion', 255);
         });
     }

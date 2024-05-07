@@ -10,8 +10,6 @@ class DestroySeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('partners')->delete();
-        DB::table('surveys')->delete();
-        DB::table('key_themes')->delete();
+        
     }
 }
