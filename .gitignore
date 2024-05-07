@@ -17,5 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-.bun.lockb
+bun.lockb
 tailwind.config.js
