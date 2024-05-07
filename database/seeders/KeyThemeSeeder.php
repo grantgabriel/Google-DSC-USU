@@ -15,49 +15,49 @@ class KeyThemeSeeder extends Seeder
     {
         $events = [
             [
-                'event_id' => 'a3qws4erde4d5rftokeydlpdmnuyjhb6nujyrbtyvttbev',
+                'event_id' => '1',
                 'key_name' => 'OpenSource'
             ],
             [
-                'event_id' => 'a3qws4erde4d5rftokeydlpdmnuyjhb6nujyrbtyvttbevberw6vygt5trd',
+                'event_id' => '2',
                 'key_name' => 'Bootcamp'
             ],
             [
-                'event_id' => 'a3qws4erde4d5rftokeydlpdmnuyjhb6nujyrbtyvttbevberw6vygt5trd',
+                'event_id' => '2',
                 'key_name' => 'Opening'
             ],
             [
-                'event_id' => 'a3qws4erde4d5rftokeydlpdmnusyjhb6nujyrbtyvttde3sbevberw6vygt5trd',
+                'event_id' => '3',
                 'key_name' => 'Bootcamp'
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6nujyrbtyvttde3dsbevberw6vygt5trd',
+                'event_id' => '4',
                 'key_name' => 'Bootcamp'
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6nujyrbtyvttde3dsbevberw6vygt5trdddef',
+                'event_id' => '5',
                 'key_name' => 'Bootcamp'
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ujyrbtyvttde3dsbevberw6vygt5trdddef',
+                'event_id' => '6',
                 'key_name' => 'Bootcamp'
 
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ujyrbtyvttde3dsbevberw6vygt5trdddef',
+                'event_id' => '6',
                 'key_name' => 'Conpetition'
 
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ucdcdjyrbtyvttde3dsbevberw6vygt5trdddef',
+                'event_id' => '7',
                 'key_name' => 'Android'
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ujyrbtyvttde3dsbdwceevberw6vygt5trdddef',
+                'event_id' => '8',
                 'key_name' => 'Android'
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ujyrbtyvttde3dsbdwceevberw6vygt5trdddef',
+                'event_id' => '8',
                 'key_name' => 'Quest'
             ],
             

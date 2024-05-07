@@ -12,7 +12,7 @@ class EventSeeder extends Seeder
     {
         $events = [
             [
-                'event_id' => 'a3qws4erde4d5rftokeydlpdmnuyjhb6nujyrbtyvttbev',
+                'event_id' => '1',
                 'event_name' => 'CodeFest 2024',
 
                 'description' => 'Welcome to the first kickoff CodeFest event by GDSC USU in collaboration with GDSC UMSU and GDSC Mikroskil! 
@@ -34,7 +34,7 @@ class EventSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'event_id' => 'a3qws4erde4d5rftokeydlpdmnuyjhb6nujyrbtyvttbevberw6vygt5trd',
+                'event_id' => '2',
                 'event_name' => 'IMILKOM x GDSC USU Mini Bootcamp',
 
                 'description' => 'Game Development and Competitive Programming Mini Bootcamp by IMILKOM x GDSC USU!',
@@ -55,7 +55,7 @@ class EventSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'event_id' => 'a3qws4erde4d5rftokeydlpdmnusyjhb6nujyrbtyvttde3sbevberw6vygt5trd',
+                'event_id' => '3',
                 'event_name' => 'IMILKOM x GDSC USU Mini Bootcamp 2',
 
                 'description' => 'Part 2 Game Development and Competitive Programming Mini Bootcamp by IMILKOM x GDSC USU!',
@@ -75,7 +75,7 @@ class EventSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6nujyrbtyvttde3dsbevberw6vygt5trd',
+                'event_id' => '4',
                 'event_name' => 'IMILKOM x GDSC USU Mini Bootcamp 3',
 
                 'description' => 'Part 3 Game Development and Competitive Programming Mini Bootcamp by IMILKOM x GDSC USU!',
@@ -95,7 +95,7 @@ class EventSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6nujyrbtyvttde3dsbevberw6vygt5trdddef',
+                'event_id' => '5',
                 'event_name' => 'IMILKOM x GDSC USU Mini Bootcamp 4',
 
                 'description' => 'Part 4 Game Development and Competitive Programming Mini Bootcamp by IMILKOM x GDSC USU!',
@@ -115,7 +115,7 @@ class EventSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ujyrbtyvttde3dsbevberw6vygt5trdddef',
+                'event_id' => '6',
                 'event_name' => 'IMILKOM x GDSC USU Mini Bootcamp 5',
 
                 'description' => 'Part 5 Game Development and Competitive Programming Mini Bootcamp by IMILKOM x GDSC USU!',
@@ -135,7 +135,7 @@ class EventSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ucdcdjyrbtyvttde3dsbevberw6vygt5trdddef',
+                'event_id' => '7',
                 'event_name' => 'Building Mobile apps with Kotlin 🤳',
 
                 'description' => 'Welcome to our Mobile Pathway!!
@@ -157,7 +157,7 @@ class EventSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'event_id' => 'a3qws4erde4d5ddrftokeydlpdmnuyjhb6n55ujyrbtyvttde3dsbdwceevberw6vygt5trdddef',
+                'event_id' => '8',
                 'event_name' => 'Building Mobile apps with Kotlin 🤳 Part 2',
 
                 'description' => '
