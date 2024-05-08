@@ -69,8 +69,8 @@ class UsersSeeder extends Seeder
             'updated_at' => now(),
         ]);
         
-        $coreId1    = DB::table('users')->where('first_name', 'Grant')->value('user_id');
-        $coreId2    = DB::table('users')->where('first_name', 'Alwin')->value('user_id');
+        $coreId1 = DB::table('users')->where('first_name', 'Grant')->value('user_id');
+        $coreId2 = DB::table('users')->where('first_name', 'Alwin')->value('user_id');
 
         DB::table('cores')->insert([
             'user_id' => $coreId1,
