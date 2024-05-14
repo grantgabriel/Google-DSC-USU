@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             EventSeeder::class,
             PartnerSeeder::class,
-            SurveysSeeder::class,
             KeyThemeSeeder::class,
             RsvpSeeder::class,
             QnasSeeder::class,

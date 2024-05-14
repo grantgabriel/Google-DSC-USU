@@ -31,6 +31,7 @@ class RsvpSeeder extends Seeder
             'attendance_detail' => 'Attend',
             'created_at' => now(),
             'updated_at' => now(),
+            
         ]);
 
         DB::table('rsvps')->insert([
@@ -77,7 +78,10 @@ class RsvpSeeder extends Seeder
             'event_id' => $event_id7,
             'user_id' => $user_id1,
             'attendance_detail' => 'Attend',
-            'survey_id' => '1',
+            'rating' => '4',
+            'review' => 'A smooth workshop',
+            'speaker_rating' => '5',
+            'suggestion' => 'I think they should provide more time for the workshop',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -86,7 +90,10 @@ class RsvpSeeder extends Seeder
             'event_id' => $event_id8,
             'user_id' => $user_id1,
             'attendance_detail' => 'Attend',
-            'survey_id' => '4',
+            'rating' => '5',
+            'review' => 'This is a amazing workshop',
+            'speaker_rating' => '5',
+            'suggestion' => 'Nothing to suggest, everything is perfect!',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -143,7 +150,10 @@ class RsvpSeeder extends Seeder
             'event_id' => $event_id7,
             'user_id' => $user_id2,
             'attendance_detail' => 'Attend',
-            'survey_id' => '2',
+            'rating' => '3',
+            'review' => 'A decent workshop',
+            'speaker_rating' => '2',
+            'suggestion' => 'I hope the speaker can explain more clearly',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -152,7 +162,10 @@ class RsvpSeeder extends Seeder
             'event_id' => $event_id8,
             'user_id' => $user_id2,
             'attendance_detail' => 'Attend',
-            'survey_id' => '3',
+            'rating' => '2',
+            'review' => 'This workshop is very boring',
+            'speaker_rating' => '1',
+            'suggestion' => 'I hope the speaker can make the workshop more interesting',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

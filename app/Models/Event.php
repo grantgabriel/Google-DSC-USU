@@ -46,4 +46,19 @@ class Event extends Model
     {
         return $this->hasMany(Task::class, 'event_id', 'event_id');
     }
+
+    public function qna()
+    {
+        return $this->hasMany(Qna::class, 'event_id', 'event_id');
+    }
+
+    public function submission()
+    {
+        return $this->hasOne(Submission::class, 'event_id', 'event_id');
+    }
+    
+    public function rsvp()
+    {
+        return $this->hasMany(Rsvp::class, 'event_id', 'event_id');
+    }
 }
