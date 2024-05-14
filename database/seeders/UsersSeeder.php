@@ -17,6 +17,7 @@ class UsersSeeder extends Seeder
             'user_id' => '1',
             'first_name' => 'Grant',
             'last_name' => 'Gabriel',
+            'role' => 'Core Team Community & Relations',
             'address' => 'Jl. Dwikora Baru No.19',
             'email' => 'grantgabriel30@gmail.com',
             'pronoun' => 'She/Her',
@@ -31,6 +32,7 @@ class UsersSeeder extends Seeder
             'user_id' => '2',
             'first_name' => 'Alwin',
             'last_name' => 'Liufandy',
+            'role' => 'Core Team Community & Relations',
             'address' => 'Jl. Suka Baru No.19',
             'email' => 'alwincollege@gmail.com',
             'pronoun' => 'He/Him',
@@ -45,6 +47,7 @@ class UsersSeeder extends Seeder
             'user_id' => '3',
             'first_name' => 'Ibra',
             'last_name' => 'Rizqy',
+            'role' => 'Member',
             'address' => 'Jl. Pondok Surya VI-A No.231C',
             'email' => 'rizqyibra@gmail.com',
             'pronoun' => 'He/Him',
@@ -59,6 +62,7 @@ class UsersSeeder extends Seeder
             'user_id' => '4',
             'first_name' => 'Rafi',
             'last_name' => 'Devari',
+            'role' => 'Member',
             'address' => 'Jl. Eka Suria No.74',
             'email' => 'rafidevari063@gmail.com',
             'pronoun' => 'He/Him',
@@ -67,19 +71,6 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('12345'),
             'created_at' => now(),
             'updated_at' => now(),
-        ]);
-        
-        $coreId1 = DB::table('users')->where('first_name', 'Grant')->value('user_id');
-        $coreId2 = DB::table('users')->where('first_name', 'Alwin')->value('user_id');
-
-        DB::table('cores')->insert([
-            'user_id' => $coreId1,
-            'division' => 'Community & Relations'
-        ]);
-
-        DB::table('cores')->insert([
-            'user_id' => $coreId2,
-            'division' => 'Community & Relations'
         ]);
     }
 }
