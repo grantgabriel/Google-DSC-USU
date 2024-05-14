@@ -9,7 +9,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rsvps', function (Blueprint $table) {
-            $table->string('rsvp_id')->primary();
             $table->string('event_id', 255);
             $table->foreign('event_id')->references('event_id')->on('events');
             $table->char('user_id', 36);
