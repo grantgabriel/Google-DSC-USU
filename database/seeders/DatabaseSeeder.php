@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
             PartnerSeeder::class,
             SurveysSeeder::class,
             KeyThemeSeeder::class,
+            RsvpSeeder::class,
+            QnasSeeder::class,
+            SubmissionSeeder::class,
+            TaskSeeder::class
+    
         ]);
     }
 }
