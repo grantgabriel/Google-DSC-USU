@@ -18,4 +18,4 @@ yarn-error.log
 /.idea
 /.vscode
 bun.lockb
-tailwind.config.js
+postcss.config.js
