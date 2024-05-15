@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cores', function (Blueprint $table) {
-            $table->char('user_id', 36);
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->enum('division', ['Lead', 'Technical', 'Community & Relations', 'Media & Creative', 'Event Organizers']);
+        Schema::create('rsvps', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cores');
+        Schema::dropIfExists('rsvps');
     }
 };

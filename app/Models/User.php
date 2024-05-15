@@ -17,10 +17,19 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $keyType = 'string';
     protected $fillable = [
-        'name',
+        'user_id',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'address',
+        'pronoun',
+        'profile_photo',
+        'bio',
+        'certificate',
+        'role',
     ];
 
     /**
@@ -29,8 +38,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password'
     ];
 
     /**
@@ -39,7 +47,15 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function submission()
+    {
+        return $this->hasMany(Submission::class, 'user_id', 'user_id');
+    }
+    public function rsvp()
+    {
+        return $this->hasMany(Rsvp::class, 'user_id', 'user_id');
+    }
 }

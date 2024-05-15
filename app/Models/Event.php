@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    use HasFactory;
     protected $table = 'events';
 
     protected $primaryKey = 'event_id';
@@ -30,5 +31,34 @@ class Event extends Model
         'publication_status',
         'categories'
     ];
-    // use HasFactory;
+
+    public function keyThemes()
+    {
+        return $this->hasMany(KeyTheme::class, 'event_id', 'event_id');
+    }
+
+    public function partners()
+    {
+        return $this->hasMany(Partner::class, 'event_id', 'event_id');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'event_id', 'event_id');
+    }
+
+    public function qna()
+    {
+        return $this->hasMany(Qna::class, 'event_id', 'event_id');
+    }
+
+    public function submission()
+    {
+        return $this->hasOne(Submission::class, 'event_id', 'event_id');
+    }
+    
+    public function rsvp()
+    {
+        return $this->hasMany(Rsvp::class, 'event_id', 'event_id');
+    }
 }
