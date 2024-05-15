@@ -49,4 +49,13 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function submission()
+    {
+        return $this->hasMany(Submission::class, 'user_id', 'user_id');
+    }
+    public function rsvp()
+    {
+        return $this->hasMany(Rsvp::class, 'user_id', 'user_id');
+    }
 }
