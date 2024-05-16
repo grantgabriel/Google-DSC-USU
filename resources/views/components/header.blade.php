@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    {{-- @include('components\navbar') --}}
+    @include('components\navbar')
 
     {{-- Main Content --}}
     @yield('content')
