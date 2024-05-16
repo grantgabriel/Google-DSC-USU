@@ -4,28 +4,18 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-      "./resources/**/*.blade.php",
-      "./resources/**/*.js",
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
     ],
+
     theme: {
-      extend: {
-        backgroundImage: {
-          'gdsc' : "url('/public/img/bg-google.png')",
-          'profile' : "url('/public/img/bg-bevy.png')",
-        }
-      },
+        extend: {
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
-    plugins: [],
-  }
-  
-module.exports = {
-      theme: {
-          extend: {
-              fontFamily: {
-                  sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-              },
-          },
-      },
-  
-      plugins: [forms],
-  };
+
+    plugins: [forms],
+};

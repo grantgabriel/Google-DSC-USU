@@ -15,7 +15,7 @@ use App\Http\Controllers\EventController;
 |
 */
 
-Route::get('/', [EventController::class, 'index']);
+Route::get('/', [EventController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about');
