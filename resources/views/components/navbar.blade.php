@@ -21,7 +21,14 @@
             </div>
         </nav>
         @auth
-            <a href="{{ route('home') }}" class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">Dashboard</a>
+            <a href="{{ route('profile') }}" class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">
+                {{Auth::user()->first_name}}
+            </a>
+
+            {{-- <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">Logout</button>
+            </form> --}}
         @else
             <a href="{{ route('login') }}" class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">Sign In</a>
         @endauth
