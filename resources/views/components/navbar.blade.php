@@ -1,4 +1,5 @@
 {{-- Dashboard --}}
+
 <nav class="w-[100dvw] h-fit py-5 border px-5 lg:px-48">
     <div class="flex justify-between my-auto">
         <div>
@@ -19,11 +20,10 @@
                 
             </div>
         </nav>
-        @guest
-        <a class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">Sign In</a>
-        @else   
-        <a class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">SEKIRO</a>
-        
-        @endguest
+        @auth
+            <a href="{{ route('home') }}" class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">Dashboard</a>
+        @else
+            <a href="{{ route('login') }}" class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">Sign In</a>
+        @endauth
     </div>
 </nav>

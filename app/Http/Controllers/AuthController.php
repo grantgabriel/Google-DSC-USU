@@ -17,15 +17,21 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        
-
-        if (Auth::attempt($request->only('email', 'password'))) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();       
+            $user = Auth::user();
+            if ($user->role == 'Member') {
+                return redirect()->intended('/');
+            }
+            else{
+                
+            }
         }
 
-        
+        return redirect()->back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     public function showRegistrationForm()
