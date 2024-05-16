@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'gdsc' : "url('/public/img/bg-google.png')",
+        'profile' : "url('/public/img/bg-bevy.png')",
       }
     },
   },
