@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +23,8 @@ Route::get('/about', function () {
 });
 
 require __DIR__.'/auth.php';
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/editprofile', [ProfileController::class, 'edit'])->name('editprofile');
+Route::post('/editprofile', [ProfileController::class, 'editdata']);
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

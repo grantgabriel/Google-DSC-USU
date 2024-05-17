@@ -2,59 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
-    {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+    public function index(){
+        return view('profile.profile');
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    public function edit(){
+        return view('profile.editprofile');
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+    public function editdata(Request $request){
+        $user = Auth::user();
+        $user->first_name = $request->input('firstname');
+        $user->last_name = $request->input('lastname');
+        $user->address = $request->input('address');
+        $user->pronoun = $request->input('pronoun');
+        $user->bio = $request->input('bio');
 
-        $user = $request->user();
+            
 
-        Auth::logout();
+            if ($request->hasFile('pp')) {
+    
+                
+                $extension = $request->file('pp')->getClientOriginalExtension();
+                $today = now()->format('dmY_His');
+                $newName = Auth::user()->first_name . '-' . 'profile-image' . '-' . $today . '-' . Str::random(10) . '.' . $extension;
+                $request->file('pp')->move(public_path('profile_pic'), $newName);
+                $request['pp'] = $newName;
+                $user->profile_photo = $newName;
+            }
+    
+            $user->update($request->all());
+        
 
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        $user->save();
+        return redirect()->route('profile')->with('success', 'Profile updated successfully');
     }
 }

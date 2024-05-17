@@ -35,7 +35,7 @@
             <div class="relative inline-block">
                 <button onclick="toggleDropdown()" class=" text-white">
                     <div class="w-10 h-10 overflow-hidden rounded-full bg-gray-200">
-                        <img src="https://picsum.photos/200/300" alt="" class="w-full h-full object-cover">
+                        <img src="{{ asset('profile_pic/' . Auth::user()->profile_photo) }}" alt="" class="w-full h-full object-cover">
                     </div>
                 </button>
                 <div id="dropdown" class=" absolute right-0 mt-5 mr-[-2px] hidden bg-white border border-gray-200 shadow-md rounded">
