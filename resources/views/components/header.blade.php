@@ -12,5 +12,7 @@
 
     {{-- Main Content --}}
     @yield('content')
+
+    @include('components\footer')
 </body>
 </html>
