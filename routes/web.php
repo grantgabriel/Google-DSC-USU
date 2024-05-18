@@ -16,6 +16,7 @@ use App\Http\Controllers\AuthenticatedSessionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/event/{id}', [EventController::class, 'detail']);
 
 Route::get('/', [EventController::class, 'index'])->name('home');
 
