@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\AuthenticatedSessionController;
 
 
 /*
@@ -16,12 +16,16 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/event/{id}', [EventController::class, 'detail']);
 
 Route::get('/', [EventController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::get('/event/{id}', [EventController::class, 'detail']);
+
 
 require __DIR__.'/auth.php';
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
