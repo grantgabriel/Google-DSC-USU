@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('first_name', 255);
             $table->string('last_name', 255);
-            $table->enum('role', ['Member', 'Core Team Technical', 'Core Team Community & Relations', 'Core Team Media & Creative', 'Core Team Event Organizers']);
-            $table->text('address', 255);
+            $table->enum('role', ['Member', 'Core Team Technical', 'Core Team Community & Relations', 'Core Team Media & Creative', 'Core Team Event Organizers'])->default('Member');
+            $table->text('address', 255)->nullable();
             $table->string('email', 50)->unique();
             $table->enum('pronoun', ['He/Him', 'She/Her'])->nullable();
             $table->string('profile_photo', 255)->nullable();
