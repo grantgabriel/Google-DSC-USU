@@ -1,5 +1,4 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
+
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -15,11 +14,8 @@ export default {
                 'gdsc' : "url('/public/img/bg-google.png')",
                 'profile' : "url('/public/img/bg-bevy.png')",
               },
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
         },
     },
 
-    plugins: [forms],
+    plugins: [],
 };

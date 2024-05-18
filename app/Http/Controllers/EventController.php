@@ -14,4 +14,9 @@ class EventController extends Controller
 
         return view('index', compact(['events', 'userCount']));
     }
+
+    public function detail($id){
+        $event = Event::find($id);
+        return view('event', compact('event'));
+    }
 }

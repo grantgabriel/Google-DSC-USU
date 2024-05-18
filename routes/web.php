@@ -23,6 +23,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/event/{id}', [EventController::class, 'detail']);
+
+
 require __DIR__.'/auth.php';
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/editprofile', [ProfileController::class, 'edit'])->name('editprofile');
