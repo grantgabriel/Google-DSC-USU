@@ -2,6 +2,13 @@
 
 @section('content')
 
+@php
+    $address = Auth::user()->address;
+    $parts = explode(',', $address);
+    $country = $parts[0] ?? '';
+    $city = $parts[1] ?? '';
+@endphp
+
 <div class="bg-profile bg-center bg-cover h-[388px]">
         <div class="flex justify-center lg:justify-end py-10 lg:pb-0 lg:pr-8">
             <a href="/editprofile" class=" bg-white border-[1px] border-slate-300 rounded-[3px] py-2 px-8 text-[#4285f4]">
@@ -15,7 +22,7 @@
                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
         </div>
         <div class="flex justify-center text-xs pt-4">
-            KOTA
+            {{$city}}
         </div>
 </div>
 

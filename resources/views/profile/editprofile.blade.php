@@ -2,6 +2,13 @@
 
 @section('content')
 
+@php
+    $address = Auth::user()->address;
+    $parts = explode(',', $address);
+    $country = $parts[0] ?? '';
+    $city = $parts[1] ?? '';
+@endphp
+
 
 <div class="px-10 my-8 mx-4 md:mx-32 lg:mx-56 xl:mx-72 2xl:mx-96 rounded-lg border-[1px]">
     <div class="py-10">
@@ -27,8 +34,17 @@
                 </div>
 
                 <div class="my-5">
-                    <p>Address:</p>
-                    <input id="address" name="address" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ Auth::user()->address }}">
+                    <input hidden id="address" name="address" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]">
+                </div>
+
+                <div class="my-5">
+                    <p>Negara:</p>
+                    <input id="negara" name="negara" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ $country}}">
+                </div>
+
+                <div class="my-5">
+                    <p>Kota:</p>
+                    <input id="kota" name="kota" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ $city}}">
                 </div>
 
                 <div class="my-5">
@@ -57,6 +73,14 @@
         </div>
     </div>
 </div>
+
+<script>
+      
+
+    document.addEventListener('input', function () {
+        document.getElementById('address').value = document.getElementById('negara').value + ',' + document.getElementById('kota').value;
+    })
+</script>
 
 
 
