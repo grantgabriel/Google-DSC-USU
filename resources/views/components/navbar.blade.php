@@ -56,7 +56,7 @@
                 <button type="submit">Logout</button>
             </form> --}}
         @else
-            <a href="{{ route('login') }}" class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] px-5 py-1.5 rounded-full text-white">Sign In</a>
+            <a href="{{ route('login') }}" class="active:bg-[#1e467a] bg-[#3275c1] hover:bg-[#285a9e] lg:px-5 lg:py-1.5 px-2 py-1 rounded-full text-white lg:text-base text-xs">Sign In</a>
         @endauth
     </div>
 </nav>
