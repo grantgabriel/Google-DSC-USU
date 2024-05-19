@@ -1,4 +1,4 @@
-@extends('components.header')
+@extends('layout.header')
 
 @section('content')
 
@@ -20,10 +20,10 @@
     <div class="lg:px-24 rounded-md">
         <div class="rounded-md grid gap-3">
             <h1 class="font-semibold text-4xl">Upcoming Events</h1>
-            <div class="border bg-slate-50 rounded-md grid grid-cols-1 lg:grid-cols-4 px-6 py-8">
+            <div class="border bg-slate-50 rounded-md grid grid-cols-1 lg:grid-cols-4 place-items-center lg:px-6 py-8 ">
             @foreach ($events as $item)
             @if($item->time > now())
-                <a href="/event/{{ $item->event_id}}" class="hover:bg-neutral-100 rounded-sm flex flex-col gap-2 justify-center items-center max-w-[25ch] text-lg py-3">
+                <a href="/event/{{ $item->event_id}}" class="hover:ring-blue-300 hover:ring rounded flex flex-col gap-2 justify-center items-center lg:max-w-[25ch] p-3 text-lg">
                     <img class="w-44 h-44 rounded-full bg-gray-800" src="{{ $item->event_profile }}">
                     <span class="font-light">{{ Carbon\Carbon::parse($item->time)->format('M d, Y') }}</span>
                     <p class="font-semibold text-center underline">{{ $item->event_name }}</p>
@@ -46,10 +46,10 @@
             @endforeach
             </div>
             <h1 class="font-semibold text-4xl">Past Events</h1>
-            <div class="border bg-slate-50 rounded-md grid grid-cols-1 lg:grid-cols-4 px-6 py-8 gap-4">
+            <div class="border bg-slate-50 rounded-md grid grid-cols-1 lg:grid-cols-4 place-items-center lg:px-6 py-8  gap-4">
             @foreach ($events as $item)
             @if($item->time < now())
-                <div class="flex flex-col gap-2 justify-center items-center max-w-[25ch] text-lg">
+                <a href="/event/{{ $item->event_id}}" class="flex flex-col border rounded gap-2 justify-center items-center lg:max-w-[25ch] p-3 text-lg">
                     <img class="w-44 h-44 rounded-full bg-gray-800" src="{{ $item->event_profile }}">
                     <span class="font-light">{{ Carbon\Carbon::parse($item->time)->format('M d, Y') }}</span>
                     <p class="font-semibold text-center underline">{{ $item->event_name }}</p>
@@ -67,7 +67,7 @@
                     <p class="text-gray-600 text-center">
                         Universitas Sumatera Utara - Medan, Indonesia
                     </p>
-                </div>
+                </a>
             @endif
             @endforeach
             </div>
