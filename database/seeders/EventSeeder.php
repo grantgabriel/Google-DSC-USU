@@ -20,7 +20,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid',
                 'time' => '2024-06-15 09:00:00',
                 'type' => 'Hybrid',
                 'address' => 'Main Hall, Universitas Prima Indonesia, Jl. Sampul No.3, Sei Putih Bar., Kec. Medan Petisah, Kota Medan, Sumatera Utara 20118, Medan, 20118',
@@ -41,7 +41,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid',
                 'time' => '2024-06-15 09:00:00',
                 'type' => 'In Person',
                 'address' => 'Departement of Computer Science, Fasilkom-TI, Universitas Sumatera Utara, No. 3 Jalan Alumni, Kota Medan, 20155 ',
@@ -62,7 +62,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111','time' => '2024-07-15 09:00:00',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid','time' => '2024-07-15 09:00:00',
                 'type' => 'In Person',
                 'address' => 'Departement of Computer Science, Fasilkom-TI, Universitas Sumatera Utara, No. 3 Jalan Alumni, Kota Medan, 20155 ',
                 'resource' => 'https://example.com/machine-learning-conference',
@@ -82,7 +82,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111','time' => '2024-08-15 09:00:00',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid','time' => '2024-08-15 09:00:00',
                 'type' => 'Online',
                 'address' => 'Departement of Computer Science, Fasilkom-TI, Universitas Sumatera Utara, No. 3 Jalan Alumni, Kota Medan, 20155 ',
                 'resource' => 'https://example.com/machine-learning-conference',
@@ -102,7 +102,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111','time' => '2024-09-15 09:00:00',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid','time' => '2024-09-15 09:00:00',
                 'type' => 'Online',
                 'address' => 'Departement of Computer Science, Fasilkom-TI, Universitas Sumatera Utara, No. 3 Jalan Alumni, Kota Medan, 20155 ',
                 'resource' => 'https://example.com/machine-learning-conference',
@@ -122,7 +122,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111', 'time' => '2024-10-15 09:00:00',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid', 'time' => '2024-10-15 09:00:00',
                 'type' => 'Hybrid',
                 'address' => 'Departement of Computer Science, Fasilkom-TI, Universitas Sumatera Utara, No. 3 Jalan Alumni, Kota Medan, 20155 ',
                 'resource' => 'https://example.com/machine-learning-conference',
@@ -144,7 +144,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111','time' => '2024-1-1 09:00:00',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid','time' => '2024-1-1 09:00:00',
                 'type' => 'Hybrid',
                 'address' => 'Departement of Computer Science, Fasilkom-TI, Universitas Sumatera Utara, No. 3 Jalan Alumni, Kota Medan, 20155 ',
                 'resource' => 'https://example.com/machine-learning-conference',
@@ -166,7 +166,7 @@ class EventSeeder extends Seeder
 
                 'event_banner' => 'https://res.cloudinary.com/startup-grind/image/upload/c_scale,w_2560/c_crop,h_640,w_2560,y_0.0_mul_h_sub_0.0_mul_640/c_crop,h_640,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/event_banners/CodeFest.png',
                 'event_profile' => 'https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-dsc/events/CodeFest%20Thumb_v5ENeQc.png',
-                'event_location' => 'https://www.google.com/maps/place/Universitas+Prima+Indonesia/@3.5988387,98.6527098,15z/data=!4m2!3m1!1s0x0:0x2ee9d4c72de475ab?sa=X&ved=1t:2428&ictx=111','time' => '2024-2-1 09:00:00',
+                'event_location' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15927.801608720636!2d98.6527098!3d3.5988387!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312fd4e159414d%3A0x2ee9d4c72de475ab!2sUniversitas%20Prima%20Indonesia!5e0!3m2!1sid!2sid!4v1716028210802!5m2!1sid!2sid','time' => '2024-2-1 09:00:00',
                 'type' => 'In person',
                 'address' => 'Departement of Computer Science, Fasilkom-TI, Universitas Sumatera Utara, No. 3 Jalan Alumni, Kota Medan, 20155 ',
                 'resource' => 'https://example.com/machine-learning-conference',
