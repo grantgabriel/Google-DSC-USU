@@ -16,7 +16,13 @@
             </a>
         </div>
         <div class="flex justify-center pb-3">
-            <img src="{{ asset('profile_pic/' . Auth::user()->profile_photo) }}" class="w-32  h-32 rounded-full" alt="Profile Photo">
+            <img src="
+                @if (Auth::user()->profile_photo != null)
+                    {{ asset('profile_pic/' . Auth::user()->profile_photo) }}
+                @else
+                    {{ asset('img/user.png') }}
+                @endif
+        " class="w-32  h-32 rounded-full" alt="Profile Photo">
         </div>
         <div class="flex justify-center font-semibold text-3xl">
                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}

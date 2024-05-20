@@ -18,7 +18,13 @@
                 @csrf
                 <div class="flex items-center mb-10 form-group">
                     <div class="min-w-20 max-w-20 h-20 overflow-hidden rounded-full bg-gray-200 ">
-                        <img src="{{ asset('profile_pic/' . Auth::user()->profile_photo) }}"  alt="" class="w-full h-full object-cover">
+                        <img src="
+                            @if (Auth::user()->profile_photo != null)
+                                {{ asset('profile_pic/' . Auth::user()->profile_photo) }}
+                            @else
+                                {{ asset('img/user.png') }}
+                            @endif
+                        "  alt="" class="w-full h-full object-cover">
                     </div>
                     <input id="pp" name="pp" type="file" class="form-control mx-4" value="">
                 </div>

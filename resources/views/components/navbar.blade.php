@@ -28,7 +28,13 @@
             <div class="relative inline-block">
                 <button onclick="toggleDropdown()" class=" text-white">
                     <div class="w-10 h-10 overflow-hidden rounded-full bg-gray-200">
-                        <img src="{{ asset('profile_pic/' . Auth::user()->profile_photo) }}" alt="" class="w-full h-full object-cover">
+                        <img src="
+                            @if (Auth::user()->profile_photo != null)
+                                {{ asset('profile_pic/' . Auth::user()->profile_photo) }}
+                            @else
+                                {{ asset('img/user.png') }}
+                            @endif
+                " alt="" class="w-full h-full object-cover">
                     </div>
                 </button>
                 <div id="dropdown" class=" absolute right-0 mt-5 mr-[-2px] hidden bg-white border border-gray-200 shadow-md rounded">
@@ -40,7 +46,7 @@
                             <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Tokets</a></li>
                             <hr>
                             @if (Auth::check() && Auth::user()->role != 'Member')
-                                <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Admin Page</a></li>
+                                <li><a href="/admin" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Admin Page</a></li>
                             @endif
                             <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sex & Privacy</a></li>
                             <li>
