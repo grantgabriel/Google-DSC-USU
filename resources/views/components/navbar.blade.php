@@ -39,6 +39,9 @@
                             <li><a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a></li>
                             <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Tokets</a></li>
                             <hr>
+                            @if (Auth::check() && Auth::user()->role != 'Member')
+                                <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Admin Page</a></li>
+                            @endif
                             <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sex & Privacy</a></li>
                             <li>
                                 <form class="block px-4 py-2 text-gray-700 hover:bg-gray-100"  method="POST" action="{{ route('logout') }}">
