@@ -10,7 +10,7 @@
 <body>
     @include('components.navbar_admin')
 
-    {{-- Main Content --}}
+    
     @yield('content_warning')
 </body>
 </html>
