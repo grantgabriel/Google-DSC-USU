@@ -9,8 +9,8 @@
 </head>
 <body>
     @include('components.navbar_admin')
-
-    {{-- Main Content --}}
-    @yield('content_warning')
+    <div id="mainA" style="transition: margin-left 0.5s;">
+        @yield('content_warning')
+    </div>
 </body>
 </html>
