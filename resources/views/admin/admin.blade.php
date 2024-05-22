@@ -4,5 +4,5 @@
 @extends('layout.header_admin')
 
 @section('content_warning')
-        PERMULAAN
+        PERMULAANzz HEBH@EHK@
 @endsection
