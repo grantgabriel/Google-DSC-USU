@@ -72,11 +72,11 @@
             dropdown.classList.add('hidden');
         }
 
-        window.addEventListener('click', function(e) {
-            const dropdown = document.getElementById('dropdown');
-            const button = dropdown.previousElementSibling;
-            if (!dropdown.contains(e.target) && !button.contains(e.target)) {
-                dropdown.classList.add('hidden');
-            }
-        });
+    // window.addEventListener('click', function(e) {
+    //     const dropdown = document.getElementById('dropdown');
+    //     const button = dropdown.previousElementSibling;
+    //     if (!dropdown.contains(e.target) && !button.contains(e.target)) {
+    //         dropdown.classList.add('hidden');
+    //     }
+    // });
 </script>

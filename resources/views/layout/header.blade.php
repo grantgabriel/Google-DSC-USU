@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="{{ asset('img/goog.svg') }}" type="image/x-icon">
     <title>GDSC USU</title>
     @vite('resources/css/app.css')
+    @yield('js')
 </head>
 <body>
     @include('components\navbar')
