@@ -18,7 +18,6 @@ use App\Http\Middleware\AdminMiddleware;
 |
 */
 
-Route::get('/event/{id}', [EventController::class, 'detail']);
 
 Route::get('/', [EventController::class, 'index'])->name('home');;
 

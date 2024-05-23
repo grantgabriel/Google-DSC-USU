@@ -13,7 +13,7 @@
         <p class="text-lg"><span class="p-1 bg-slate-50 rounded-md border">{{ $userCount }}</span> Group Members</p>
     </div>
     <div class="bg-gradient-to-r from-white via-gray-200 to-white py-2 flex justify-center">
-        <button id="drive" class="bg-blue-600 text-white rounded-md lg:px-8 lg:py-2 lg:w-fit py-2 text-lg font-semibold">
+        <button id="drive" class="bg-blue-600 text-white rounded-md lg:px-8 lg:py-2 lg:w-fit py-2 px-6 text-lg font-semibold">
             Join Us
         </button>
     </div>
