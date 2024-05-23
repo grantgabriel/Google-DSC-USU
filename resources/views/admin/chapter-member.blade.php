@@ -4,36 +4,39 @@
 @section('content_warning')
 <link rel="stylesheet" href="http://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
 
-        <div>
-            <table id="rafi" name="rafi">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="w-full flex items-center justify-center">
+            <div class="flex justify-center w-1/2 ">
+                <table border="1" id="rafi" name="rafi">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Date Joined</th>
+                            <th>Event Registered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $item)
+                            <tr>
+                                <td>{{$item->first_name}} {{$item->last_name}}</td>
+                                <td>{{$item->email}}</td>
+                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->rsvp->count()}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
+
 
         <script>
             $(document).ready(function() {
                 $('#rafi').DataTable();
             });
         </script>
+
+        
 
         <script src="http://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 @endsection
