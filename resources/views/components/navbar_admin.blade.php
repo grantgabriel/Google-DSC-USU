@@ -14,10 +14,12 @@
     <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="#">Members</a>
     <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="#">Settings</a>
 </div>
+
+
 <div id="main" style="transition: margin-left 0.5s;">
     <nav class="w-full h-fit py-1 border px-5 lg:pr-24 lg:pl-8 border-slate-300">
         <div class="flex items-center justify-between my-auto">
-            <button id="navButton"><img src="img/hamburger.png" class="object-contain w-4" alt=""></button>
+            <button id="navButton"><img src="../img/hamburger.png" class="object-contain w-4" alt=""></button>
             <a href="{{route('home')}}">
                 <img src="https://res.cloudinary.com/startup-grind/image/upload/dpr_2.0,fl_sanitize/v1/gcs/platform-data-dsc/contentbuilder/logo_dark_horizontal_097s7oa.svg" class="lg:h-6 h-4" alt="">
             </a>
