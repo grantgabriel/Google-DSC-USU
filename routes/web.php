@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Middleware\AdminMiddleware;
 
 
 /*
@@ -17,11 +18,20 @@ use App\Http\Controllers\AuthenticatedSessionController;
 |
 */
 
-Route::get('/', [EventController::class, 'index'])->name('home');
+
+Route::get('/', [EventController::class, 'index'])->name('home');;
 
 Route::get('/about', function () {
     return view('about');
 });
+
+
+Route::middleware(['role:Member'])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.admin');
+    });
+});
+
 
 Route::get('/event/{id}', [EventController::class, 'detail']);
 

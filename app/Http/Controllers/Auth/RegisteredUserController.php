@@ -45,8 +45,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role' => 'Member',
             'pronoun' => 'He/Him',
-            'bio' => 'I am a new member',
-            'address' => 'Medan',
+            'bio' => 'I am a new member'
 
         ]);
 
