@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -30,6 +31,9 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.admin');
     });
+    Route::get('/admin/member', [AdminController::class, 'member']);
+    Route::get('/admin/analytic', [AdminController::class, 'analytic']);
+
 });
 
 
