@@ -20,7 +20,7 @@
                             <tr>
                                 <td>{{$item->first_name}} {{$item->last_name}}</td>
                                 <td>{{$item->email}}</td>
-                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->created_at}}</t>
                                 <td>{{$item->rsvp->count()}}</td>
                             </tr>
                         @endforeach

@@ -9,10 +9,10 @@
     <div class="justify-between flex">
 
     </div>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 mt-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="#">Analytics</a>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="#">Events</a>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="#">Members</a>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="#">Settings</a>
+    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 mt-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/anal">Analytics</a>
+    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/event">Events</a>
+    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/member">Members</a>
+    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/setting">Settings</a>
 </div>
 
 
