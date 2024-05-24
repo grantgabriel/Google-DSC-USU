@@ -1,18 +1,17 @@
-<div id="mySidenav" class="w-0 h-full border-r-[1px]" style="overflow-x: hidden; position: fixed; z-index: 1; top: 0;  left: 0; transition: 0.5s;">
+<div id="mySidenav" class="w-0 h-full bg-white border-r-[1px]" style="overflow-x: hidden; position: fixed; z-index: 1; top: 0;  left: 0; transition: 0.5s;">
     <div class="border-b-[2px] font-bold text-[#555555]">
         <div class="justify-end flex pt-1 pr-2">
-            <a style=" text-decoration: none; display: block; transition: 0.5s;" class="w-5" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a style=" text-decoration: none; display: block; transition: 0.3s;" class="w-5" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         </div>
-        <div class="pb-6 pt-1 px-6 text-sm lg:hidden">Universitas Sumatera Utara</div>
-        <div class="pb-6 pt-1 px-6 hidden text-md lg:flex">Universitas Sumatera Utara  - Medan, Indonesia</div>
+        <div class="pb-6 pt-1 px-6 text-lg">Universitas Sumatera Utara  - Medan, Indonesia</div>
     </div>
     <div class="justify-between flex">
 
     </div>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 mt-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/anal">Analytics</a>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/event">Events</a>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/member">Members</a>
-    <a class="pl-3 py-3 rounded-md text-sm lg:text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/setting">Settings</a>
+    <a class="pl-3 py-3 rounded-md text-lg mx-2 mt-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/analytic">Analytics</a>
+    <a class="pl-3 py-3 rounded-md text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/event">Events</a>
+    <a class="pl-3 py-3 rounded-md text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/member">Members</a>
+    <a class="pl-3 py-3 rounded-md text-lg mx-2 hover:bg-blue-50" style=" text-decoration: none; display: block; transition: 0.3s;" href="/admin/setting">Settings</a>
 </div>
 
 
@@ -90,9 +89,7 @@
         });
 
         function openNavSmall() {
-            document.getElementById("mySidenav").style.width = "140px";
-            document.getElementById("main").style.marginLeft = "140px";
-            document.getElementById("mainA").style.marginLeft = "140px";
+            document.getElementById("mySidenav").style.width = "100%";
         }
 
         function openNavLarge() {

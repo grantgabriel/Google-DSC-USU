@@ -2,79 +2,136 @@
 @extends('layout.header_admin')
 
 @section('content_warning')
-
+<div class="bg-blue-50 w-full h-full py-6 px-2 sm:px-12 md:px-24 lg:px-36 xl:px-48">
+    <div class=" bg-slate-50 py-6 mb-40 lg:mb-[134px]">
         <div class="flex justify-center">
-            <div class="flex flex-col">
-                <div class="py-5">
-                    <div class="flex justify-center bg-red-500 ">
+            <div class="flex flex-col lg:w-full lg:px-6 ">
+                <div class="pt-5 pb-1">
+                    <div class="text-[#555555] flex justify-center font-semibold shadow-[0_0_4px_0_rgba(0,0,0,0.1)] bg-white rounded-md lg:py-1">
                         {{$event[0]->event_name}}
                     </div>
                 </div>
 
-                <div class="flex justify-between py-1">
-                    <div class="px-1">
-                        <div class="bg-red-500">
-                            Total Member={{$user->count()}}
+                <div class="flex justify-between py-1 relative">
+                    <div class="px-1 w-full">
+                        <div class=" shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-6 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl">
+                                {{$user->count()}}
+                            </div>
+                            <div class="flex justify-center text-xs pt-1">
+                                Total members
+                            </div>
                         </div> 
                     </div>
-                    <div class="px-1">
-                        <div class="bg-red-500">
-                            Total Regis={{$registrationCount}}
+                    <div class="px-1 w-full">
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-6 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                {{$registrationCount}}
+                            </div>
+                            <div class="flex justify-center text-xs pt-1">
+                                Members with registration
+                            </div>
                         </div> 
                     </div>
-                    <div class="px-1">
-                        <div class="bg-red-500">
-                            Persentase Regis={{ number_format(($registrationCount / $user->count()) * 100, 0) }}%
+                    <div class="px-1 w-full">
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                {{ number_format(($registrationCount / $user->count()) * 100, 0) }}%
+                            </div>
+                            <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
+                                Member registration rate
+                            </div>
 
                         </div> 
                     </div>
                 </div>
                 <div class="flex justify-between py-1">
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            Days to next event={{now()->diffInDays($event[0]->time);}}
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                {{now()->diffInDays($event[0]->time);}}
+                            </div>
+                            <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
+                                Days to next event
+                            </div>
                         </div>
                     </div>
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            Registration|={{$event[0]->rsvp->count()}}
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                {{$event[0]->rsvp->count()}}
+                            </div>
+                            <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
+                                Registration
+                            </div>
                         </div>
                     </div>
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            Hosted APA WOII|
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                100
+                            </div>
+                            <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
+                                Hosted
+                            </div>
 
                         </div>
                     </div>
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            Collaborated APA ANJ
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                100
+                            </div>
+                            <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
+                                Collaborated
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-row">
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            APA INI ANJ
+                <div class="flex flex-row py-1">
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                100
+                            </div>
+                            <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
+                                APA INI ANJ
+                            </div>
                         </div>
                     </div>
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            Attendess/event = {{$registrationCount/$event->count()}}
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                               {{(int)(($registrationCount/$event->count())* pow(10, 2))/pow(10, 2)}}
+                            </div>
+                            <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
+                                Attendees/event
+                            </div>
                         </div>
                     </div>
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            newsletter GK PAHAM BANG|
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                100
+                             </div>
+                             <div class="text-[#555555]     flex justify-center text-xs pt-1 ">
+                                Newsletter opens
+                             </div>
                         </div>
                     </div>
-                    <div class="px-1">         
-                        <div class="bg-red-500">
-                            auto email open APA INI AJSKDQBuefoh|
+                    <div class="px-1 w-full">         
+                        <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
+                            <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
+                                100
+                             </div>
+                             <div class="text-[#555555]     flex justify-center text-xs pt-1 ">
+                                Auto emails opens
+                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
+</div>
 @endsection

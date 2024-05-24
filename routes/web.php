@@ -32,7 +32,7 @@ Route::middleware(['role:Member'])->group(function () {
         return view('admin.admin');
     });
     Route::get('/admin/member', [AdminController::class, 'member']);
-    Route::get('/admin/anal', [AdminController::class, 'analytic']);
+    Route::get('/admin/analytic', [AdminController::class, 'analytic']);
 
 });
 
