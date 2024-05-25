@@ -18,6 +18,14 @@ use App\Http\Middleware\AdminMiddleware;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware(['role:Member'])->group(function () {
+    Route::get('/admin/member/data', [AdminController::class, 'memberdata']);
+    Route::get('/admin/member/data/{input}', [AdminController::class, 'membersearch']);
+
+
+});
+
+
 
 
 Route::get('/', [EventController::class, 'index'])->name('home');;
@@ -37,8 +45,8 @@ Route::middleware(['role:Member'])->group(function () {
 });
 
 
-Route::get('/event/{id}', [EventController::class, 'detail']);
-
+Route::get('/event/{id}-{slug}', [EventController::class, 'detail']);
+Route::post('/event-rsvp', [EventController::class, 'rsvp']);
 
 require __DIR__.'/auth.php';
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
