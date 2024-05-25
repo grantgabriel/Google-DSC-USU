@@ -27,16 +27,21 @@
                         "  alt="" class="w-full h-full object-cover">
                     </div>
                     <input id="pp" name="pp" type="file" class="form-control mx-4" value="">
+                    
                 </div>
 
                 <div class="my-5">
-                    <p>First Name:</p>
+                    <p>First Name</p>
                     <input id="firstname" name="firstname" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ Auth::user()->first_name }}">
+                    <p id="firstnameValid" class="hidden text-red-500">First name can only contain alphabet characters </p>
+                    <p id="firstnameValid2" class="hidden text-red-500">Max 255 characters</p>
                 </div>
 
                 <div class="my-5">
-                    <p>Last Name:</p>
+                    <p>Last Name</p>
                     <input id="lastname" name="lastname" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ Auth::user()->last_name }}">
+                    <div id="lastnameValid" class="hidden text-red-500">Last name can only contain alphabet characters </div>
+                    <div id="lastnameValid2" class="hidden text-red-500">Max 255 characters</div> 
                 </div>
 
                 <div class="my-5">
@@ -44,17 +49,21 @@
                 </div>
 
                 <div class="my-5">
-                    <p>Negara:</p>
+                    <p>Country</p>
                     <input id="negara" name="negara" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ $country}}">
+                    <p id="negaraValid" class="hidden text-red-500">Country can only contain alphabet characters </p>
+                    <p id="negaraValid2" class="hidden text-red-500">Max 255 characters</p>
                 </div>
 
                 <div class="my-5">
-                    <p>Kota:</p>
+                    <p>City</p>
                     <input id="kota" name="kota" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ $city}}">
+                    <p id="kotaValid" class="hidden text-red-500">City can only contain alphabet characters </p>
+                    <p id="kotaValid2" class="hidden text-red-500">Max 255 characters</p>
                 </div>
 
                 <div class="my-5">
-                    <p>Pronoun:</p>
+                    <p>Pronoun</p>
                     <select name="pronoun" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" id="pronoun">
                         <option value="1">He/Him</option>
                         <option value="2">She/Her</option>
@@ -62,13 +71,15 @@
                 </div>
 
                 <div>
-                    <p>Bibliography:</p>
+                    <p>Bibliography</p>
                     <textarea name="bio" id="bio" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" >{{Auth::user()->bio}}</textarea>
+                    <p id="bioValid" class="hidden text-red-500">Max 1000 characters</p>
                 </div>
+                    
 
                 <div class="border-b-[1px] my-10"></div>
                 <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+                    <button id="save" type="submit" class="bg-blue-500 active:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
                         Save Changes
                     </button>
                 </div>
@@ -88,6 +99,7 @@
     })
 </script>
 
+<script src="js/regex.js"></script>
 
 
 @endsection
