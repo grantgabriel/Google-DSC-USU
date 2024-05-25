@@ -18,9 +18,17 @@ use App\Http\Middleware\AdminMiddleware;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+
+
+//INI BUAT API
 Route::middleware(['role:Member'])->group(function () {
+
     Route::get('/admin/member/data', [AdminController::class, 'memberdata']);
     Route::get('/admin/member/data/{input}', [AdminController::class, 'membersearch']);
+    Route::get('/admin/event/sort/{id}', [AdminController::class, 'eventsort']);
+    Route::get('/admin/event/sort/{id}/{search}', [AdminController::class, 'eventsortsearch']);
 
 
 });
@@ -41,6 +49,7 @@ Route::middleware(['role:Member'])->group(function () {
     });
     Route::get('/admin/member', [AdminController::class, 'member']);
     Route::get('/admin/analytic', [AdminController::class, 'analytic']);
+    Route::get('/admin/event', [AdminController::class, 'event']);
 
 });
 

@@ -13,6 +13,54 @@ class AdminController extends Controller
         return view('admin.chapter-member');
     }
 
+    public function event(){
+        $event = Event::where('time', '>', now())
+        ->orderBy('time', 'asc')
+        ->get();
+        return view('admin.event',compact('event'));
+    }
+
+    public function eventsort($id){
+        if ($id == 1) {
+            $event = Event::where('time', '>', now())
+            ->orderBy('time', 'asc')
+            ->get();
+            return response()->json($event);
+        }
+
+        else if ($id == 2) {
+            $event = Event::where('time', '<', now())
+            ->orderBy('time', 'asc')
+            ->get();
+            return response()->json($event);
+        }
+
+        else {
+            return response()->json('error');
+        }
+
+    }
+    public function eventsortsearch($id,$search){
+        if ($id == 1) {
+            $event = Event::where('time', '>', now())-> where('event_name', 'like', '%' . $search . '%')
+            ->orderBy('time', 'asc')
+            ->get();
+            return response()->json($event);
+        }
+
+        else if ($id == 2) {
+            $event = Event::where('time', '<', now())-> where('event_name', 'like', '%' . $search . '%')
+            ->orderBy('time', 'asc')
+            ->get();
+            return response()->json($event);
+        }
+
+        else {
+            return response()->json('error');
+        }
+
+    }
+
     public function memberdata(){
         $data = User::where('role', 'Member')->with('rsvp')->get();
         
@@ -23,7 +71,7 @@ class AdminController extends Controller
         $data = User::where('role', 'Member')
                 ->with('rsvp')
                 ->where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', '%' . $input . '%')
-                ->get();
+                ->get();    
         return response()->json($data);
     }
 
