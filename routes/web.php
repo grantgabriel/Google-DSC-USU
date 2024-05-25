@@ -46,7 +46,7 @@ Route::middleware(['role:Member'])->group(function () {
 
 
 Route::get('/event/{id}', [EventController::class, 'detail']);
-
+Route::post('/event-rsvp', [EventController::class, 'rsvp']);
 
 require __DIR__.'/auth.php';
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
