@@ -2,7 +2,7 @@
 @extends('layout.header_admin')
 
 @section('content_warning')
-<div class="bg-blue-50 w-full h-full py-6 px-2 sm:px-12 md:px-24 lg:px-36 xl:px-48">
+<div class="py-6 sm:px-12 md:px-24 lg:px-36 xl:px-48">
     <div class=" bg-slate-50 py-6 mb-40 lg:mb-[134px]">
         <div class="flex justify-center">
             <div class="flex flex-col lg:w-full lg:px-6 ">
