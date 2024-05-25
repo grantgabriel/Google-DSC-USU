@@ -33,7 +33,7 @@ Route::middleware(['role:Member'])->group(function () {
 });
 
 
-Route::get('/event/{id}', [EventController::class, 'detail']);
+Route::get('/event/{id}-{slug}', [EventController::class, 'detail']);
 Route::post('/event-rsvp', [EventController::class, 'rsvp']);
 
 require __DIR__.'/auth.php';
