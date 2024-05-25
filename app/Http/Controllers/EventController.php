@@ -17,7 +17,7 @@ class EventController extends Controller
         return view('index', compact(['events', 'userCount']));
     }
 
-    public function detail($id){
+    public function detail($id, $slug){
         $event = Event::find($id);
         $key = KeyTheme::where('event_id', $id)->get();
         $rsvpCount = count(Rsvp::where('event_id', $id)->get());

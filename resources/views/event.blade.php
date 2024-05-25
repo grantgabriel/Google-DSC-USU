@@ -68,7 +68,8 @@
                 <p class="mx-auto font-mono text-xs"><span class="bg-slate-200 p-1 rounded-md">{{ $rsvpCount }}</span> already rsvp'd</p>
             </div>
             <div class="lg:pr-12 grid" id="maps-iframe">
-                <iframe class="w-full h-96 lg:h-full rounded-lg border-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.978119436195!2d98.66953807473237!3d3.592491996381635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131db5f608891%3A0xbf274f3799e9336d!2sUniversitas%20IBBI!5e0!3m2!1sid!2sid!4v1716113836601!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="w-full h-96 lg:h-full rounded-lg border-2" 
+                    src="https://www.google.com/maps?q={{ Illuminate\Support\Str::slug($event->address) }}&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <span id="maps-detail" class="flex gap-1"><img class="h-5 mt-1 fill-red-700" src="{{ asset('img/location.svg') }}" alt=""><p class="text-sm lg:text-xs underline ">{{ $event->address }}</p></span>
             </div>
         </div>
