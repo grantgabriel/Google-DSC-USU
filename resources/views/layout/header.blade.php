@@ -17,4 +17,5 @@
 
     @include('components\footer')
 </body>
+@yield('script');
 </html>
