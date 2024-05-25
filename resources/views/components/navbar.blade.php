@@ -37,7 +37,7 @@
                 " alt="" class="w-full h-full object-cover">
                     </div>
                 </button>
-                <div id="dropdown" class=" absolute right-0 mt-5 mr-[-2px] hidden bg-white border border-gray-200 shadow-md rounded">
+                <div id="dropdown" class="z-40 absolute right-0 mt-5 mr-[-2px] hidden bg-white border border-gray-200 shadow-md rounded">
                     <div class="relative">
                         <div class="absolute top-[-9px] right-[9px] w-0 h-0 border-l-[9px] border-r-[9px] border-b-[9px] border-transparent border-b-gray-300"></div>
                         <div class="absolute top-[-8px] right-[10px] w-0 h-0 border-l-[8px] border-r-[8px] border-b-[8px] border-transparent border-b-white"></div>
