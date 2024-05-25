@@ -12,7 +12,7 @@
     }
 @endphp
 
-
+<p id="urlShare" hidden>{{ url()->current() }}</p>
 <div class="flex justify-center items-center w-full h-full">
     <div class="w-fit lg:w-full">    
         <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ $event->event_banner }}" alt="">
@@ -33,6 +33,7 @@
                 {{ $event->event_name }}</h1>
             <p class="text-lg">Google Developer Student Club Universitas Sumatera Utara, Indonesia.</p>
             <div class="flex gap-2">
+                <button onclick="myFunction()" id="shareBtn" class="hover:bg-blue-500 active:bg-blue-600 cursor-pointer bg-blue-200 py-2 px-3 rounded-full"><img src="https://www.svgrepo.com/show/522278/share.svg" class="size-4" alt=""></button>
                 @foreach ($key as $item)
                 <span class="bg-blue-100 py-1 px-3 rounded-full shadow"><p class="text-blue-900 font-medium">{{ $item->key_name }}</p></span>
                 @endforeach
@@ -113,7 +114,27 @@
                 </div>
             </details>
         </div>
+        
     </main>
-
+        <div id="toastFeedback" class="fixed hidden bottom-16 transition-all ease-in-out duration-1000 translate-x-1/2 right-1/2 z-50 w-full mx-5 bg-slate-600 py-1 px-8 lg:text-xl lg:w-fit rounded-full text-white">
+            Copied to clipboard
+        </div>
 </section>
+@endsection
+@section('script')
+    <script>
+        function myFunction() {
+            const copyText = document.getElementById('urlShare');
+            const shareBtn = document.getElementById('shareBtn');
+            const toastFeedback = document.getElementById('toastFeedback');
+            // copyText.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(copyText.innerText);
+            console.log(copyText.innerText) 
+            toastFeedback.classList.remove('hidden');
+            setTimeout(() => {
+                toastFeedback.classList.add('hidden');
+                
+            }, 3000);
+        }   
+    </script>
 @endsection
