@@ -25,10 +25,12 @@ firstname.addEventListener('input', function(){
     const firstname = document.getElementById('firstname');
     const firstnameValid = document.getElementById('firstnameValid');
     const firstnameValid2 = document.getElementById('firstnameValid2');
+    const firstnameValid3 = document.getElementById('firstnameValid3');
     let value = firstname.value;
-    if (value.length <= 255 && regex.test(value)) {
+    if (value.length <= 255 && value.length > 0 && regex.test(value)) {
         firstnameValid.classList.add('hidden');
         firstnameValid2.classList.add('hidden');
+        firstnameValid3.classList.add('hidden');
         firstname.classList.add('border-green-500');
         firstname.classList.remove('border-red-500');
         firstname.classList.remove('border-[#b3b3b3]');
@@ -38,8 +40,10 @@ firstname.addEventListener('input', function(){
         firstname.classList.add('border-red-500');
         firstname.classList.remove('border-green-500');
         firstname.classList.remove('border-[#b3b3b3]');
-        if (value.length >= 255) {
+        if (value.length > 255) {
             firstnameValid2.classList.remove('hidden');
+        } else if(value.length <= 0){
+            firstnameValid3.classList.remove('hidden');
         } else if (!regex.test(value)) {
             firstnameValid.classList.remove('hidden');
         }
@@ -53,10 +57,12 @@ lastname.addEventListener('input', function(){
     const lastname = document.getElementById('lastname');
     const lastnameValid = document.getElementById('lastnameValid');
     const lastnameValid2 = document.getElementById('lastnameValid2');
+    const lastnameValid3 = document.getElementById('lastnameValid3');
     let value = lastname.value;
-    if (value.length <= 255 && regex.test(value)) {
+    if (value.length <= 255 && value.length > 0 && regex.test(value)) {
         lastnameValid.classList.add('hidden');
         lastnameValid2.classList.add('hidden');
+        lastnameValid3.classList.add('hidden');
         lastname.classList.add('border-green-500');
         lastname.classList.remove('border-red-500');
         lastname.classList.remove('border-[#b3b3b3]');
@@ -66,9 +72,11 @@ lastname.addEventListener('input', function(){
         lastname.classList.add('border-red-500');
         lastname.classList.remove('border-green-500');
         lastname.classList.remove('border-[#b3b3b3]');
-        if (value.length >= 255) {
+        if (value.length >= 255 || value.length <= 0) {
             lastnameValid2.classList.remove('hidden');
-        } else if (!regex.test(value)) {
+        } else if(value.length <= 0){
+            lastnameValid3.classList.remove('hidden');
+        }  else if (!regex.test(value)) {
             lastnameValid.classList.remove('hidden');
         }
     }
@@ -94,7 +102,7 @@ negara.addEventListener('input', function(){
         negara.classList.add('border-red-500');
         negara.classList.remove('border-green-500');
         negara.classList.remove('border-[#b3b3b3]');
-        if (value.length >= 255) {
+        if (value.length >= 255 || value.length <= 0) {
             negaraValid2.classList.remove('hidden');
         } else if (!regex.test(value)) {
             negaraValid.classList.remove('hidden');
