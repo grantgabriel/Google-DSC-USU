@@ -44,7 +44,10 @@
                     {{ $event->description }}
                 </p>
                 <div class="flex flex-col">
-                    <span class="bg-slate-100 text-blue-600 lg:text-sm font-semibold text-center p-4 rounded-t-xl">{{ Carbon\Carbon::parse($item->time)->format('l, d M, Y') }}</span>
+                    <span class="bg-slate-100 text-blue-600 lg:text-sm font-semibold text-center p-4 rounded-t-xl">{{ Carbon\Carbon::parse($event->time)->format('l, d M, Y') }}</span>
+                    @if($event->time < now())
+                        <button disabled id="rsvpBtn" class="w-full bg-slate-300 py-2 rounded-b-xl font-medium shadow ">Event already finished</button>
+                    @else
                     @guest
                         <a href="{{ route('login') }}" id="rsvpBtn" class="w-full bg-blue-600 active:bg-blue-700 text-center py-2 rounded-b-xl text-white font-medium shadow ">RSVP</a>
                     @endguest
@@ -60,6 +63,7 @@
                     </form>
                     @endif
                     @endauth
+                    @endif
                 </div>
                 <p class="mx-auto font-mono text-xs"><span class="bg-slate-200 p-1 rounded-md">{{ $rsvpCount }}</span> already rsvp'd</p>
             </div>
