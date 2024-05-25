@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Event;
@@ -9,9 +9,22 @@ use App\Models\Event;
 class AdminController extends Controller
 {
     public function member(){
-        $data = User::where('role', 'Member')->with('rsvp')->get();
+    
+        return view('admin.chapter-member');
+    }
 
-        return view('admin.chapter-member', compact('data'));
+    public function memberdata(){
+        $data = User::where('role', 'Member')->with('rsvp')->get();
+        
+        return response()->json($data); 
+    }
+
+    public function membersearch($input){
+        $data = User::where('role', 'Member')
+                ->with('rsvp')
+                ->where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', '%' . $input . '%')
+                ->get();
+        return response()->json($data);
     }
 
     public function analytic(){

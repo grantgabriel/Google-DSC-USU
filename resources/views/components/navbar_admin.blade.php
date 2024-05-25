@@ -15,7 +15,7 @@
 </div>
 
 
-<div id="main" style="transition: margin-left 0.5s;">
+<div id="main" style="transition: margin-left 0.5s;" class="bg-white">
     <nav class="w-full h-fit py-1 border px-5 lg:pr-24 lg:pl-8 border-slate-300">
         <div class="flex items-center justify-between my-auto">
             <button id="navButton"><img src="../img/hamburger.png" class="object-contain w-4" alt=""></button>
@@ -106,7 +106,7 @@
             }
         }
 
-        const mediaQuery = window.matchMedia('(min-width: 768px)');
+        const mediaQuery = window.matchMedia('(min-width: 1024px)');
         handleMediaQuery(mediaQuery);
         mediaQuery.addListener(handleMediaQuery);
 

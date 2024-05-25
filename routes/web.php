@@ -18,6 +18,14 @@ use App\Http\Middleware\AdminMiddleware;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware(['role:Member'])->group(function () {
+    Route::get('/admin/member/data', [AdminController::class, 'memberdata']);
+    Route::get('/admin/member/data/{input}', [AdminController::class, 'membersearch']);
+
+
+});
+
+
 
 
 Route::get('/', [EventController::class, 'index'])->name('home');;
