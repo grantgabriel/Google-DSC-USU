@@ -8,7 +8,7 @@
             <div class="flex flex-col lg:w-full lg:px-6 ">
                 <div class="pt-5 pb-1">
                     <div class="text-[#555555] flex justify-center font-semibold shadow-[0_0_4px_0_rgba(0,0,0,0.1)] bg-white rounded-md lg:py-1">
-                        {{$event[0]->event_name}}
+                        Next Event-> <a href="">{{$event[0]->event_name}}</a>
                     </div>
                 </div>
 
