@@ -36,13 +36,31 @@ class AdminController extends Controller
 
 
     public function updateattend(Request $request){
-        $attendance = Rsvp::where('event_id', $request->input('event_id'))
-        ->where('user_id', $request->input('user_id'))
+        
+        $attendance = Rsvp::where('event_id', $request->eventId)
+        ->where('user_id', $request->attendanceId)
         ->first();
 
-        $attendance->attendance_detail = $request->input('attendance_detail');
-        $attendance->save();
+        if (!$attendance) {
+            return response()->json(['error' => 'Attendance record not found'], 404);
+        }
+    
+        // Update the attendance detail based on the request
+        if ($request->isChecked == 'Could Not Attend') {
+            $attendance->attendance_detail = 'Attend';
+        } else {
+            $attendance->attendance_detail = 'Could Not Attend';
+        }
+    
+        // Save the changes
+        if ($attendance->save()) {
+            return response()->json(['success' => 'Attendance updated successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Failed to update attendance'], 500);
+        }
+
     }
+
 
 
     
