@@ -38,19 +38,19 @@
                 @csrf
                 <div class="mb-4">
                     <label for="firstName" class="block text-gray-700">First Name</label>
-                    <input type="firstName" id="firstName" name="firstName"
+                    <input type="text" id="firstName" name="firstName"
                         class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required autofocus>
+                        required autofocus autocomplete="firstName">
                     <p class="valid-feedback text-sm" id="firstValid">First Name is Valid</p>
-                    <p class="invalid-feedback text-sm" id="firstInvalid">Name cannot contain number</p>
+                    <p class="invalid-feedback text-sm" id="firstInvalid">Name cannot contain number, symbo, space or be empty</p>
                 </div>
                 <div class="mb-4">
                     <label for="lastName" class="block text-gray-700">Last Name</label>
-                    <input type="lastName" id="lastName" name="lastName"
+                    <input type="text" id="lastName" name="lastName"
                         class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required autofocus>
+                        required autofocus autocomplete="lastName">
                     <p class="valid-feedback text-sm" id="lastValid">Last Name is valid</p>
-                    <p class="invalid-feedback text-sm" id="lastInvalid">Name cannot contain number</p>
+                    <p class="invalid-feedback text-sm" id="lastInvalid">Name cannot contain number, symbo, space or be empty</p>
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700">Email</label>
@@ -68,16 +68,16 @@
                     <p class="invalid-feedback text-sm" id="passwordInvalid">Password must be at least 8 characters, contain
                         an uppercase letter, a lowercase letter, and a symbol</p>
                 </div>
-                <div class="mb-6">
+                {{-- <div class="mb-6">
                     <label for="password" class="block text-gray-700">Password</label>
-                    <input type="password" id="confirmPassword" name="password" required autocomplete="current-password"
+                    <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="current-password"
                         class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <p class="valid-feedback text-sm" id="confirmPasswordValid">Confirmation Password is Correct</p>
                     <p class="invalid-feedback text-sm" id="confirmPasswordInvalid">Confirmation Password is not the same as
                         Password</p>
-                </div>
+                </div> --}}
                 <div class="mb-4">
-                    <button type="submit" id="submitBtn"
+                    <button type="submit" id="submitButton"
                         class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-700">Register</button>
                 </div>
                 <p class="text-center text-gray-600">Already have an account? <a href="{{ route('login') }}"
@@ -86,8 +86,8 @@
         </div>
 
         <script>
-            document.getElementById('registerForm').addEventListener('submit', function(event) {
-                event.preventDefault();
+            document.getElementById('registerForm').addEventListener('input', function(event) {
+                // event.preventDefault();
                 const firstNameInput = document.getElementById('firstName');
                 const lastNameInput = document.getElementById('lastName');
                 const emailInput = document.getElementById('email');
@@ -103,109 +103,29 @@
                 const passwordInvalidFeedback = document.getElementById('passwordInvalid');
                 const confirmPasswordValidFeedback = document.getElementById('confirmPasswordValid');
                 const confirmPasswordInvalidFeedback = document.getElementById('confirmPasswordInvalid');
+                const submitButton = document.querySelector('button[type="submit"]');
 
-                const regex = /\d/;
-                const firstName = firstNameInput.value;
-                if(firstName === NULL)
-                else if (regex.test(firstName)) {
-                    firstValidFeedback.style.display = 'none';
-                    firstInvalidFeedback.style.display = 'block';
-                } else {
-                    firstValidFeedback.style.display = 'block';
-                    firstInvalidFeedback.style.display = 'none';
-                }
+                const regex = /^[a-zA-Z]+$/;
+                let isFirstNameValid = regex.test(firstNameInput.value);
+                let isLastNameValid = regex.test(lastNameInput.value);
+                let isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+                let isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/.test(passwordInput.value);
 
-                const lastName = lastNameInput.value;
-                if (regex.test(lastName)) {
-                    lastValidFeedback.style.display = 'none';
-                    lastInvalidFeedback.style.display = 'block';
-                } else {
-                    lastValidFeedback.style.display = 'block';
-                    lastInvalidFeedback.style.display = 'none';
-                }
+                firstValidFeedback.style.display = isFirstNameValid ? 'block' : 'none';
+                firstInvalidFeedback.style.display = isFirstNameValid ? 'none' : 'block';
 
-                // Validate email
-                const email = emailInput.value;
-                if (email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-                    emailValidFeedback.style.display = 'block';
-                    emailInvalidFeedback.style.display = 'none';
-                } else {
-                    emailValidFeedback.style.display = 'none';
-                    emailInvalidFeedback.style.display = 'block';
-                }
+                lastValidFeedback.style.display = isLastNameValid ? 'block' : 'none';
+                lastInvalidFeedback.style.display = isLastNameValid ? 'none' : 'block';
 
-                // Validate password
-                const password = passwordInput.value;
-                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
-                if (password.match(passwordRegex)) {
-                    passwordValidFeedback.style.display = 'block';
-                    passwordInvalidFeedback.style.display = 'none';
-                } else {
-                    passwordValidFeedback.style.display = 'none';
-                    passwordInvalidFeedback.style.display = 'block';
-                }
+                emailValidFeedback.style.display = isEmailValid ? 'block' : 'none';
+                emailInvalidFeedback.style.display = isEmailValid ? 'none' : 'block';
 
-                if (confirmPasswordInput.value !== passwordInput.value) {
-                    confirmPasswordValidFeedback.style.display = 'none';
-                    confirmPasswordInvalidFeedback.style.display = 'block';
-                } else {
-                    confirmPasswordValidFeedback.style.display = 'block';
-                    confirmPasswordInvalidFeedback.style.display = 'none';
-                }
+                passwordValidFeedback.style.display = isPasswordValid ? 'block' : 'none';
+                passwordInvalidFeedback.style.display = isPasswordValid ? 'none' : 'block';
+
+                // Enable or disable the submit button based on validation
+                submitButton.disabled = !(isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid);
             });
         </script>
     </section>
 @endsection
-
-
-
-{{--
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <label for="name">First Name:</label>
-            <input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
-        </div>
-
-        <div class="mt-4">
-            <label for="lname">Last Name:</label>
-            <input id="lname" class="block mt-1 w-full" type="text" name="lname" required autofocus autocomplete="lname" />
-        </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <label for="email">Email:</label>
-            <input id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <label for="password">Password:</label>
-
-            <input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <label for="password_confirmation">Confirm Password</label>
-
-            <input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-
-        </div>
-        <button type="submit">Submit</button>
-    </form> --}}
