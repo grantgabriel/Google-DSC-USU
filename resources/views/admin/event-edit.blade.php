@@ -1,16 +1,18 @@
 @extends('layout.header_admin')
 
 @section('content_warning')
-        <div class="flex justify-center">
+
+<div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
+        <div class="flex justify-start font-semibold mb-4">
             
             <div class="px-2">
-                <button>Overview</button>
+                <a href="/admin/event/{{$event->event_id}}" class="">Overview</a>
             </div>
             <div class="px-2">
                 <a href="/admin/event/{{$event->event_id}}/attendees">Attendees</a>
             </div>
             <div class="px-2">
-                <button>Edit</button>
+                <button class="border-b-2 pb-2 border-black">Edit</button>
             </div>
             <div class="px-2">
                 <button>Forms</button>
@@ -23,50 +25,66 @@
             </div>
 
         </div>
-
-        <div class="px-36 flex justify-center">
+        
+        <div class="shadow-lg rounded-xl bg-white py-6 px-6 flex justify-center">
             <div class="flex-col">
-                <div class="">
-                    <div class="flex justify-center items-center">
-                        <div class="w-fit =lg:w-full"> 
-                            <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ asset('banner/' . $event->event_banner) }}" alt="">
-                            
+                
+        
+                
+                
+
+                <form id="eventform" action="/admin/event/{{$event->event_id}}/edit" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="px-0">
+                        <div class="flex justify-center items-center">
+                            <div class="w-fit lg:w-full relative"> 
+                                <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ asset('banner/' . $event->event_banner) }}" alt="">
+                                <input class="absolute top-8 left-8 text-white" type="file" class="form-control" name="banner" id="banner">
+                            </div>
                         </div>
                     </div>
-                </div>
-        
-                <section class="bg-white lg:px-48 px-4 relative">
-                    <div id="bar" class="absolute w-full bg-white lg:h-10 h-3 border-t left-0 lg:-top-14 -top-7 rounded-t-full ">
-                    </div>
-
-                <form action="/admin/event/{{$event->event_id}}/edit" method="post" enctype="multipart/form-data">
-                    @csrf
+                    <section class="bg-white lg:px-48 px-4 relative">
                     
-                    <input type="file" class="form-control" name="banner" id="banner">   
-
-                    <img class="w-20 mt-20 rounded-full" src="http://127.0.0.1:8000/event-profile/{{$event->event_profile}}" alt="">
-                    <input type="file" class="form-control" name="pp" id="pp">
+                    <div class="flex justify-start  mt-20 items-center">
+                        <img class="w-24 h-24 lg:h-36 lg:w-36 mr-6 object-cover rounded-full" src="http://127.0.0.1:8000/event-profile/{{$event->event_profile}}" alt="">
+                        <input type="file" class="form-control" name="pp" id="pp">
+                    </div>
+                    
 
                     <main id="main">
                         <div class="text-slate-700 grid relative gap-2 mt-5">
                             
-                            
-                                <input class="text-2xl" name="nama" type="text" value="{{ $event->event_name }}">
+                                <div class="flex justify-start ">
+                                    <input id="eventname" class="w-full text-2xl  py-1 text-[#555555]" name="nama" type="text" value="{{ $event->event_name }}">
+                                    <ion-icon id="focus-icon" class=""  name="create-outline"></ion-icon>
+                                </div>
+                                <p id="eventnameValid" class="hidden text-red-500">At least 1 characters</p>
+                                <p id="eventnameValid2" class="hidden text-red-500">Max 255 characters</p>
 
-                                <p class="text-lg">Google Developer Student Club Universitas Sumatera Utara, Indonesia.</p>
+                                <p class="text-lg text-[#555555]">Google Developer Student Club Universitas Sumatera Utara, Indonesia.</p>
                                 <div class="flex gap-2">
                                 
                                 @foreach ($event->keyThemes as $item)
                                     <span class="bg-blue-100 py-1 px-3 rounded-full shadow"><p class="text-blue-900 font-medium">{{ $item->key_name }}</p></span>
+                                    
                                 @endforeach
                             </div>
                         </div>
                         <div class="flex flex-col lg:flex-row-reverse py-6 gap-4">
                             <div class="grid gap-4 lg:max-w-screen-sm">
-                                <textarea name="deskripsi" cols="70" rows="10">{{ $event->description }}</textarea>
-                                <div class="flex flex-col">
-                                    <span class="bg-slate-100 text-blue-600 lg:text-sm font-semibold text-center p-4 rounded-t-xl"><input name="tanggal" type="date" value="{{$event->time}}"></span>
-                                   
+                                <div class=" flex justify-end">
+                                    <ion-icon id="focus-icon2" class="text-[#555555] flex justify-end"  name="create-outline"></ion-icon>
+
+                                </div>
+                                    <textarea id="deskripsi" name="deskripsi" class="text-[#555555] py-1 px-3" cols="70" rows="10">{{ $event->description }}</textarea>
+                                    <p id="deskripsiValid" class="hidden text-red-500">At least 1 characters</p>
+                                    <p id="deskripsiValid2" class="hidden text-red-500">Max 255 characters</p>
+                                
+                                
+                                <div class="flex justify-center">
+                                    <span  class=" text-blue-600 mr-2 lg:text-sm font-semibold text-center  rounded-t-xl"><input id="date" name="tanggal" type="date" value="{{$event->time}}"></span>
+                                    <ion-icon id="focus-icon3" class=""  name="create-outline"></ion-icon>
+
                                 </div>
                                 
                             </div>
@@ -76,11 +94,11 @@
                                 <span id="maps-detail" class="flex gap-1"><img class="h-5 mt-1 fill-red-700" src="{{ asset('img/location.svg') }}" alt=""><p class="text-sm lg:text-xs underline ">{{ $event->address }}</p></span>
                             </div>
                         </div>
-                        <h1 class="text-3xl font-bold">About</h1>
+                        <h1 class="text-3xl text-[#555555] font-bold">About</h1>
                         <div class="grid gap-4 mt-4">
                             <details class="group [&_summary::-webkit-details-marker]:hidden" open>
                                 <summary
-                                  class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-blue-200 p-4 text-gray-900"
+                                  class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-blue-50 p-4 text-[#555555]"
                                 >
                                   <h2 class="font-semibold text-lg">Speaker</h2>
                             
@@ -90,11 +108,11 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                   </svg>
                                 </summary>
-                                <div class="mt-4 pl-4 lg:pl-20 leading-relaxed flex">
-                                    <article class="rounded-xl border border-gray-700  p-4 w-full">
+                                <div class="mt-4 px-4 leading-relaxed flex">
+                                    <article class="rounded-xl border border-555555]  p-4 w-full">
                                         <div class="flex items-center gap-4 lg:px-12">
                                         <img src="{{ $event->speaker_img }}" class="size-16 lg:size-40 rounded-full object-cover"/>
-                                        <h3 class="text-lg font-medium mx-auto">{{ $event->speaker_name }}</h3>
+                                        <h3 class="text-lg text-[#555555] font-medium mx-auto">{{ $event->speaker_name }}</h3>
                                         </div>
                                       </article>
                                 </div>
@@ -102,8 +120,10 @@
                             
                         </div>
 
-                        <div>
-                            <button class="bg-red-500 " type="submit">Submit</button>
+                        <div class="flex justify-end mt-8">
+                            <button id="save" type="submit" class="bg-blue-500 active:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                                Save Changes
+                            </button>
                         </div>
                     </main>
                     
@@ -117,4 +137,130 @@
                 </section>
             </div>
         </div>
+</div>
+{{-- <div id="myModal" class=" justify-center bg-opacity-50 bg-black hidden fixed z-[1px] top-0 w-full h-full ">
+    <div class="p-[20px] my-52 border bg-white border-[#555555] w-[400px]">
+        <span id="close" class="cursor-pointer float-right text-2xl font-bold hover:text-black">&times;</span>
+        <input type="file" class="form-control" name="banner" id="banner">   
+    </div>
+</div> --}}
+
+<script>
+    // const modal = document.getElementById("myModal");
+    // const btn = document.getElementById("myBtn");
+    // const span = document.getElementById("close");
+    // const form = document.getElementById('eventForm');
+    // const bannerInput = document.getElementById('banner');
+    // btn.onclick = function() {
+    //   modal.classList.add('flex');
+    //   modal.classList.remove('hidden');
+    //   form.appendChild(bannerInput);
+    // };
+
+    span.onclick = function() {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }
+    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+      }
+    }
+    let deskripsiSubmit = true;
+    let eventnameSubmit = true;
+    document.addEventListener('DOMContentLoaded', function() {
+            const inputField = document.getElementById('eventname');
+            const inputField2 = document.getElementById('deskripsi');
+            const inputField3 = document.getElementById('date');
+            const icon = document.getElementById('focus-icon');
+            const icon2 = document.getElementById('focus-icon2');
+            const icon3 = document.getElementById('focus-icon3');
+
+
+            icon.addEventListener('click', function() {
+                inputField.focus();
+                const valueLength = inputField.value.length;
+                inputField.setSelectionRange(valueLength, valueLength);
+            });
+            icon2.addEventListener('click', function() {
+                inputField2.focus();
+                const valueLength = inputField2.value.length;
+                inputField2.setSelectionRange(valueLength, valueLength);
+            });
+            icon3.addEventListener('click', function() {
+                inputField3.focus();
+            });
+        });
+        eventname.addEventListener('input', function(){
+            const eventname = document.getElementById('eventname');
+            const eventnameValid = document.getElementById('eventnameValid');
+            const eventnameValid2 = document.getElementById('eventnameValid2');
+
+            let value = eventname.value;
+            if (value.length <= 255 && value.length > 0 ) {
+                eventnameValid.classList.add('hidden');
+                eventnameValid2.classList.add('hidden');
+                eventname.classList.remove('border-red-500');
+                eventname.classList.remove('border-[#b3b3b3]');
+                eventname.classList.remove('border');
+                eventnameSubmit = true;
+            } else {
+                eventnameSubmit = false;
+                eventname.classList.add('border');
+                eventname.classList.add('border-red-500');
+                if (value.length >= 255) {
+                    eventnameValid2.classList.remove('hidden');
+                } else if (value.length < 1) {
+                    eventnameValid.classList.remove('hidden');
+                }
+            }
+
+            saveButton();
+        });
+        deskripsi.addEventListener('input', function(){
+            const deskripsi = document.getElementById('deskripsi');
+            const deskripsiValid = document.getElementById('deskripsiValid');
+            const deskripsiValid2 = document.getElementById('deskripsiValid2');
+
+            let value = deskripsi.value;
+            if (value.length <= 1000 && value.length > 0 ) {
+                deskripsiValid.classList.add('hidden');
+                deskripsiValid2.classList.add('hidden');
+                deskripsi.classList.remove('border-red-500');
+                deskripsi.classList.remove('border-[#b3b3b3]');
+                eventname.classList.remove('border');
+                deskripsiSubmit = true;
+            } else {
+                deskripsiSubmit = false;
+                deskripsi.classList.add('border');
+                deskripsi.classList.add('border-red-500');
+
+                if (value.length >= 1000) {
+                    deskripsiValid2.classList.remove('hidden');
+                } else if (value.length < 1) {
+                    deskripsiValid.classList.remove('hidden');
+                }
+            }
+
+            saveButton();
+        });
+
+        function saveButton(){
+            if(deskripsiSubmit && eventnameSubmit){
+                save.disabled = false;
+                save.classList.add('bg-blue-500');
+                save.classList.remove('bg-slate-500');
+                save.classList.add('active:bg-blue-600');
+            } else {
+                save.disabled = true;
+                save.classList.remove('bg-blue-500');
+                save.classList.add('bg-slate-500');
+                save.classList.remove('active:bg-blue-600');
+            }
+        };
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 @endsection
