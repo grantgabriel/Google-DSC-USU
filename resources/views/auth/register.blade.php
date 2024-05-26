@@ -49,8 +49,8 @@
                     <input type="lastName" id="lastName" name="lastName"
                         class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required autofocus>
-                    <p class="valid-feedback text-sm" id="emailValid">Email is valid</p>
-                    <p class="invalid-feedback text-sm" id="emailInvalid">Email is invalid</p>
+                    <p class="valid-feedback text-sm" id="lastValid">Last Name is valid</p>
+                    <p class="invalid-feedback text-sm" id="lastInvalid">Name cannot contain number</p>
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700">Email</label>
@@ -77,7 +77,7 @@
                         Password</p>
                 </div>
                 <div class="mb-4">
-                    <button type="submit"
+                    <button type="submit" id="submitBtn"
                         class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-700">Register</button>
                 </div>
                 <p class="text-center text-gray-600">Already have an account? <a href="{{ route('login') }}"
@@ -86,12 +86,17 @@
         </div>
 
         <script>
-            document.getElementById('registerForm').addEventListener('input', function(event) {
+            document.getElementById('registerForm').addEventListener('submit', function(event) {
+                event.preventDefault();
                 const firstNameInput = document.getElementById('firstName');
                 const lastNameInput = document.getElementById('lastName');
                 const emailInput = document.getElementById('email');
                 const passwordInput = document.getElementById('password');
                 const confirmPasswordInput = document.getElementById('confirmPassword');
+                const firstValidFeedback = document.getElementById('firstValid');
+                const firstInvalidFeedback = document.getElementById('firstInvalid');
+                const lastValidFeedback = document.getElementById('lastValid');
+                const lastInvalidFeedback = document.getElementById('lastInvalid');
                 const emailValidFeedback = document.getElementById('emailValid');
                 const emailInvalidFeedback = document.getElementById('emailInvalid');
                 const passwordValidFeedback = document.getElementById('passwordValid');
@@ -101,8 +106,22 @@
 
                 const regex = /\d/;
                 const firstName = firstNameInput.value;
-                if (regex.test(firstName)) {
+                if(firstName === NULL)
+                else if (regex.test(firstName)) {
+                    firstValidFeedback.style.display = 'none';
+                    firstInvalidFeedback.style.display = 'block';
+                } else {
+                    firstValidFeedback.style.display = 'block';
+                    firstInvalidFeedback.style.display = 'none';
+                }
 
+                const lastName = lastNameInput.value;
+                if (regex.test(lastName)) {
+                    lastValidFeedback.style.display = 'none';
+                    lastInvalidFeedback.style.display = 'block';
+                } else {
+                    lastValidFeedback.style.display = 'block';
+                    lastInvalidFeedback.style.display = 'none';
                 }
 
                 // Validate email

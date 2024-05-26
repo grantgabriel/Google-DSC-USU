@@ -55,7 +55,8 @@
         </div>
 
         <script>
-            document.getElementById('loginForm').addEventListener('input', function(event) {
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
                 const emailInput = document.getElementById('email');
                 const passwordInput = document.getElementById('password');
                 const emailValidFeedback = document.getElementById('emailValid');
@@ -68,6 +69,7 @@
                 if (email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
                     emailValidFeedback.style.display = 'block';
                     emailInvalidFeedback.style.display = 'none';
+                    document.getElementById('loginForm').submit();
                 } else {
                     emailValidFeedback.style.display = 'none';
                     emailInvalidFeedback.style.display = 'block';
