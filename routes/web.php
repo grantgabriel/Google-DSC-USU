@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -18,6 +19,14 @@ use App\Http\Middleware\AdminMiddleware;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware(['role:Member'])->group(function () {
+    Route::get('/admin/member/data', [AdminController::class, 'memberdata']);
+    Route::get('/admin/member/data/{input}', [AdminController::class, 'membersearch']);
+
+
+});
+
+
 
 
 Route::get('/', [EventController::class, 'index'])->name('home');;
@@ -31,6 +40,9 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.admin');
     });
+    Route::get('/admin/member', [AdminController::class, 'member']);
+    Route::get('/admin/analytic', [AdminController::class, 'analytic']);
+
 });
 
 Route::get('/review', function () {

@@ -7,7 +7,7 @@
     <title>GDSC USU</title>
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-blue-50">
     @include('components.navbar_admin')
     <div id="mainA" style="transition: margin-left 0.5s;">
         @yield('content_warning')
