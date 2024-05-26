@@ -118,7 +118,7 @@
                         eventId: eventId,
                         isChecked: isChecked
                     })
-                    
+
                 })
                 .then(response => {
                     if (!response.ok) {

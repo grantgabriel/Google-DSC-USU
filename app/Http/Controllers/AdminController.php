@@ -39,8 +39,9 @@ class AdminController extends Controller
         $attendance = Rsvp::where('event_id', $request->input('event_id'))
         ->where('user_id', $request->input('user_id'))
         ->first();
-        
-        
+
+        $attendance->attendance_detail = $request->input('attendance_detail');
+        $attendance->save();
     }
 
 
