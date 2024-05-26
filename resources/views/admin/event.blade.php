@@ -34,7 +34,7 @@
         <div>
 
 
-            <div><a href="event/add">+ Tambah Event</a></div>
+            <div><a href="/admin/add/event">+ Tambah Event</a></div>
 
 
             <table class="w-full items-center">
