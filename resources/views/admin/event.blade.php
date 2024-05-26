@@ -3,61 +3,79 @@
 
 @section('content_warning')
 
-    <div class="bg-red-500 flex justify-center">
+<div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
+    <div class="shadow-lg rounded-xl bg-white py-6 px-6">
+        <div class="flex justify-center mb-5">
+            <div class="text-2xl font-semibold">Chapter Events</div>
+        </div>
+        
+        
 
-        <div onclick="" class="px-2">
-            <button id="1">Upcumming</button>
+        <div class="mb-3 relative flex justify-between">
+            <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-1 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for an event" type="text">
+                <ion-icon name="search-outline" id="searcho" class=" text-[#555555] absolute left-3 top-3"></ion-icon>
+            </input>
+            <div class="flex items-center justify-end text-sm lg:text-[16px]">
+                <div class="mr-2 "><ion-icon  name="filter-outline"></ion-icon></div>
+                <div class=" flex justify-end rounded-md items">
+                    <div onclick="" class="pr-2 pl-3 py-[6px] ">
+                        <button class="border-b-4 border-blue-500 pb-[6px]" id="1">Upcoming</button>
+                    </div>
+                    <div onclick="" class="pl-2 pr-3 py-[6px]">
+                        <button class="pb-[6px]" id="2">Past</button>
+                    </div>
+        
+                </div>
+            </div>            
         </div>
 
-        <div onclick="" class="px-2">
-            <button id="2">Past Event</button>
+        <div>
+
+            <table class="w-full items-center">
+                <thead class="bg-blue-50">
+                    <tr>
+                        <th class="py-3 pl-6 px-4">Event</th>
+                        <th class="">Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="body">
+                    
+                </tbody>
+            </table>
+
         </div>
-
     </div>
-
-    <div class="mb-3 relative">
-        <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-1 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for an Event" type="text">
-            <ion-icon name="search-outline" id="searcho" class="text-[#555555] absolute left-3 top-2"></ion-icon>
-        </input>
-    </div>
-
-    <div class="bg-blue-500 flex justify-center">
-
-        <table>
-            <thead>
-                <tr>
-                    <th class="py-3 pl-6 px-4">Name</th>
-                    <th class="py-3 px-4">Date</th>
-                </tr>
-            </thead>
-
-            <tbody id="body">
-                
-            </tbody>
-        </table>
-
-    </div>
-
+</div>
 
     <script>
         var page;
         var upBtn = document.getElementById('1');
         var pastBtn = document.getElementById('2');
-
+        const searcho = document.getElementById('searcho');
 
 
         function update() {
+            if (input.value == '') {
+            searcho.classList.remove('hidden');
+            } else {
+                searcho.classList.add('hidden');
+            }
                 fetch('/admin/event/sort/' + page +'/' + input.value)
                     .then(response => response.json())
                     .then(data => {
                         body.innerHTML = '';
                         data.forEach(datas => {
                             body.innerHTML += `
-                                <tr>
-                                    <td class="flex py-6 px-4 text-[#555555]"><img class="w-14" src="${datas.event_profile}"><a href="event/${datas.event_id}">${datas.event_name}</a></td>
-                                    <td class="py-6 px-4 text-[#555555]">${datas.time}</td>
-                                
-                                </tr>
+                            <tr class="border-b text-md">
+                                        <td class=" py-6 px-4 text-[#555555]">
+                                            <a class="justify-start flex" href="event/${datas.event_id}">
+                                                <img class="w-24 mr-4" src="${datas.event_profile}">
+                                                <div>${datas.event_name}</div>
+                                            </a>
+                                        </td>
+                                        <td class="py-6 px-4 text-[#555555]">${datas.time}</td>
+                                    </tr>
                             `;
                         });
                     });
@@ -70,11 +88,15 @@
                             body.innerHTML = '';
                             data.forEach(datas => {
                                 body.innerHTML += `
-                                    <tr class="border-b relative">
-
-                                        <td class="flex py-6 px-4 text-[#555555]"><img class="w-14" src="${datas.event_profile}"><a href="event/${datas.event_id}">${datas.event_name}</a></td>
-                                        <td class="py-6 px-4 text-[#555555]">${datas.time}</td>
-
+                                
+                                    <tr class="border-b ">
+                                        <td class=" py-6 px-4 text-[#555555] text-lg lg:text-xl">
+                                            <a class="justify-start flex" href="event/${datas.event_id}">
+                                                <img class="w-16 lg:w-28 mr-4" src="${datas.event_profile}">
+                                                <div>${datas.event_name}</div>
+                                            </a>
+                                        </td>
+                                        <td class="py-6 px-4 lg:text-lg justify-center flex items-center text-[#555555]">${datas.time}</td>
                                     </tr>
                                 `;
                             });
@@ -100,10 +122,18 @@
             upBtn.addEventListener('click', function() {
                 page = 1;
                 eventList(page);
+                upBtn.classList.add('border-b-4');
+                upBtn.classList.add('border-blue-500');
+                pastBtn.classList.remove('border-b-4');
+                pastBtn.classList.remove('border-blue-500');
             });
             pastBtn.addEventListener('click', function() {
                 page = 2;
                 eventList(page);
+                upBtn.classList.remove('border-b-4');
+                upBtn.classList.remove('border-blue-500');
+                pastBtn.classList.add('border-b-4');
+                pastBtn.classList.add('border-blue-500');
             });
 
             
@@ -111,9 +141,10 @@
             eventList(page);
             
         });
-
+        
     </script>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 
 @endsection
