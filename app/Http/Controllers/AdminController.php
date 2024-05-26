@@ -62,6 +62,42 @@ class AdminController extends Controller
     }
 
 
+    public function eventedit($id){
+        $event = Event::find($id);
+        return view('admin.event-edit',compact('event'));
+    }
+
+    public function eventeditdata(Request $request, $id){
+        $event = Event::find($id);
+        $event->event_name = $request->nama;
+        $event->time = $request->tanggal;
+        // $event->location = $request->location;
+        $event->description = $request->deskripsi;
+
+        if ($request->hasFile('banner')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('banner')->getClientOriginalExtension();
+            $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
+            $request->file('banner')->move(public_path('banner'), $imageName);
+            $event->event_banner = $imageName;
+        }
+
+        if ($request->hasFile('pp')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('pp')->getClientOriginalExtension();
+            $imageName = strtotime($request->tanggal)+time().'-'.'.'.$extension;
+            $request->file('pp')->move(public_path('event-profile'), $imageName);
+            $event->event_profile = $imageName;
+        }
+
+        $event->save();
+        return redirect('/admin/event/'.$id);
+    }
+
 
     
 

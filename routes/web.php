@@ -55,7 +55,8 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin/event', [AdminController::class, 'event']);
     Route::get('/admin/event/{id}', [AdminController::class, 'eventdetail']);
     Route::get('/admin/event/{id}/attendees', [AdminController::class, 'eventattendees']);
-
+    Route::get('/admin/event/{id}/edit', [AdminController::class, 'eventedit']);
+    Route::post('/admin/event/{id}/edit', [AdminController::class, 'eventeditdata']);
 
 });
 
