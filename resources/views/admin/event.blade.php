@@ -16,7 +16,7 @@
     </div>
 
     <div class="mb-3 relative">
-        <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-1 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for a member" type="text">
+        <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-1 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for an Event" type="text">
             <ion-icon name="search-outline" id="searcho" class="text-[#555555] absolute left-3 top-2"></ion-icon>
         </input>
     </div>
@@ -54,7 +54,7 @@
                         data.forEach(datas => {
                             body.innerHTML += `
                                 <tr>
-                                    <td class="flex py-6 px-4 text-[#555555]"><img class="w-14" src="${datas.event_profile}"><a href="#">${datas.event_name}</a></td>
+                                    <td class="flex py-6 px-4 text-[#555555]"><img class="w-14" src="${datas.event_profile}"><a href="event/${datas.event_id}">${datas.event_name}</a></td>
                                     <td class="py-6 px-4 text-[#555555]">${datas.time}</td>
                                 
                                 </tr>
@@ -72,7 +72,7 @@
                                 body.innerHTML += `
                                     <tr class="border-b relative">
 
-                                        <td class="flex py-6 px-4 text-[#555555]"><img class="w-14" src="${datas.event_profile}"><a href="#">${datas.event_name}</a></td>
+                                        <td class="flex py-6 px-4 text-[#555555]"><img class="w-14" src="${datas.event_profile}"><a href="event/${datas.event_id}">${datas.event_name}</a></td>
                                         <td class="py-6 px-4 text-[#555555]">${datas.time}</td>
 
                                     </tr>

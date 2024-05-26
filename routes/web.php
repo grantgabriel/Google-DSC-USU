@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -25,10 +26,14 @@ use App\Http\Middleware\AdminMiddleware;
 //INI BUAT API
 Route::middleware(['role:Member'])->group(function () {
 
-    Route::get('/admin/member/data', [AdminController::class, 'memberdata']);
-    Route::get('/admin/member/data/{input}', [AdminController::class, 'membersearch']);
-    Route::get('/admin/event/sort/{id}', [AdminController::class, 'eventsort']);
-    Route::get('/admin/event/sort/{id}/{search}', [AdminController::class, 'eventsortsearch']);
+    Route::get('/admin/member/data', [DataController::class, 'memberdata']);
+    Route::get('/admin/member/data/{input}', [DataController::class, 'membersearch']);
+    Route::get('/admin/event/sort/{id}', [DataController::class, 'eventsort']);
+    Route::get('/admin/event/sort/{id}/{search}', [DataController::class, 'eventsortsearch']);
+    Route::get('/admin/event/{id}/attendees/get/{search}', [DataController::class, 'eventdatasearch']);
+    Route::get('/admin/event/{id}/attendees/get', [DataController::class, 'eventdata']);
+    Route::post('/admin/update-attendance', [AdminController::class, 'updateattend']);
+
 
 
 });
@@ -44,12 +49,13 @@ Route::get('/about', function () {
 
 
 Route::middleware(['role:Member'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin.admin');
-    });
+    Route::get('/admin', [AdminController::class, 'analytic']);
     Route::get('/admin/member', [AdminController::class, 'member']);
     Route::get('/admin/analytic', [AdminController::class, 'analytic']);
     Route::get('/admin/event', [AdminController::class, 'event']);
+    Route::get('/admin/event/{id}', [AdminController::class, 'eventdetail']);
+    Route::get('/admin/event/{id}/attendees', [AdminController::class, 'eventattendees']);
+
 
 });
 

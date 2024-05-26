@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\KeyTheme;
+use App\Models\Rsvp;
 
 class AdminController extends Controller
 {
@@ -20,60 +22,29 @@ class AdminController extends Controller
         return view('admin.event',compact('event'));
     }
 
-    public function eventsort($id){
-        if ($id == 1) {
-            $event = Event::where('time', '>', now())
-            ->orderBy('time', 'asc')
-            ->get();
-            return response()->json($event);
-        }
-
-        else if ($id == 2) {
-            $event = Event::where('time', '<', now())
-            ->orderBy('time', 'asc')
-            ->get();
-            return response()->json($event);
-        }
-
-        else {
-            return response()->json('error');
-        }
-
-    }
-    public function eventsortsearch($id,$search){
-        if ($id == 1) {
-            $event = Event::where('time', '>', now())-> where('event_name', 'like', '%' . $search . '%')
-            ->orderBy('time', 'asc')
-            ->get();
-            return response()->json($event);
-        }
-
-        else if ($id == 2) {
-            $event = Event::where('time', '<', now())-> where('event_name', 'like', '%' . $search . '%')
-            ->orderBy('time', 'asc')
-            ->get();
-            return response()->json($event);
-        }
-
-        else {
-            return response()->json('error');
-        }
-
+    public function eventdetail($id){
+        $event = Event::find($id);
+        $key = KeyTheme::where('event_id', $id)->get();
+        $rsvpCount = count(Rsvp::where('event_id', $id)->get());
+        return view('admin.event-detail',compact('event','key','rsvpCount'));
     }
 
-    public function memberdata(){
-        $data = User::where('role', 'Member')->with('rsvp')->get();
+    public function eventattendees($id){
+        $event = Event::find($id);
+        return view('admin.event-attendees',compact('event'));
+    }
+
+
+    public function updateattend(Request $request){
+        $attendance = Rsvp::where('event_id', $request->input('event_id'))
+        ->where('user_id', $request->input('user_id'))
+        ->first();
         
-        return response()->json($data); 
+        
     }
 
-    public function membersearch($input){
-        $data = User::where('role', 'Member')
-                ->with('rsvp')
-                ->where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', '%' . $input . '%')
-                ->get();    
-        return response()->json($data);
-    }
+
+    
 
     public function analytic(){
         $event = Event::where('time', '>', now())
@@ -81,7 +52,9 @@ class AdminController extends Controller
         ->get();
 
         $user = User::all();
+        $eventCount = Event::all()->count();
         $registrationCount = User::whereHas('rsvp')->count();
-        return view('admin.analytic',compact('event','user','registrationCount'));
+
+        return view('admin.analytic',compact('event','user','registrationCount','eventCount'));
     }
 }
