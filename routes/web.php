@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AuthenticatedSessionController;
@@ -32,9 +33,14 @@ Route::middleware(['role:Member'])->group(function () {
     });
 });
 
-
+Route::get('/review', function () {
+    return view('review');
+}); 
 Route::get('/event/{id}-{slug}', [EventController::class, 'detail']);
+Route::get('/survey/{id}-{slug}', [SurveyController::class, 'index']);
 Route::post('/event-rsvp', [EventController::class, 'rsvp']);
+Route::put('/survey/submit', [SurveyController::class, 'submit']);
+
 
 require __DIR__.'/auth.php';
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
