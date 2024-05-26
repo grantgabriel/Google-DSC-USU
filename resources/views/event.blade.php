@@ -10,17 +10,25 @@
     if (isset(Auth::user()->user_id)) {
         $isRsvp = count(Rsvp::where('event_id', $event->event_id)->where('user_id', Auth::user()->user_id)->get()) > 0;
     }
+    if ($isRsvp) {
+        $rsvpDriverEvent = $event->event_id;
+    } else {
+        $rsvpDriverEvent = -1;
+    }
 @endphp
-
 <p id="urlShare" hidden>{{ url()->current() }}</p>
 <div class="flex justify-center items-center w-full h-full">
-    <div class="w-fit lg:w-full">    
+    <div id="start" class="w-fit lg:w-full">    
         <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ $event->event_banner }}" alt="">
     </div>
 </div>
 <section class="lg:px-48 px-4 relative">
     <div id="bar" class="absolute w-full bg-white lg:h-10 h-3 border-t left-0 lg:-top-14 -top-7 rounded-t-full ">
-        <button x-data @click="$store.eventDriver.start()" id="toggleDriverBtn" class="text-red-300 font-bold border-red-300 rounded-full border-2 px-[7px] text-sm absolute right-5 top-9 z-20">&quest;</button>
+        @if($isRsvp)
+        <button x-data @click="$store.eventDriver.rsvp()" id="toggleDriverBtn" class="text-red-300 font-bold border-red-300 rounded-full border-2 px-[7px] text-sm absolute right-5 top-9 z-30">&quest;</button>
+        @else
+        <button x-data @click="$store.eventDriver.start()" id="toggleDriverBtn" class="text-red-300 font-bold border-red-300 rounded-full border-2 px-[7px] text-sm absolute right-5 top-9 z-30">&quest;</button>
+        @endif
     </div>
     <main id="main">
 
@@ -47,14 +55,18 @@
                 <div class="flex flex-col">
                     <span class="bg-slate-100 text-blue-600 lg:text-sm font-semibold text-center p-4 rounded-t-xl">{{ Carbon\Carbon::parse($event->time)->format('l, d M, Y') }}</span>
                     @if($event->time < now())
-                        <button disabled id="rsvpBtn" class="w-full bg-slate-300 py-2 rounded-b-xl font-medium shadow ">Event already finished</button>
+                        <button disabled class="w-full bg-slate-300 py-2 rounded-b-xl font-medium shadow ">Event already finished</button>
                     @else
                     @guest
                         <a href="{{ route('login') }}" id="rsvpBtn" class="w-full bg-blue-600 active:bg-blue-700 text-center py-2 rounded-b-xl text-white font-medium shadow ">RSVP</a>
                     @endguest
                     @auth
                     @if($isRsvp)
-                        <button disabled id="rsvpBtn" class="w-full bg-gray-600 py-2 rounded-b-xl text-white font-medium shadow ">Already registered</button>
+                        <button disabled id="rsvpDBtn" class="w-full bg-gray-600 py-2 rounded-b-xl text-white font-medium shadow ">Already registered</button>
+                        <div class="flex justify-evenly gap-2 mt-2">
+                            <span id="qnaBtn" class="cursor-pointer font-mono p-1 px-4 w-full lg:w-fit hover:bg-slate-100 active:bg-slate-200 text-center rounded-md border bg-white">QnA</span>
+                            <span id="surveyBtn" class="cursor-pointer font-mono p-1 px-4 w-full lg:w-fit hover:bg-slate-100 active:bg-slate-200 text-center rounded-md border bg-white text-yellow-400">&starf;&starf;&starf;</span>
+                        </div>
                     @else
                     <form action="/event-rsvp" method="POST">
                         @csrf
@@ -75,7 +87,7 @@
             </div>
         </div>
         <h1 class="text-3xl font-bold">About</h1>
-        <div class="grid gap-4 mt-4">
+        <div id="about" class="grid gap-4 mt-4">
             <details class="group [&_summary::-webkit-details-marker]:hidden" open>
                 <summary
                   class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-blue-200 p-4 text-gray-900"
@@ -116,7 +128,7 @@
         </div>
         
     </main>
-        <div id="toastFeedback" class="fixed hidden bottom-16 transition-all ease-in-out duration-1000 translate-x-1/2 right-1/2 z-50 w-full mx-5 bg-slate-600 py-1 px-8 lg:text-xl lg:w-fit rounded-full text-white">
+        <div id="toastFeedback" class="fixed hidden opacity-80 bottom-16 transition-all ease-in-out duration-1000 translate-x-1/2 right-1/2 z-50 w-full mx-5 bg-slate-600 py-1 px-8 lg:text-xl lg:w-fit rounded-full text-white">
             Copied to clipboard
         </div>
 </section>
@@ -137,4 +149,6 @@
             }, 3000);
         }   
     </script>
+
+    
 @endsection
