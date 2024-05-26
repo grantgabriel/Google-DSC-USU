@@ -29,6 +29,12 @@ class AdminController extends Controller
         return view('admin.event-detail',compact('event','key','rsvpCount'));
     }
 
+
+    public function addevent(){
+        return view('admin.add-event');
+    }
+
+
     public function eventattendees($id){
         $event = Event::find($id);
         return view('admin.event-attendees',compact('event'));

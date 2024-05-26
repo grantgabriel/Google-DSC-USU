@@ -12,9 +12,11 @@
         
 
         <div class="mb-3 relative flex justify-between">
+            
             <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-1 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for an event" type="text">
                 <ion-icon name="search-outline" id="searcho" class=" text-[#555555] absolute left-3 top-3"></ion-icon>
             </input>
+            
             <div class="flex items-center justify-end text-sm lg:text-[16px]">
                 <div class="mr-2 "><ion-icon  name="filter-outline"></ion-icon></div>
                 <div class=" flex justify-end rounded-md items">
@@ -30,6 +32,10 @@
         </div>
 
         <div>
+
+
+            <div><a href="event/add">+ Tambah Event</a></div>
+
 
             <table class="w-full items-center">
                 <thead class="bg-blue-50">
@@ -70,7 +76,7 @@
                             <tr class="border-b text-md">
                                         <td class=" py-6 px-4 text-[#555555]">
                                             <a class="justify-start flex" href="event/${datas.event_id}">
-                                                <img class="w-24 mr-4" src="${datas.event_profile}">
+                                                <img class="w-24 mr-4" src="http://127.0.0.1:8000/event-profile/${datas.event_profile}">
                                                 <div>${datas.event_name}</div>
                                             </a>
                                         </td>
@@ -92,7 +98,7 @@
                                     <tr class="border-b ">
                                         <td class=" py-6 px-4 text-[#555555] text-lg lg:text-xl">
                                             <a class="justify-start flex" href="event/${datas.event_id}">
-                                                <img class="w-16 lg:w-28 mr-4" src="${datas.event_profile}">
+                                                <img class="w-16 lg:w-28 mr-4" src="http://127.0.0.1:8000/event-profile/${datas.event_profile}">
                                                 <div>${datas.event_name}</div>
                                             </a>
                                         </td>

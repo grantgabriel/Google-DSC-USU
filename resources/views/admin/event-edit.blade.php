@@ -44,7 +44,7 @@
                     
                     <input type="file" class="form-control" name="banner" id="banner">   
 
-                    <img class="w-20 mt-20 rounded-full" src="{{$event->event_profile}}" alt="">
+                    <img class="w-20 mt-20 rounded-full" src="http://127.0.0.1:8000/event-profile/{{$event->event_profile}}" alt="">
                     <input type="file" class="form-control" name="pp" id="pp">
 
                     <main id="main">
