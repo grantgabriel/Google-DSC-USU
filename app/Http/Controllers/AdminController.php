@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Event;
+use App\Models\KeyTheme;
+use App\Models\Rsvp;
 
 class AdminController extends Controller
 {
@@ -13,19 +15,36 @@ class AdminController extends Controller
         return view('admin.chapter-member');
     }
 
-    public function memberdata(){
-        $data = User::where('role', 'Member')->with('rsvp')->get();
-        
-        return response()->json($data); 
+    public function event(){
+        $event = Event::where('time', '>', now())
+        ->orderBy('time', 'asc')
+        ->get();
+        return view('admin.event',compact('event'));
     }
 
-    public function membersearch($input){
-        $data = User::where('role', 'Member')
-                ->with('rsvp')
-                ->where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', '%' . $input . '%')
-                ->get();
-        return response()->json($data);
+    public function eventdetail($id){
+        $event = Event::find($id);
+        $key = KeyTheme::where('event_id', $id)->get();
+        $rsvpCount = count(Rsvp::where('event_id', $id)->get());
+        return view('admin.event-detail',compact('event','key','rsvpCount'));
     }
+
+    public function eventattendees($id){
+        $event = Event::find($id);
+        return view('admin.event-attendees',compact('event'));
+    }
+
+
+    public function updateattend(Request $request){
+        $attendance = Rsvp::where('event_id', $request->input('event_id'))
+        ->where('user_id', $request->input('user_id'))
+        ->first();
+        
+        
+    }
+
+
+    
 
     public function analytic(){
         $event = Event::where('time', '>', now())
@@ -33,7 +52,9 @@ class AdminController extends Controller
         ->get();
 
         $user = User::all();
+        $eventCount = Event::all()->count();
         $registrationCount = User::whereHas('rsvp')->count();
-        return view('admin.analytic',compact('event','user','registrationCount'));
+
+        return view('admin.analytic',compact('event','user','registrationCount','eventCount'));
     }
 }
