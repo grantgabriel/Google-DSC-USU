@@ -1,10 +1,11 @@
 @extends('layout.header_admin')
 
 @section('content_warning')
-        <div class="flex justify-center">
-            
+
+<div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
+        <div class="flex justify-start font-semibold mb-4">
             <div class="px-2">
-                <button>Overview</button>
+                <button class="border-b-2 pb-2 border-black">Overview</button>
             </div>
             <div class="px-2">
                 <a href="/admin/event/{{$event->event_id}}/attendees">Attendees</a>
@@ -24,17 +25,17 @@
 
         </div>
 
-        <div class="px-36 flex justify-center">
+        <div class="shadow-lg rounded-xl bg-white py-6 px-6">
             <div class="flex-col">
                 <div class="">
                     <div class="flex justify-center items-center">
                         <div class="w-fit lg:w-full">    
-                            <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ asset('banner/' . $event->event_banner) }}" alt="">
+                            <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ asset('banner/' . $event->event_banner)}}" alt="">
                         </div>
                     </div>
                 </div>
         
-                <section class="bg-red-500 lg:px-48 px-4 relative">
+                <section class=" lg:px-48 px-4 relative">
                     <div id="bar" class="absolute w-full bg-white lg:h-10 h-3 border-t left-0 lg:-top-14 -top-7 rounded-t-full ">
                     </div>
                     <main id="main">
@@ -119,4 +120,5 @@
                 </section>
             </div>
         </div>
+    </div>
 @endsection
