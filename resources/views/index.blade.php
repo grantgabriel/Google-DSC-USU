@@ -4,7 +4,7 @@
 
 <section id="home" class="grid gap-5 w-full p-2 overflow-x-hidden">
     <div class="flex justify-center items-center w-full h-full">
-        <div class="w-fit lg:w-full">    
+        <div class="w-fit lg:w-full">
             <img class="rounded-lg lg:object-cover lg:max-h-52 lg:min-w-full" src="img/bg-USU.png" alt="">
         </div>
     </div>
@@ -27,15 +27,15 @@
                     <img class="w-44 h-44 rounded-full bg-gray-800" src="{{ $item->event_profile }}">
                     <span class="font-light">{{ Carbon\Carbon::parse($item->time)->format('M d, Y') }}</span>
                     <p class="font-semibold text-center underline">{{ $item->event_name }}</p>
-                    
+
                     @if ($item->type == 'Hybrid')
                         <span class="text-amber-600 bg-amber-100 rounded-lg px-2 py-1 text-center">
                     @elseif ($item->type == 'Online')
                         <span class="text-green-700 bg-green-100 rounded-lg px-2 py-1 text-center">
                     @else
-                        <span class="text-blue-600 bg-slate-200 rounded-lg px-2 py-1 text-center">   
+                        <span class="text-blue-600 bg-slate-200 rounded-lg px-2 py-1 text-center">
                     @endif
-                        
+
                         {{ $item->type }}
                     </span>
                     <p class="text-gray-600 text-center">
@@ -53,15 +53,15 @@
                     <img class="w-44 h-44 rounded-full bg-gray-800" src="{{ $item->event_profile }}">
                     <span class="font-light">{{ Carbon\Carbon::parse($item->time)->format('M d, Y') }}</span>
                     <p class="font-semibold text-center underline">{{ $item->event_name }}</p>
-                    
+
                     @if ($item->type == 'Hybrid')
                         <span class="text-amber-600 bg-amber-100 rounded-lg px-2 py-1 text-center">
                     @elseif ($item->type == 'Online')
                         <span class="text-green-700 bg-green-100 rounded-lg px-2 py-1 text-center">
                     @else
-                        <span class="text-blue-600 bg-slate-200 rounded-lg px-2 py-1 text-center">   
+                        <span class="text-blue-600 bg-slate-200 rounded-lg px-2 py-1 text-center">
                     @endif
-                        
+
                         {{ $item->type }}
                     </span>
                     <p class="text-gray-600 text-center">
