@@ -7,8 +7,26 @@
         <div class="flex justify-center">
             <div class="flex flex-col lg:w-full lg:px-6 ">
                 <div class="pt-5 pb-1">
-                    <div class="text-[#555555] flex justify-center font-semibold shadow-[0_0_4px_0_rgba(0,0,0,0.1)] bg-white rounded-md lg:py-1">
-                        Next Event-> <a href="">{{$event[0]->event_name}}</a>
+                    <div class="text-[#555555] flex flex-col justify-center font-semibold shadow-[0_0_4px_0_rgba(0,0,0,0.1)] bg-white rounded-md lg:py-1">
+                        @if (isset($event[0]))
+                            @php
+                                $daysDifference = (now()->diffInDays($event[0]->time, false)+1); // False for a non-absolute value
+                            @endphp
+
+                            @if ($daysDifference == 0)
+                                Ongoing
+                            @elseif ($daysDifference > 0)
+                                Upcoming
+                            @endif
+
+                            <a href="/admin/event/{{$event[0]->event_id}}">
+                                <div class="flex">
+                                    <img class="rounded-3xl w-20" src="{{$event[0]->event_profile}}" alt="">{{$event[0]->event_name}}
+                                </div>
+                            </a>
+                        @else
+                            No event planned
+                        @endif
                     </div>
                 </div>
 
@@ -49,7 +67,11 @@
                     <div class="px-1 w-full">         
                         <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
                             <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
-                                {{now()->diffInDays($event[0]->time);}}
+                                @if (isset($event[0]))
+                                    {{$daysDifference}}
+                                @else
+                                    -
+                                @endif
                             </div>
                             <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
                                 Days to next event
@@ -59,7 +81,11 @@
                     <div class="px-1 w-full">         
                         <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
                             <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
-                                {{$event[0]->rsvp->count()}}
+                                @if (isset($event[0]))
+                                    {{$event[0]->rsvp->count()}}
+                                @else
+                                    -
+                                @endif
                             </div>
                             <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
                                 Registration
@@ -102,7 +128,7 @@
                     <div class="px-1 w-full">         
                         <div class="shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-5 px-4 lg:py-8">
                             <div class="text-[#555555] font-semibold flex justify-center text-3xl ">
-                               {{(int)(($registrationCount/$event->count())* pow(10, 2))/pow(10, 2)}}
+                               {{(int)(($registrationCount/$eventCount)* pow(10, 2))/pow(10, 2)}}
                             </div>
                             <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
                                 Attendees/event
