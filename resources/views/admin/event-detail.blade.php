@@ -20,7 +20,7 @@
                 <button>Waitlist?</button>
             </div>
             <div class="px-2">
-                <button>Analytics</button>
+                <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>
             </div>
 
         </div>
@@ -43,9 +43,6 @@
                         <div class="text-slate-700 grid relative gap-2 mt-5">
                             
                             <h1 class="font-bold pr-8 text-3xl gap-1 lg:text-6xl text-slate-900 flex">
-                                <a href="{{ route('home') }}">
-                                    <img class="stroke-2 size-8 lg:absolute p-1 lg:p-0 top-3 lg:-translate-x-full mt-1 mr-3 -left-12 shadow border rounded-full" src="{{ asset('img/back.svg') }}" alt="">
-                                </a>
                                 {{ $event->event_name }}</h1>
                             <p class="text-lg">Google Developer Student Club Universitas Sumatera Utara, Indonesia.</p>
                             <div class="flex gap-2">

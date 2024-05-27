@@ -21,7 +21,7 @@
                 <button>Waitlist?</button>
             </div>
             <div class="px-2">
-                <button>Analytics</button>
+                <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>
             </div>
 
         </div>
@@ -143,12 +143,6 @@
 <script>
 
     
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-      }
-    }
     let deskripsiSubmit = true;
     let eventnameSubmit = true;
     document.addEventListener('DOMContentLoaded', function() {
@@ -159,7 +153,7 @@
             const icon = document.getElementById('focus-icon');
             const icon2 = document.getElementById('focus-icon2');
             const icon3 = document.getElementById('focus-icon3');
-
+            const save = document.getElementById('save');
 
             icon.addEventListener('click', function() {
                 inputField.focus();
