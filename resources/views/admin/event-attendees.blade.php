@@ -20,7 +20,7 @@
             <button>Waitlist?</button>
         </div>
         <div class="px-2">
-            <button>Analytics</button>
+            <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>
         </div>
     </div>
 
@@ -57,8 +57,8 @@
                     <ion-icon name="search-outline" id="searcho" class=" text-[#555555] absolute left-3 lg:top-3 top-2"></ion-icon>
                 </input>
                 <div class="justify-end flex text-xs lg:text-[16px]">
-                    <button class="text-[#555555] mr-2 lg:mr-6">Download</button>
-                    <div class="justify-center active:bg-[#000000] flex items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
+                    <a href="/admin/download/rsvp/{{$event->event_id}}" class="text-[#555555] mr-2 lg:mr-6">Download</a>
+                    <div class="justify-center flex items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
                         <ion-icon name="person-add-outline"></ion-icon>
                         <button class="ml-1">Add Attendee</button>
                     </div>

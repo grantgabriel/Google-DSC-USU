@@ -51,6 +51,12 @@ class DataController extends Controller
         return response()->json($data);
     }
 
+    
+    public function downloadrsvp($id){
+        
+        
+    }
+
 
     public function eventsortsearch($id,$search){
         if ($id == 1) {

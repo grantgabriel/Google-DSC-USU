@@ -29,6 +29,11 @@ class AdminController extends Controller
         return view('admin.event-detail',compact('event','key','rsvpCount'));
     }
 
+    public function eventsurvey($id){
+        $event = Event::find($id);
+        return view('admin.event-survey',compact('event'));
+    }
+
 
     public function addevent(){
         $key = KeyTheme::select('key_name')->distinct()->get();
@@ -158,6 +163,7 @@ class AdminController extends Controller
         return redirect('/admin/event');
     }
 
+
     
 
     public function eventattendees($id){
@@ -196,6 +202,11 @@ class AdminController extends Controller
     public function eventedit($id){
         $event = Event::find($id);
         return view('admin.event-edit',compact('event'));
+    }
+
+    public function eventstat($id){
+        $event = Event::find($id);
+        return view('admin.event-stat',compact('event'));
     }
 
     public function eventeditdata(Request $request, $id){
