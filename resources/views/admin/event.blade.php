@@ -17,24 +17,28 @@
                 <ion-icon name="search-outline" id="searcho" class=" text-[#555555] absolute left-3 top-3"></ion-icon>
             </input>
             
-            <div class="flex items-center justify-end text-sm lg:text-[16px]">
-                <div class="mr-2 "><ion-icon  name="filter-outline"></ion-icon></div>
-                <div class=" flex justify-end rounded-md items">
-                    <div onclick="" class="pr-2 pl-3 py-[6px] ">
-                        <button class="border-b-4 border-blue-500 pb-[6px]" id="1">Upcoming</button>
+            <div class="flex justify-end text-sm lg:text-[16px]">
+                <div class="flex items-center pr-2">
+                    <div class="mr-2 "><ion-icon  name="filter-outline"></ion-icon></div>
+                    <div class=" flex justify-end rounded-md items">
+                        <div onclick="" class="pr-2 pl-3 py-[6px] ">
+                            <button class="border-b-4 border-blue-500 pb-[6px]" id="1">Upcoming</button>
+                        </div>
+                        <div onclick="" class="pl-2 pr-3 py-[6px]">
+                            <button class="pb-[6px]" id="2">Past</button>
+                        </div>
                     </div>
-                    <div onclick="" class="pl-2 pr-3 py-[6px]">
-                        <button class="pb-[6px]" id="2">Past</button>
-                    </div>
-        
                 </div>
+               
+                <a href="/admin/add/event" class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:py-3 ml- lg:px-4 text-white bg-[#313140]">
+                    <ion-icon class="pr-2" name="person-add-outline"></ion-icon>
+                    <div >Add Event</div>
+                </a> 
             </div>            
         </div>
 
         <div>
-
-
-            <div><a href="/admin/add/event">+ Tambah Event</a></div>
+            
 
 
             <table class="w-full items-center">

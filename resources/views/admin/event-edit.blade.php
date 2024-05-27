@@ -39,7 +39,7 @@
                         <div class="flex justify-center items-center">
                             <div class="w-fit lg:w-full relative"> 
                                 <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ asset('banner/' . $event->event_banner) }}" alt="">
-                                <input class="absolute top-8 left-8 text-white" type="file" class="form-control" name="banner" id="banner">
+                                <input class="absolute bottom-6 left-6 text-white" type="file" class="form-control" name="banner" id="banner">
                             </div>
                         </div>
                     </div>
@@ -138,29 +138,10 @@
             </div>
         </div>
 </div>
-{{-- <div id="myModal" class=" justify-center bg-opacity-50 bg-black hidden fixed z-[1px] top-0 w-full h-full ">
-    <div class="p-[20px] my-52 border bg-white border-[#555555] w-[400px]">
-        <span id="close" class="cursor-pointer float-right text-2xl font-bold hover:text-black">&times;</span>
-        <input type="file" class="form-control" name="banner" id="banner">   
-    </div>
-</div> --}}
+
 
 <script>
-    // const modal = document.getElementById("myModal");
-    // const btn = document.getElementById("myBtn");
-    // const span = document.getElementById("close");
-    // const form = document.getElementById('eventForm');
-    // const bannerInput = document.getElementById('banner');
-    // btn.onclick = function() {
-    //   modal.classList.add('flex');
-    //   modal.classList.remove('hidden');
-    //   form.appendChild(bannerInput);
-    // };
 
-    span.onclick = function() {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-    }
     
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -172,6 +153,7 @@
     let eventnameSubmit = true;
     document.addEventListener('DOMContentLoaded', function() {
             const inputField = document.getElementById('eventname');
+            console.log(eventname.value)
             const inputField2 = document.getElementById('deskripsi');
             const inputField3 = document.getElementById('date');
             const icon = document.getElementById('focus-icon');

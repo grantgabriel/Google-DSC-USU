@@ -58,7 +58,7 @@
                 </input>
                 <div class="justify-end flex text-xs lg:text-[16px]">
                     <button class="text-[#555555] mr-2 lg:mr-6">Download</button>
-                    <div class="justify-center flex items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
+                    <div class="justify-center active:bg-[#000000] flex items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
                         <ion-icon name="person-add-outline"></ion-icon>
                         <button class="ml-1">Add Attendee</button>
                     </div>
