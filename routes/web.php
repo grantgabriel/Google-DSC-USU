@@ -34,6 +34,7 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin/event/{id}/attendees/get/{search}', [DataController::class, 'eventdatasearch']);
     Route::get('/admin/event/{id}/attendees/get', [DataController::class, 'eventdata']);
     Route::post('/admin/update-attendance', [AdminController::class, 'updateattend']);
+    Route::get('/admin/download/rsvp/{id}', [DataController::class, 'downloadrsvp']);
 
 
 
@@ -59,6 +60,14 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin/event/{id}/edit', [AdminController::class, 'eventedit']);
     Route::post('/admin/event/{id}/edit', [AdminController::class, 'eventeditdata']);
     Route::get('/admin/add/event', [AdminController::class, 'addevent']);
+    Route::post('/admin/add/event/draft', [AdminController::class, 'addeventdraft']);
+    Route::post('/admin/add/event/create', [AdminController::class, 'addeventcreate']);
+
+    Route::get('/admin/event/{id}/statistic', [AdminController::class, 'eventstat']);
+    Route::get('/admin/event/{id}/survey', [AdminController::class, 'eventsurvey']);
+
+    
+    
 
 });
 

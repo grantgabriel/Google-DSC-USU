@@ -29,11 +29,142 @@ class AdminController extends Controller
         return view('admin.event-detail',compact('event','key','rsvpCount'));
     }
 
-
-    public function addevent(){
-        return view('admin.add-event');
+    public function eventsurvey($id){
+        $event = Event::find($id);
+        return view('admin.event-survey',compact('event'));
     }
 
+
+    public function addevent(){
+        $key = KeyTheme::select('key_name')->distinct()->get();
+        return view('admin.add-event',compact('key'));
+    }
+
+    public function addeventcreate(Request $request){
+        $event = new Event;
+        $event->event_id = uniqid();
+        $event->event_name = $request->name;
+        $event->description = $request->desc;
+        $event->type = $request->venue;
+        $event->time = $request->date;
+        $event->event_location = $request->map;
+        $event->address = $request->location;
+        $event->publication_status = 'Published';
+        $event->speaker_name = $request->speak;
+        if($request->categories != null){
+            $event->categories = $request->categories;
+        }
+
+        if ($request->hasFile('banner')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('banner')->getClientOriginalExtension();
+            $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
+            $request->file('banner')->move(public_path('banner'), $imageName);
+            $event->event_banner = $imageName;
+        }
+        else{
+            $event->event_banner = 'default.webp';
+        }
+
+
+
+        if ($request->hasFile('profile')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('profile')->getClientOriginalExtension();
+            $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
+            $request->file('profile')->move(public_path('event-profile'), $imageName);
+            $event->event_profile = $imageName;
+        }
+        else{
+            $event->event_profile = 'default.webp';
+        }
+
+        if ($request->hasFile('speakimg')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('speakimg')->getClientOriginalExtension();
+            $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
+            $request->file('speakimg')->move(public_path('speaker'), $imageName);
+            $event->speaker_img = $imageName;
+        }
+        else{
+            $event->speaker_img = 'default.webp';
+        }
+
+        $event->save();
+
+        return redirect('/admin/event');
+        
+    }
+
+    public function addeventdraft(Request $request){
+        $event = new Event;
+        $event->event_id = uniqid();
+        $event->event_name = $request->name;
+        $event->description = $request->desc;
+        $event->type = $request->venue;
+        $event->time = $request->date;
+        $event->event_location = $request->map;
+        $event->address = $request->location;
+        $event->publication_status = 'Draft';
+        $event->speaker_name = $request->speak;
+        if($request->categories != null){
+            $event->categories = $request->categories;
+        }
+
+        if ($request->hasFile('banner')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('banner')->getClientOriginalExtension();
+            $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
+            $request->file('banner')->move(public_path('banner'), $imageName);
+            $event->event_banner = $imageName;
+        }
+        else{
+            $event->event_banner = 'default.webp';
+        }
+
+
+
+        if ($request->hasFile('profile')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('profile')->getClientOriginalExtension();
+            $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
+            $request->file('profile')->move(public_path('event-profile'), $imageName);
+            $event->event_profile = $imageName;
+        }
+        else{
+            $event->event_profile = 'default.webp';
+        }
+
+        if ($request->hasFile('speakimg')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('speakimg')->getClientOriginalExtension();
+            $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
+            $request->file('speakimg')->move(public_path('speaker'), $imageName);
+            $event->speaker_img = $imageName;
+        }
+        else{
+            $event->speaker_img = 'default.webp';
+        }
+
+        $event->save();
+
+        return redirect('/admin/event');
+    }
+
+
+    
 
     public function eventattendees($id){
         $event = Event::find($id);
@@ -71,6 +202,11 @@ class AdminController extends Controller
     public function eventedit($id){
         $event = Event::find($id);
         return view('admin.event-edit',compact('event'));
+    }
+
+    public function eventstat($id){
+        $event = Event::find($id);
+        return view('admin.event-stat',compact('event'));
     }
 
     public function eventeditdata(Request $request, $id){

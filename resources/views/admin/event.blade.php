@@ -11,30 +11,33 @@
         
         
 
-        <div class="mb-3 relative flex justify-between">
+        <div class="mb-3 relative lg:flex lg:justify-between">
             
             <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-1 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for an event" type="text">
-                <ion-icon name="search-outline" id="searcho" class=" text-[#555555] absolute left-3 top-3"></ion-icon>
+                <ion-icon name="search-outline" id="searcho" class=" text-[#555555] absolute left-3 top-2 sm:top-4"></ion-icon>
             </input>
             
-            <div class="flex items-center justify-end text-sm lg:text-[16px]">
-                <div class="mr-2 "><ion-icon  name="filter-outline"></ion-icon></div>
-                <div class=" flex justify-end rounded-md items">
-                    <div onclick="" class="pr-2 pl-3 py-[6px] ">
-                        <button class="border-b-4 border-blue-500 pb-[6px]" id="1">Upcoming</button>
+            <div class="lg:flex lg:justify-end text-sm lg:text-[16px]">
+                <div class="flex items-center pr-2 justify-end lg:">
+                    <div class="mr-2 "><ion-icon  name="filter-outline"></ion-icon></div>
+                    <div class=" flex justify-end rounded-md items">
+                        <div onclick="" class="pr-2 pl-3 py-[6px] ">
+                            <button class="border-b-4 border-blue-500 pb-[6px]" id="1">Upcoming</button>
+                        </div>
+                        <div onclick="" class="pl-2 pr-3 py-[6px]">
+                            <button class="pb-[6px]" id="2">Past</button>
+                        </div>
                     </div>
-                    <div onclick="" class="pl-2 pr-3 py-[6px]">
-                        <button class="pb-[6px]" id="2">Past</button>
-                    </div>
-        
                 </div>
+                <a href="/admin/add/event" class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:py-3 ml- lg:px-4 text-white bg-[#313140]">
+                    <ion-icon class="pr-2" name="person-add-outline"></ion-icon>
+                    <div class="text-xs lg:text-lg">Add Event</div>
+                </a> 
             </div>            
         </div>
 
         <div>
-
-
-            <div><a href="event/add">+ Tambah Event</a></div>
+            
 
 
             <table class="w-full items-center">
@@ -95,14 +98,14 @@
                             data.forEach(datas => {
                                 body.innerHTML += `
                                 
-                                    <tr class="border-b ">
+                                    <tr class="border-b hover:bg-blue-100">
                                         <td class=" py-6 px-4 text-[#555555] text-lg lg:text-xl">
                                             <a class="justify-start flex" href="event/${datas.event_id}">
                                                 <img class="w-16 lg:w-28 mr-4" src="http://127.0.0.1:8000/event-profile/${datas.event_profile}">
                                                 <div>${datas.event_name}</div>
                                             </a>
                                         </td>
-                                        <td class="py-6 px-4 lg:text-lg justify-center flex items-center text-[#555555]">${datas.time}</td>
+                                        <td class="py-6 px-4 lg:text-lg justify-center flex items-center text-[#555555]"><${datas.time}</td>
                                     </tr>
                                 `;
                             });
