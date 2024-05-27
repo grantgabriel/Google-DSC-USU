@@ -29,6 +29,11 @@ class AdminController extends Controller
         return view('admin.event-detail',compact('event','key','rsvpCount'));
     }
 
+    public function eventsurvey($id){
+        $event = Event::find($id);
+        return view('admin.event-survey',compact('event'));
+    }
+
 
     public function addevent(){
         $key = KeyTheme::select('key_name')->distinct()->get();
@@ -38,6 +43,7 @@ class AdminController extends Controller
     public function addeventcreate(Request $request){
         
         $event = new Event;
+        $event->event_id = uniqid();
         $event->event_name = $request->name;
         $event->description = $request->desc;
         $event->type = $request->venue;
@@ -72,7 +78,7 @@ class AdminController extends Controller
             $extension = $request->file('profile')->getClientOriginalExtension();
             $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
             $request->file('profile')->move(public_path('event-profile'), $imageName);
-            $event->event_banner = $imageName;
+            $event->event_profile = $imageName;
         }
         else{
             $event->event_profile = 'default.webp';
@@ -85,10 +91,10 @@ class AdminController extends Controller
             $extension = $request->file('speakimg')->getClientOriginalExtension();
             $imageName = time().'-'.strtotime($request->tanggal).'.'.$extension;
             $request->file('speakimg')->move(public_path('speaker'), $imageName);
-            $event->event_banner = $imageName;
+            $event->speaker_img = $imageName;
         }
         else{
-            $event->speaker_image = 'default.webp';
+            $event->speaker_img = 'default.webp';
         }
 
         $event->save();

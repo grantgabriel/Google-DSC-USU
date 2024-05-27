@@ -64,6 +64,7 @@ Route::middleware(['role:Member'])->group(function () {
     Route::post('/admin/add/event/create', [AdminController::class, 'addeventcreate']);
 
     Route::get('/admin/event/{id}/statistic', [AdminController::class, 'eventstat']);
+    Route::get('/admin/event/{id}/survey', [AdminController::class, 'eventsurvey']);
 
     
     
