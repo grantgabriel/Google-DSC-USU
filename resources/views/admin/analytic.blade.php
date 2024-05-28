@@ -6,7 +6,7 @@
     <div class=" bg-slate-50 py-6 mb-40 lg:mb-[134px]">
         <div class="flex justify-center">
             <div class="flex flex-col lg:w-full lg:px-6 ">
-                <div class="pt-5 pb-1">
+                <div class="pt-5 pb-1 px-1">
                     <div class="text-[#555555] flex flex-col justify-center font-semibold shadow-[0_0_4px_0_rgba(0,0,0,0.1)] bg-white rounded-md lg:py-1">
                         @if (isset($event[0]))
                             @php
@@ -14,14 +14,15 @@
                             @endphp
 
                             @if ($daysDifference == 0)
-                                Ongoing
+                                Ongoing event :
                             @elseif ($daysDifference > 0)
-                                Upcoming
+                                
+                            <div class="flex justify-center">Upcoming event :</div>
                             @endif
 
                             <a href="/admin/event/{{$event[0]->event_id}}">
-                                <div class="flex">
-                                    <img class="rounded-3xl w-20" src="{{$event[0]->event_profile}}" alt="">{{$event[0]->event_name}}
+                                <div class="flex justify-center">
+                                    {{$event[0]->event_name}}
                                 </div>
                             </a>
                         @else
@@ -30,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="flex justify-between py-1 relative">
+                <div class="flex justify-between py-1 ">
                     <div class="px-1 w-full">
                         <div class=" shadow-[0_0_10px_0_rgba(0,0,0,0.1)] h-full bg-white rounded-md py-6 px-4 lg:py-8">
                             <div class="text-[#555555] font-semibold flex justify-center text-3xl">
@@ -121,7 +122,7 @@
                                 100
                             </div>
                             <div class="text-[#555555]  flex justify-center text-xs pt-1 ">
-                                APA INI ANJ
+                                APA INI
                             </div>
                         </div>
                     </div>

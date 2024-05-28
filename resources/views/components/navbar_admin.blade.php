@@ -43,10 +43,11 @@
                             <div class="absolute top-[-8px] right-[10px] w-0 h-0 border-l-[8px] border-r-[8px] border-b-[8px] border-transparent border-b-white"></div>
                             <ul class="whitespace-nowrap">
                                 <li><a href="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile & Tickets</a></li>
-                                <hr>
+                                
                                 @if (Auth::check() && Auth::user()->role != 'Member')
                                     <li><a href="/admin" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Admin Page</a></li>
                                 @endif
+                                <hr>
                                 <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings & Privacy</a></li>
                                 <li>
                                     <form class="block px-4 py-2 text-gray-700 hover:bg-gray-100"  method="POST" action="{{ route('logout') }}">

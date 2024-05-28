@@ -21,7 +21,7 @@ function saveButton(){
 };
 
 firstname.addEventListener('input', function(){
-    let regex = /^[a-zA-Z ]+$/;
+    let regex = /^[a-zA-Z]+$/;
     const firstname = document.getElementById('firstname');
     const firstnameValid = document.getElementById('firstnameValid');
     const firstnameValid2 = document.getElementById('firstnameValid2');
@@ -53,7 +53,7 @@ firstname.addEventListener('input', function(){
 });
 
 lastname.addEventListener('input', function(){
-    let regex = /^[a-zA-Z ]+$/;
+    let regex = /^[a-zA-Z]+$/;
     const lastname = document.getElementById('lastname');
     const lastnameValid = document.getElementById('lastnameValid');
     const lastnameValid2 = document.getElementById('lastnameValid2');
