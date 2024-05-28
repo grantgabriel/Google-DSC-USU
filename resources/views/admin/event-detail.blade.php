@@ -14,7 +14,7 @@
                 <a href="/admin/event/{{$event->event_id}}/edit">Edit</a>
             </div>
             <div class="px-2">
-                <button>Forms</button>
+                <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
                 <button>Waitlist?</button>
