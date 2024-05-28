@@ -15,7 +15,7 @@
                 <button class="border-b-2 pb-2 border-black">Edit</button>
             </div>
             <div class="px-2">
-                <button>Forms</button>
+                <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
                 <button>Waitlist?</button>

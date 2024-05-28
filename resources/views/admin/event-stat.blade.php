@@ -16,7 +16,7 @@
                 <a href="/admin/event/{{$event->event_id}}/edit">Edit</a>
             </div>
             <div class="px-2">
-                <button>Forms</button>
+                <button>Survey</button>
             </div>
             <div class="px-2">
                 <button>Waitlist?</button>
@@ -37,7 +37,7 @@
     <div class="text-xs text-red-300 flex justify-end pb-2 lg:hidden">
         Please use laptop to print the statistic!!
     </div>
-    <div class="relative shadow-lg rounded-xl bg-slate-50 py-4 lg:py-6 px-3 lg:px-6 text-[#555555]">
+    <div class="relative shadow-lg rounded-xl bg-slate-50 py-4 lg:py-6 px-3 lg:px-10 text-[#555555]">
         <div class="absolute top-[2px] left-2 justify-start text-xs">
             Statistic Table
         </div>
@@ -95,28 +95,37 @@
                 </div>
                
 
-                <div class="lg:justify-between lg:text-lg lg:font-medium lg:flex pt-2">
-                    <div class="pt-8 lg:w-full">
-                        <canvas id="presensi"></canvas>
-                        <div class="flex justify-center ">
-                            <h1>Attendance percentage chart</h1>
+                <div class="pt-2 md:justify-evenly md:flex">
+                    <div class="pt-8 flex justify-center ">
+                        <div>
+                            <canvas id="presensi"></canvas>
+                            <div class="flex justify-center md:text-lg">
+                                <h1>Attendance percentage chart</h1>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <div class="pt-8  flex justify-center ">
+                            <div>
+                                <canvas id="ratings"></canvas>
+                                <div class="flex justify-center md:text-lg">
+                                    <h1>Event rating chart</h1>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="pt-8 flex justify-center ">
+                            <div>
+                                <canvas id="ratingspeak"></canvas>
+                                <div class="flex justify-center md:text-lg">
+                                    <h1>Speaker rating chart</h1>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="lg:w-full">
-                        <div class="pt-8 ">
-                            <canvas id="ratings"></canvas>
-                            <div class="flex justify-center ">
-                             <h1>Event rating chart</h1>
-                            </div>
-                        </div>
-                        <div class="pt-8">
-                            <canvas id="ratingspeak"></canvas>
-                            <div class="flex justify-center ">
-                               <h1>Speaker rating chart</h1>
-                            </div>
-
-                        </div>
-                    </div>      
+                    
+   
                     
                    
                 </div>
