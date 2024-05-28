@@ -127,7 +127,7 @@
                                             @if ($event->resource)
                                                 Lihat resource
                                             @else
-                                                
+                                                Edit
                                             @endif
                                         </a>
                                     </p>
