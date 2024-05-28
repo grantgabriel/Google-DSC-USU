@@ -16,7 +16,7 @@
                 <a href="/admin/event/{{$event->event_id}}/edit">Edit</a>
             </div>
             <div class="px-2">
-                <button>Survey</button>
+                <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
                 <button>Waitlist?</button>
@@ -34,13 +34,7 @@
 
         
     </div>
-    <div class="text-xs text-red-300 flex justify-end pb-2 lg:hidden">
-        Please use laptop to print the statistic!!
-    </div>
-    <div class="relative shadow-lg rounded-xl bg-slate-50 py-4 lg:py-6 px-3 lg:px-10 text-[#555555]">
-        <div class="absolute top-[2px] left-2 justify-start text-xs">
-            Statistic Table
-        </div>
+    <div class=" shadow-lg rounded-xl bg-slate-50 py-4 lg:py-6 px-3 lg:px-10 text-[#555555]">
         {{-- <div>Please use laptop to print the statistic!!</div> --}}
         <div class="flex justify-center ">
             <div class="flex-col w-full">
