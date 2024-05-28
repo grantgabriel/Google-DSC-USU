@@ -30,7 +30,7 @@ class AdminController extends Controller
     }
 
     public function eventsurvey($id){
-        $event = Rsvp::where('event_id',$id)->whereNotNull('rating')->get();
+        $event = Event::find($id);
         return view('admin.event-survey',compact('event'));
     }
 

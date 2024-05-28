@@ -4,13 +4,13 @@
 <div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
         <div class="flex justify-start font-semibold mb-4">
                 <div class="px-2">
-                        <a href="/admin/event/{{$event[0]->event_id}}" class="">Overview</a>
+                        <a href="/admin/event/{{$event->event_id}}" class="">Overview</a>
                 </div>
                 <div class="px-2">
-                        <a href="/admin/event/{{$event[0]->event_id}}/attendees">Attendees</a>
+                        <a href="/admin/event/{{$event->event_id}}/attendees">Attendees</a>
                 </div>
                 <div class="px-2">
-                        <a href="/admin/event/{{$event[0]->event_id}}/edit">Edit</a>
+                        <a href="/admin/event/{{$event->event_id}}/edit">Edit</a>
                 </div>
                 <div class="px-2">
                         <button class="border-b-2 pb-2 border-black">Survey</button>
@@ -19,7 +19,7 @@
                         <button>Waitlist?</button>
                 </div>
                 <div class="px-2">
-                        <a href="/admin/event/{{$event[0]->event_id}}/statistic">Statistic</a>
+                        <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>
                 </div>
         </div>
         <div class=" shadow-lg rounded-xl bg-white py-4 lg:py-6 px-3 lg:px-10 ">
@@ -50,7 +50,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="body" class="text-[#555555]">
-                                            @foreach ($event as $item)
+                                            @foreach ($event->rsvp->whereNotNull('rating') as $item)
                                                 <tr class="border-b">
                                                     <td class="py-6 px-4 text-center">{{$item->rating}}</td>
                                                     <td class="py-6 px-4">{{$item->review}}</td>
