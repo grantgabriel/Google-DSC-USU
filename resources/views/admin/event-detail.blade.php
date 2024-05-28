@@ -127,7 +127,8 @@
                                             @if ($event->resource)
                                                 Lihat resource
                                             @else
-                                                Edit
+                                                Edit 
+                                                <input type="text" value="{{$event->resource}}">
                                             @endif
                                         </a>
                                     </p>

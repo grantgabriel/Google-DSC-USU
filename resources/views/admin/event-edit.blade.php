@@ -15,7 +15,7 @@
                 <button class="border-b-2 pb-2 border-black">Edit</button>
             </div>
             <div class="px-2">
-                <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
+                <button>Forms</button>
             </div>
             <div class="px-2">
                 <button>Waitlist?</button>
@@ -112,7 +112,10 @@
                                     <article class="rounded-xl border border-555555]  p-4 w-full">
                                         <div class="flex items-center gap-4 lg:px-12">
                                         <img src="{{ $event->speaker_img }}" class="size-16 lg:size-40 rounded-full object-cover"/>
-                                        <h3 class="text-lg text-[#555555] font-medium mx-auto">{{ $event->speaker_name }}</h3>
+                                        <input type="file" name="speakimg">
+                                        <h3 class="text-lg text-[#555555] font-medium mx-auto">
+                                            <input type="text" name="speakname" value="{{ $event->speaker_name }}">
+                                        </h3>
                                         </div>
                                       </article>
                                 </div>
