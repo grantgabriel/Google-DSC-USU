@@ -3,7 +3,7 @@
 
 @section('content_warning')
 
-<div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
+ <div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
     <div class="shadow-lg rounded-xl bg-white py-6 px-6">
         <div class="flex justify-center mb-5">
             <div class="text-2xl font-semibold">Chapter Events</div>

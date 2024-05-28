@@ -2,6 +2,8 @@
 
 @section('content_warning')
         <div class="flex justify-center">
+                
+                
                 <div class="flex-col">
                         <table>
                                 <thead>
@@ -10,7 +12,7 @@
                                                 <th>Suggestion</th>
                                         </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="body">
                                     @foreach ($event as $item)
                                         <tr>
                                                 <td>{{$item->rating}}</td>
@@ -20,5 +22,7 @@
                                 </tbody>
                         </table>
                 </div>
+
+                
         </div>
 @endsection
