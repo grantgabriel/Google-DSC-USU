@@ -68,7 +68,7 @@
                     @if($isRsvp)
                         <button disabled id="rsvpDBtn" class="w-full bg-gray-600 py-2 rounded-b-xl text-white font-medium shadow ">Already registered</button>
                         <div class="flex justify-evenly gap-2 mt-2">
-                            <span id="qnaBtn" class="cursor-pointer font-mono p-1 px-4 w-full lg:w-full hover:bg-slate-100 active:bg-slate-200 text-center rounded-md border bg-white">QnA</span>
+                            <a href="/event/{{ $event->event_id }}-{{ Illuminate\Support\Str::slug($event->event_name) }}/qna" id="qnaBtn" class="cursor-pointer font-mono p-1 px-4 w-full lg:w-full hover:bg-slate-100 active:bg-slate-200 text-center rounded-md border bg-white">QnA</a>
                             @if($surveyed)
                             <button disabled id="surveyBtn" class="cursor-pointer font-mono p-1 px-4 w-full lg:w-fit text-center rounded-md border bg-slate-100 shadow-inner text-yellow-300">&starf;&starf;&starf;</button>
                             @else
