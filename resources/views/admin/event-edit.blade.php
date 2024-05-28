@@ -92,6 +92,7 @@
                                 <iframe class="w-full h-96 lg:h-full rounded-lg border-2" 
                                     src="https://www.google.com/maps?q={{ Illuminate\Support\Str::slug($event->address) }}&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 <span id="maps-detail" class="flex gap-1"><img class="h-5 mt-1 fill-red-700" src="{{ asset('img/location.svg') }}" alt=""><p class="text-sm lg:text-xs underline ">{{ $event->address }}</p></span>
+                                Address:<input type="text" name="map" value="{{$event->address}}">
                             </div>
                         </div>
                         <h1 class="text-3xl text-[#555555] font-bold">About</h1>
@@ -112,7 +113,10 @@
                                     <article class="rounded-xl border border-555555]  p-4 w-full">
                                         <div class="flex items-center gap-4 lg:px-12">
                                         <img src="{{ $event->speaker_img }}" class="size-16 lg:size-40 rounded-full object-cover"/>
-                                        <h3 class="text-lg text-[#555555] font-medium mx-auto">{{ $event->speaker_name }}</h3>
+                                        <input type="file" name="speakimg">
+                                        <h3 class="text-lg text-[#555555] font-medium mx-auto">
+                                            <input type="text" name="speakname" value="{{ $event->speaker_name }}">
+                                        </h3>
                                         </div>
                                       </article>
                                 </div>

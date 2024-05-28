@@ -215,6 +215,8 @@ class AdminController extends Controller
         $event->time = $request->tanggal;
         // $event->location = $request->location;
         $event->description = $request->deskripsi;
+        $event->speaker_name = $request->speakname;
+        $event->address = $request->map;
 
         if ($request->hasFile('banner')) {
             // $request->validate([
@@ -235,6 +237,18 @@ class AdminController extends Controller
             $request->file('pp')->move(public_path('event-profile'), $imageName);
             $event->event_profile = $imageName;
         }
+
+        if ($request->hasFile('speakimg')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('speakimg')->getClientOriginalExtension();
+            $imageName = strtotime($request->tanggal)+time().'-'.'.'.$extension;
+            $request->file('speakimg')->move(public_path('speaker'), $imageName);
+            $event->speaker_img = $imageName;
+        }
+
+
 
         $event->save();
         return redirect('/admin/event/'.$id);

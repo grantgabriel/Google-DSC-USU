@@ -7,7 +7,6 @@
     <div class="shadow-lg rounded-xl bg-white py-6 px-6">
         <div class="justify-between flex mb-4">
             <div id="membercount" class="text-2xl font-semibold"></div>
-            <button class="bg-[#34A853] hover:bg-[#2f9348] active:bg-[#2b8843] rounded-lg text-white px-[12px] py-[6px]"><ion-icon name="print-outline" class="pr-[8px]"></ion-icon>CSV</button>
         </div>
         <div class="mb-3 relative">
             <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-2 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for a member" type="text">

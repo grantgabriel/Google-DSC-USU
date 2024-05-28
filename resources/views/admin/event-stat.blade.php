@@ -16,27 +16,26 @@
                 <a href="/admin/event/{{$event->event_id}}/edit">Edit</a>
             </div>
             <div class="px-2">
-                <button>Forms</button>
+                <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
                 <button>Waitlist?</button>
             </div>
             <div class="px-2">
-                <button class="border-b-2 pb-2 border-black">Statistic</button>
+                <button class="border-b-2 pt-[10px] pb-2 border-black">Statistic</button>
             </div>
         </div>
-        <div>
-            <button class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
+        <div class="hidden lg:flex">
+            <button onclick="print()" class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
                 <ion-icon  class="pr-2 text-lg" name="print-outline"></ion-icon>
                 <div class="text-lg">Print Statistic</div>
             </button> 
         </div>
+
         
     </div>
-    <div class="relative shadow-lg rounded-xl bg-slate-50 py-4 lg:py-6 px-3 lg:px-6 text-[#555555]">
-        <div class="absolute top-2 left-2 hidden lg:flex justify-start text-xs">
-            Statistic Table
-        </div>
+    <div class=" shadow-lg rounded-xl bg-slate-50 py-4 lg:py-6 px-3 lg:px-10 text-[#555555]">
+        {{-- <div>Please use laptop to print the statistic!!</div> --}}
         <div class="flex justify-center ">
             <div class="flex-col w-full">
                 
@@ -45,7 +44,7 @@
                 </div>
                 <div class="flex justify-between mb-2 lg:mb-4">
                     <div class=" shadow-[0_0_4px_0_rgba(0,0,0,0.1)]  bg-white  rounded-md w-full py-10 font-semibold ">
-                        <div class="flex justify-center items-center sm:text-3xl lg:text-5xl">
+                        <div class="flex justify-center items-center text-3xl lg:text-5xl">
                             {{$event->rsvp->count()}}
                         </div>                     
                         <div class="flex justify-center text-xs lg:text-sm lg:pt-3 pt-1">
@@ -53,7 +52,7 @@
                         </div>
                     </div>
                     <div class=" shadow-[0_0_4px_0_rgba(0,0,0,0.1)]  bg-white  rounded-md w-full py-10 font-semibold mx-[10px] lg:mx-4">
-                        <div class="flex justify-center items-center sm:text-3xl lg:text-5xl">
+                        <div class="flex justify-center items-center text-3xl lg:text-5xl">
                             {{$event->rsvp->where('attendance_detail', 'Attend')->count()}}
                         </div>  
                         <div class="flex justify-center text-xs lg:text-sm lg:pt-3 pt-1">
@@ -61,7 +60,7 @@
                         </div>
                     </div>                   
                     <div class=" shadow-[0_0_4px_0_rgba(0,0,0,0.1)]  bg-white  rounded-md w-full py-10 font-semibold ">
-                        <div class="flex justify-center items-center sm:text-3xl lg:text-5xl">
+                        <div class="flex justify-center items-center text-3xl lg:text-5xl">
                             {{round($event->rsvp->where('attendance_detail', 'Attend')->count()/$event->rsvp->count()*100, 2)}}%
                         </div>  
                         <div class="flex justify-center text-xs lg:text-sm lg:pt-3 pt-1">
@@ -71,15 +70,15 @@
                 </div>
                 <div class="flex justify-between">
                     <div class=" shadow-[0_0_4px_0_rgba(0,0,0,0.1)]  bg-white  rounded-md w-full py-10 font-semibold mr-1 lg:mr-2">
-                        <div class="flex justify-center items-center sm:text-3xl lg:text-5xl">
+                        <div class="flex justify-center items-center text-3xl lg:text-5xl">
                             {{(int)(($event->rsvp()->whereNotNull('rating')->avg('rating'))* pow(10, 2))/pow(10, 2)}}
                         </div>  
                         <div class="flex justify-center text-xs lg:text-sm lg:pt-3 pt-1">
-                            Average rating
+                            Average event rating
                         </div>
                     </div>
                     <div class=" shadow-[0_0_4px_0_rgba(0,0,0,0.1)] bg-white  rounded-md w-full py-10 font-semibold ml-1 lg:ml-2">
-                        <div class="flex justify-center items-center sm:text-3xl lg:text-5xl">
+                        <div class="flex justify-center items-center text-3xl lg:text-5xl">
                             {{(int)(($event->rsvp()->whereNotNull('speaker_rating')->avg('speaker_rating'))* pow(10, 2))/pow(10, 2)}}
                         </div>  
                         <div class="flex justify-center text-xs lg:text-sm lg:pt-3 pt-1">
@@ -90,28 +89,37 @@
                 </div>
                
 
-                <div class="lg:justify-between lg:text-lg lg:font-medium lg:flex pt-2">
-                    <div class="pt-8 lg:w-full">
-                        <canvas id="presensi"></canvas>
-                        <div class="flex justify-center ">
-                            <h1>Attendance percentage chart</h1>
+                <div class="pt-2 md:justify-evenly md:flex">
+                    <div class="pt-8 flex justify-center ">
+                        <div>
+                            <canvas id="presensi"></canvas>
+                            <div class="flex justify-center md:text-lg">
+                                <h1>Attendance percentage chart</h1>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <div class="pt-8  flex justify-center ">
+                            <div>
+                                <canvas id="ratings"></canvas>
+                                <div class="flex justify-center md:text-lg">
+                                    <h1>Event rating chart</h1>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="pt-8 flex justify-center ">
+                            <div>
+                                <canvas id="ratingspeak"></canvas>
+                                <div class="flex justify-center md:text-lg">
+                                    <h1>Speaker rating chart</h1>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="lg:w-full">
-                        <div class="pt-8 ">
-                            <canvas id="ratings"></canvas>
-                            <div class="flex justify-center ">
-                             <h1>Event rating chart</h1>
-                            </div>
-                        </div>
-                        <div class="pt-8">
-                            <canvas id="ratingspeak"></canvas>
-                            <div class="flex justify-center ">
-                               <h1>Speaker rating chart</h1>
-                            </div>
-
-                        </div>
-                    </div>      
+                    
+   
                     
                    
                 </div>
@@ -123,6 +131,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        public function print(){
+            window.print();
+        }
+    </script>
 
         
 <script>
@@ -234,7 +248,7 @@
                 label: 'Number of Rating',
                 data: [
                     {{$event->rsvp()->count()}}, 
-                    {{$event->rsvp()->where('attendance_detail','Attend')->count()}}
+                    {{$event->rsvp()->count()}}-{{$event->rsvp()->where('attendance_detail','Attend')->count()}}
                 ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
