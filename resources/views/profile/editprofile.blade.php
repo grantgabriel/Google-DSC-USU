@@ -33,7 +33,7 @@
                 <div class="my-5">
                     <p>First Name</p>
                     <input id="firstname" name="firstname" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ Auth::user()->first_name }}">
-                    <p id="firstnameValid" class="hidden text-red-500">First name can only contain alphabet characters </p>
+                    <p id="firstnameValid" class="hidden text-red-500">First name can only contain alphabet characters with no space</p>
                     <p id="firstnameValid2" class="hidden text-red-500">Max 255 characters</p>
                     <p id="firstnameValid3" class="hidden text-red-500">At least 1 characters</p>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="my-5">
                     <p>Last Name</p>
                     <input id="lastname" name="lastname" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ Auth::user()->last_name }}">
-                    <div id="lastnameValid" class="hidden text-red-500">Last name can only contain alphabet characters </div>
+                    <div id="lastnameValid" class="hidden text-red-500">Last name can only contain alphabet characters with no space</div>
                     <div id="lastnameValid2" class="hidden text-red-500">Max 255 characters</div> 
                     <p id="lastnameValid3" class="hidden text-red-500">At least 1 characters</p>
                 </div>
@@ -53,14 +53,14 @@
                 <div class="my-5">
                     <p>Country</p>
                     <input id="negara" name="negara" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ $country}}">
-                    <p id="negaraValid" class="hidden text-red-500">Country can only contain alphabet characters </p>
+                    <p id="negaraValid" class="hidden text-red-500">Country can only contain alphabet characters</p>
                     <p id="negaraValid2" class="hidden text-red-500">Max 255 characters</p>
                 </div>
 
                 <div class="my-5">
                     <p>City</p>
                     <input id="kota" name="kota" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ $city}}">
-                    <p id="kotaValid" class="hidden text-red-500">City can only contain alphabet characters </p>
+                    <p id="kotaValid" class="hidden text-red-500">City can only contain alphabet characters</p>
                     <p id="kotaValid2" class="hidden text-red-500">Max 255 characters</p>
                 </div>
 
