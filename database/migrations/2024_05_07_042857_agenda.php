@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('resource', 255)->nullable();
             $table->string('speaker_name', 255);
             $table->string('speaker_img', 255);
-            $table->string('documentation', 255);
+            $table->string('documentation', 255)->nullable();
             $table->enum('publication_status', ['Draft', 'Published', 'Hidden']);
             $table->enum('categories', ['Android' , 'Machine Learning' , 'UI/UX' , 'Web Development'])->nullable();
             $table->timestamps();
