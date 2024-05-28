@@ -216,6 +216,7 @@ class AdminController extends Controller
         // $event->location = $request->location;
         $event->description = $request->deskripsi;
         $event->speaker_name = $request->speakname;
+        $event->address = $request->map;
 
         if ($request->hasFile('banner')) {
             // $request->validate([

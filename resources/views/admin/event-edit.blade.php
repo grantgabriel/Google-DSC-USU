@@ -92,6 +92,7 @@
                                 <iframe class="w-full h-96 lg:h-full rounded-lg border-2" 
                                     src="https://www.google.com/maps?q={{ Illuminate\Support\Str::slug($event->address) }}&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 <span id="maps-detail" class="flex gap-1"><img class="h-5 mt-1 fill-red-700" src="{{ asset('img/location.svg') }}" alt=""><p class="text-sm lg:text-xs underline ">{{ $event->address }}</p></span>
+                                Address:<input type="text" name="map" value="{{$event->address}}">
                             </div>
                         </div>
                         <h1 class="text-3xl text-[#555555] font-bold">About</h1>
