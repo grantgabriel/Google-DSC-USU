@@ -86,7 +86,7 @@
                                 <div class="mt-4 pl-4 lg:pl-20 leading-relaxed flex">
                                     <article class="rounded-xl border border-gray-700  p-4 w-full">
                                         <div class="flex items-center gap-4 lg:px-12">
-                                        <img src="{{ $event->speaker_img }}" class="size-16 lg:size-40 rounded-full object-cover"/>
+                                        <img src="{{ asset('speaker/' . $event->speaker_img)}}" class="size-16 lg:size-40 rounded-full object-cover"/>
                                         <h3 class="text-lg font-medium mx-auto">{{ $event->speaker_name }}</h3>
                                         </div>
                                       </article>
@@ -106,6 +106,31 @@
                                 </summary>
                                 <div class="mt-4 pl-4 lg:pl-20 flex flex-col">
                                     <p>Lihat dokumentasi <a class="text-blue-600" href="{{ $event->documentation }}">disini</a></p>
+                                </div>
+                            </details>
+
+                            <details class="group [&_summary::-webkit-details-marker]:hidden">
+                                <summary
+                                  class="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-blue-200 p-4 text-gray-900"
+                                >
+                                  <h2 class="font-semibold text-lg">Resource</h2>
+                            
+                                  <svg class="size-5 shrink-0 transition duration-300 group-open:-rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                  >
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                  </svg>
+                                </summary>
+                                <div class="mt-4 pl-4 lg:pl-20 flex flex-col">
+                                    <p>
+                                        <a class="text-blue-600" href="{{ $event->resource }}">
+                                            @if ($event->resource)
+                                                Lihat resource
+                                            @else
+                                                
+                                            @endif
+                                        </a>
+                                    </p>
                                 </div>
                             </details>
                         </div>

@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="hidden lg:flex">
-            <button class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
+            <button onclick="print()" class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
                 <ion-icon  class="pr-2 text-lg" name="print-outline"></ion-icon>
                 <div class="text-lg">Print Statistic</div>
             </button> 
@@ -128,6 +128,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        public function print(){
+            window.print();
+        }
+    </script>
 
         
 <script>
@@ -239,7 +245,7 @@
                 label: 'Number of Rating',
                 data: [
                     {{$event->rsvp()->count()}}, 
-                    {{$event->rsvp()->where('attendance_detail','Attend')->count()}}
+                    {{$event->rsvp()->count()}}-{{$event->rsvp()->where('attendance_detail','Attend')->count()}}
                 ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
