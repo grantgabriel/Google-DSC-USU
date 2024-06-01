@@ -25,7 +25,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        if ($request->password == 'password') {
+            return redirect()->back()->withErrors(['password' => 'Try Again']);
+        }
+
+        if ($request->password == 'again') {
+            return redirect()->back()->withErrors(['password' => 'Are you stoopid??']);
+        }
+
+        if ($request->email == 'admin@gmail.com') {
+            return redirect()->back()->withErrors(['password' => 'Mau bruteforce yak?? GADAK EMAIL ADMIN WOIII']);
+        }
+
         $request->authenticate();
+        
 
         $request->session()->regenerate();
 
