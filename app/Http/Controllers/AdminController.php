@@ -15,6 +15,11 @@ class AdminController extends Controller
         return view('admin.chapter-member');
     }
 
+    public function qr(Request $request){
+        $event = Event::find($request->id);
+        return view('admin.admin-show-qr',compact('event'));
+    }
+
     public function event(){
         $event = Event::where('time', '>', now())
         ->orderBy('time', 'asc')

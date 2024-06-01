@@ -49,9 +49,11 @@
                     </div>
                 </div>
                 <div>
-                    <a href="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{$event->event_id}}">
-                        Show QR CODE
-                    </a>
+                    <form action="/admin/show/qr" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$event->event_id}}">
+                        <button type="submit">Show QR</button>
+                    </form>
                 </div>
             </div>
 
