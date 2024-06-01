@@ -65,7 +65,7 @@ Route::middleware(['role:Member'])->group(function () {
 
     Route::get('/admin/event/{id}/statistic', [AdminController::class, 'eventstat']);
     Route::get('/admin/event/{id}/survey', [AdminController::class, 'eventsurvey']);
-
+    Route::get('/qr/{data}', [AdminController::class, 'qr']);
     
     
 

@@ -168,6 +168,7 @@ class AdminController extends Controller
 
     public function eventattendees($id){
         $event = Event::find($id);
+        
         return view('admin.event-attendees',compact('event'));
     }
 
@@ -268,4 +269,5 @@ class AdminController extends Controller
 
         return view('admin.analytic',compact('event','user','registrationCount','eventCount'));
     }
+
 }
