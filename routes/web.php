@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QnaController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
@@ -62,11 +63,12 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin/add/event', [AdminController::class, 'addevent']);
     Route::post('/admin/add/event/draft', [AdminController::class, 'addeventdraft']);
     Route::post('/admin/add/event/create', [AdminController::class, 'addeventcreate']);
-
     Route::get('/admin/event/{id}/statistic', [AdminController::class, 'eventstat']);
     Route::get('/admin/event/{id}/survey', [AdminController::class, 'eventsurvey']);
+    Route::get('/admin/event/{id}/qna', [AdminController::class, 'eventqna']); //YG INI QNA
     Route::post('/admin/show/qr', [AdminController::class, 'qr']);
     Route::post('/admin/add/resource/{id}', [AdminController::class, 'resource']);
+    Route::post('/admin/remove/resource/{id}', [AdminController::class, 'resourcerm']);
     
     
 
@@ -79,7 +81,7 @@ Route::get('/event/{id}-{slug}', [EventController::class, 'detail']);
 Route::get('/survey/    ', [SurveyController::class, 'index']);
 Route::post('/event-rsvp', [EventController::class, 'rsvp']);
 Route::put('/survey/submit', [SurveyController::class, 'submit']);
-
+Route::get('/event/{id}-{slug}/qna', [QnaController::class, 'view']);
 
 require __DIR__.'/auth.php';
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
