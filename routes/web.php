@@ -66,7 +66,8 @@ Route::middleware(['role:Member'])->group(function () {
 
     Route::get('/admin/event/{id}/statistic', [AdminController::class, 'eventstat']);
     Route::get('/admin/event/{id}/survey', [AdminController::class, 'eventsurvey']);
-
+    Route::post('/admin/show/qr', [AdminController::class, 'qr']);
+    Route::post('/admin/add/resource/{id}', [AdminController::class, 'resource']);
     
     
 
@@ -76,7 +77,7 @@ Route::get('/review', function () {
     return view('review');
 }); 
 Route::get('/event/{id}-{slug}', [EventController::class, 'detail']);
-Route::get('/survey/{id}-{slug}', [SurveyController::class, 'index']);
+Route::get('/survey/    ', [SurveyController::class, 'index']);
 Route::post('/event-rsvp', [EventController::class, 'rsvp']);
 Route::put('/survey/submit', [SurveyController::class, 'submit']);
 Route::get('/event/{id}-{slug}/qna', [QnaController::class, 'view']);

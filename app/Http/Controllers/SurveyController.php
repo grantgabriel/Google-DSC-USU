@@ -26,7 +26,8 @@ class SurveyController extends Controller
                 'rating' => $request->rating,
                 'review' => $request->review,
                 'speaker_rating' => $request->sprating,
-                'suggestion' => $request->suggestion
+                'suggestion' => $request->suggestion,
+                'attendance_detail' => 'Attend'
             ]);
 
         return redirect('/event/'.$request->eventId.'-'.$request->slug);

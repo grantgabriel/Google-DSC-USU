@@ -41,9 +41,11 @@
                     <label for="password" class="block text-gray-700">Password</label>
                     <input type="password" id="password" name="password" required autocomplete="current-password"
                         class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    {{-- <p class="valid-feedback text-sm" id="passwordValid">Password is valid</p>
-                    <p class="invalid-feedback text-sm" id="passwordInvalid">Password must be at least 8 characters, contain
-                        an uppercase letter, a lowercase letter, and a symbol</p> --}}
+                </div>
+                <div class="bg-red-200 mb-4 ">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
                 </div>
                 <div class="mb-4">
                     <button type="submit"
@@ -53,6 +55,7 @@
                         class="text-blue-500 hover:underline">Sign up</a></p>
             </form>
         </div>
+
 
         <script>
             document.getElementById('loginForm').addEventListener('submit', function(event) {

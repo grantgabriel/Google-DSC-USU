@@ -14,7 +14,7 @@
             <a href="/admin/event/{{$event->event_id}}/edit">Edit</a>
         </div>
         <div class="px-2">
-            <button>Forms</button>
+            <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
         </div>
         <div class="px-2">
             <button>Waitlist?</button>
@@ -34,7 +34,7 @@
                 <div class="flex-col">
                     <div class="text-[#555555] pb-2">
                         @foreach ($event->keyThemes as $keyTheme)
-                            {{ $keyTheme->key_name }}/
+                            {{ $keyTheme->key_name }}
                         @endforeach
                     </div>
                     <div class="text-xl lg:text-3xl pb-2 lg:pb-3 font-semibold text-[#3b3b3b]">
@@ -48,6 +48,13 @@
                         Check In :<div class="font-bold" id="checkin">123</div>
                     </div>
                 </div>
+                <div>
+                    <form action="/admin/show/qr" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$event->event_id}}">
+                        <button type="submit">Show QR</button>
+                    </form>
+                </div>
             </div>
 
 
@@ -57,7 +64,6 @@
                     <ion-icon name="search-outline" id="searcho" class=" text-[#555555] absolute left-3 lg:top-3 top-2"></ion-icon>
                 </input>
                 <div class="justify-end flex text-xs lg:text-[16px]">
-                    <a href="/admin/download/rsvp/{{$event->event_id}}" class="text-[#555555] mr-2 lg:mr-6">Download</a>
                     <div class="justify-center flex items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
                         <ion-icon name="person-add-outline"></ion-icon>
                         <button class="ml-1">Add Attendee</button>
