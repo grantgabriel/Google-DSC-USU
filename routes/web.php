@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QnaController;
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
@@ -80,7 +81,7 @@ Route::get('/event/{id}-{slug}', [EventController::class, 'detail']);
 Route::get('/survey/    ', [SurveyController::class, 'index']);
 Route::post('/event-rsvp', [EventController::class, 'rsvp']);
 Route::put('/survey/submit', [SurveyController::class, 'submit']);
-
+Route::get('/event/{id}-{slug}/qna', [QnaController::class, 'view']);
 
 require __DIR__.'/auth.php';
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
