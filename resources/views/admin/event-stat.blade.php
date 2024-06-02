@@ -61,7 +61,11 @@
                     </div>                   
                     <div class=" shadow-[0_0_4px_0_rgba(0,0,0,0.1)]  bg-white  rounded-md w-full py-10 font-semibold ">
                         <div class="flex justify-center items-center text-3xl lg:text-5xl">
-                            {{round($event->rsvp->where('attendance_detail', 'Attend')->count()/$event->rsvp->count()*100, 2)}}%
+                            @if ($event->rsvp->count() > 0)
+                                {{round($event->rsvp->where('attendance_detail', 'Attend')->count()/$event->rsvp->count()*100, 2)}}%
+                            @else
+                                No one hadir
+                            @endif
                         </div>  
                         <div class="flex justify-center text-xs lg:text-sm lg:pt-3 pt-1">
                             Attendance rate

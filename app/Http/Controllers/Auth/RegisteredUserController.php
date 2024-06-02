@@ -30,6 +30,11 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if ($request->email == 'admin@gmail.com') { 
+            return redirect()->back()->withErrors(['email' => 'Jangan pakek email admin dong!']);
+        }
+
+
         $request->validate([
             'firstName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],

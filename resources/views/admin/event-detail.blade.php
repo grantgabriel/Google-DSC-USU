@@ -123,14 +123,22 @@
                                 </summary>
                                 <div class="mt-4 pl-4 lg:pl-20 flex flex-col">
                                     <p>
-                                        <a class="text-blue-600" href="{{ $event->resource }}">
+                                
                                             @if ($event->resource)
-                                                Lihat resource
-                                            @else
-                                                Edit 
-                                                <input type="text" value="{{$event->resource}}">
+                                                <a class="text-blue-500" href="{{$event->resource}}">ini button</a>
+                                                <form action="/admin/remove/resource/{{$event->event_id}}" method="POST">
+                                                    @csrf
+                                                    <button class="bg-red-400" type="submit">Hapus Materi</button>
+                                                </form>
+                                            @else 
+                                                <form action="/admin/add/resource/{{$event->event_id}}" method="POST">
+                                                    @csrf
+                                                    <input type="text" name="resource" placeholder="Masukkan Link Materi">
+                                                    <button class="bg-blue-400" type="submit">Tambah Materi</button>
+                                                </form>
+
                                             @endif
-                                        </a>
+                                        
                                     </p>
                                 </div>
                             </details>

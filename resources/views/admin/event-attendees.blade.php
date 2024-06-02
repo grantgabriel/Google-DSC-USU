@@ -34,7 +34,7 @@
                 <div class="flex-col">
                     <div class="text-[#555555] pb-2">
                         @foreach ($event->keyThemes as $keyTheme)
-                            {{ $keyTheme->key_name }}/
+                            {{ $keyTheme->key_name }}
                         @endforeach
                     </div>
                     <div class="text-xl lg:text-3xl pb-2 lg:pb-3 font-semibold text-[#3b3b3b]">
@@ -47,6 +47,24 @@
                         Attendees:<div class="font-bold" id="attendee">123</div>&nbsp;
                         Check In :<div class="font-bold" id="checkin">123</div>
                     </div>
+                </div>
+                <div>
+
+                    
+                    
+                    @if (((now()->startOfDay()->diffInDays($event->time,false))==0))
+                    <form action="/admin/show/qr" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$event->event_id}}">
+                        <button type="submit">Show QR</button>
+                    </form>
+                    @elseif (((now()->startOfDay()->diffInDays($event->time,false))>0))
+                        <button>Event has not started,Canot Absen</button>
+                    @else
+                        <button>Event has ended,Canot Absen</button>
+                    @endif
+                    
+                    
                 </div>
             </div>
 

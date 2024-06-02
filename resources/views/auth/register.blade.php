@@ -76,6 +76,13 @@
                     <p class="invalid-feedback text-sm" id="confirmPasswordInvalid">Confirmation Password is not the same as
                         Password</p>
                 </div> --}}
+                <div>
+                    <div class="bg-red-200 mb-4 ">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                    </div>
+                </div>
                 <div class="mb-4">
                     <button type="submit" id="submitButton"
                         class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-700">Register</button>
