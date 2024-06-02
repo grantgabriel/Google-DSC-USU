@@ -290,4 +290,8 @@ class AdminController extends Controller
         return view('admin.analytic',compact('event','user','registrationCount','eventCount'));
     }
 
+    public function eventqna($id){
+        $event = Event::find($id);
+        return view('admin.event-qna',compact('event'));
+    }
 }

@@ -21,7 +21,7 @@
                             @endif
 
                             <a href="/admin/event/{{$event[0]->event_id}}">
-                                <div class="flex justify-center">
+                                <div class="flex justify-center font-bold text-xl">
                                     {{$event[0]->event_name}}
                                 </div>
                             </a>

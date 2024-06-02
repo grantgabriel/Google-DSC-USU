@@ -4,7 +4,7 @@
 @section('content_warning')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
-    <div class="flex justify-between font-semibold mb-4">
+    <div class="lg:flex lg:justify-between font-semibold mb-4">
         <div class="flex justify-start items-center">
             <div class="px-2">
                 <a href="/admin/event/{{$event->event_id}}" class="">Overview</a>
@@ -19,13 +19,13 @@
                 <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
-                <button>Waitlist?</button>
+                <a href="/admin/event/{{$event->event_id}}/qna">QNA</a>
             </div>
             <div class="px-2">
                 <button class="border-b-2 pt-[10px] pb-2 border-black">Statistic</button>
             </div>
         </div>
-        <div class="hidden lg:flex">
+        <div class="flex justify-end lg:pt-0 pt-4">
             <button onclick="print()" class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#313140]">
                 <ion-icon  class="pr-2 text-lg" name="print-outline"></ion-icon>
                 <div class="text-lg">Print Statistic</div>
@@ -35,7 +35,6 @@
         
     </div>
     <div class=" shadow-lg rounded-xl bg-slate-50 py-4 lg:py-6 px-3 lg:px-10 text-[#555555]">
-        {{-- <div>Please use laptop to print the statistic!!</div> --}}
         <div class="flex justify-center ">
             <div class="flex-col w-full">
                 
@@ -64,7 +63,7 @@
                             @if ($event->rsvp->count() > 0)
                                 {{round($event->rsvp->where('attendance_detail', 'Attend')->count()/$event->rsvp->count()*100, 2)}}%
                             @else
-                                No one hadir
+                                0%
                             @endif
                         </div>  
                         <div class="flex justify-center text-xs lg:text-sm lg:pt-3 pt-1">
