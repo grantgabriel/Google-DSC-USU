@@ -15,6 +15,11 @@ class AdminController extends Controller
         return view('admin.chapter-member');
     }
 
+    public function qr(Request $request){
+        $event = Event::find($request->id);
+        return view('admin.admin-show-qr',compact('event'));
+    }
+
     public function event(){
         $event = Event::where('time', '>', now())
         ->orderBy('time', 'asc')
@@ -168,8 +173,17 @@ class AdminController extends Controller
 
     public function eventattendees($id){
         $event = Event::find($id);
+        
         return view('admin.event-attendees',compact('event'));
     }
+
+    public function resource(Request $request, $id){
+        $event = Event::find($id);
+        $event->resource = $request->resource;
+        $event->save();
+        return back();
+    }
+
 
 
     public function updateattend(Request $request){
@@ -268,4 +282,5 @@ class AdminController extends Controller
 
         return view('admin.analytic',compact('event','user','registrationCount','eventCount'));
     }
+
 }
