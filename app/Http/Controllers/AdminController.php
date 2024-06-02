@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\KeyTheme;
 use App\Models\Rsvp;
+use App\Models\Qna;
 
 class AdminController extends Controller
 {
@@ -191,8 +192,6 @@ class AdminController extends Controller
         return back();
     }
 
-
-
     public function updateattend(Request $request){
         
         $attendance = Rsvp::where('event_id', $request->eventId)
@@ -291,7 +290,7 @@ class AdminController extends Controller
     }
 
     public function eventqna($id){
-        $event = Event::find($id);
-        return view('admin.event-qna',compact('event'));
+        $event = Qna::where('event_id', $id)->get();
+        return view('admin.event-qna',compact('event','id'));
     }
 }
