@@ -49,11 +49,22 @@
                     </div>
                 </div>
                 <div>
+
+                    
+                    
+                    @if (((now()->startOfDay()->diffInDays($event->time,false))==0))
                     <form action="/admin/show/qr" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$event->event_id}}">
                         <button type="submit">Show QR</button>
                     </form>
+                    @elseif (((now()->startOfDay()->diffInDays($event->time,false))>0))
+                        <button>Event has not started,Canot Absen</button>
+                    @else
+                        <button>Event has ended,Canot Absen</button>
+                    @endif
+                    
+                    
                 </div>
             </div>
 
