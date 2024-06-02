@@ -34,7 +34,7 @@
                     </div>
                    
                     <a href="/admin/add/event" class="flex items-center justify-center border active:bg-[#1b1b23] rounded-md px-2 py-2 lg:px-3 text-white bg-[#313140]">
-                        <ion-icon class="pr-2" name="add-outline"></ion-icon>
+                        <ion-icon class="pr-2 text-xl" name="add-outline"></ion-icon>
                         <div class="text-xs lg:text-lg">Add Event</div>
                     </a> 
                 </div>

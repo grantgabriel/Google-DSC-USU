@@ -31,13 +31,13 @@
                         <div class="font-semibold ">Banner & Thumbnail</div>
                         <div class="relative">
                             <img class="" src="http://127.0.0.1:8000/banner/default.webp" alt="">
-                            <input id="banner" class="absolute bottom-2 left-2 px-4 py-2 w-full  " type="file" name="banner">
+                            <input accept=".jpg, .jpeg, .png, .webp" id="banner" class="absolute bottom-2 left-2 px-4 py-2 w-full  " type="file" name="banner">
                         </div>
                     </div>
                     <div class="my-5">
                         <div class="flex justify-start items-center">
                             <img class="rounded-full object-cover w-32" src="http://127.0.0.1:8000/event-profile/default.webp" alt="">
-                            <input id="thumbnail" class=" px-4 py-2 w-full  " type="file" name="profile">
+                            <input accept=".jpg, .jpeg, .png, .webp" id="thumbnail" class=" px-4 py-2 w-full  " type="file" name="profile">
                         </div>                           
                     </div>
 
