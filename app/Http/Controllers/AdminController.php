@@ -177,6 +177,14 @@ class AdminController extends Controller
         return view('admin.event-attendees',compact('event'));
     }
 
+    public function resource(Request $request, $id){
+        $event = Event::find($id);
+        $event->resource = $request->resource;
+        $event->save();
+        return back();
+    }
+
+
 
     public function updateattend(Request $request){
         

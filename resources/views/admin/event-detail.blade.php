@@ -125,11 +125,11 @@
                                     <p>
                                 
                                             @if ($event->resource)
-                                                <a href="{{$event->resource}}"></a>
+                                                <a class="text-blue-500" href="{{$event->resource}}">ini button</a>
                                             @else 
-                                                <form action="" method="POST">
+                                                <form action="/admin/add/resource/{{$event->event_id}}" method="POST">
                                                     @csrf
-                                                    <input type="text" value="" placeholder="Masukkan Link Materi">
+                                                    <input type="text" name="resource" placeholder="Masukkan Link Materi">
                                                     <button class="bg-blue-400" type="submit">Tambah Materi</button>
                                                 </form>
 
