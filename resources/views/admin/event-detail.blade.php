@@ -126,6 +126,10 @@
                                 
                                             @if ($event->resource)
                                                 <a class="text-blue-500" href="{{$event->resource}}">ini button</a>
+                                                <form action="/admin/remove/resource/{{$event->event_id}}" method="POST">
+                                                    @csrf
+                                                    <button class="bg-red-400" type="submit">Hapus Materi</button>
+                                                </form>
                                             @else 
                                                 <form action="/admin/add/resource/{{$event->event_id}}" method="POST">
                                                     @csrf

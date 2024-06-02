@@ -67,6 +67,7 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin/event/{id}/survey', [AdminController::class, 'eventsurvey']);
     Route::post('/admin/show/qr', [AdminController::class, 'qr']);
     Route::post('/admin/add/resource/{id}', [AdminController::class, 'resource']);
+    Route::post('/admin/remove/resource/{id}', [AdminController::class, 'resourcerm']);
     
     
 

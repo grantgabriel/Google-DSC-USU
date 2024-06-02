@@ -184,6 +184,13 @@ class AdminController extends Controller
         return back();
     }
 
+    public function resourcerm($id){
+        $event = Event::find($id);
+        $event->resource = NULL;
+        $event->save();
+        return back();
+    }
+
 
 
     public function updateattend(Request $request){
