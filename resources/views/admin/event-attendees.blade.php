@@ -26,29 +26,30 @@
 
     <div class="shadow-lg rounded-xl bg-white py-6 px-6 flex justify-center">
         <div class="flex-col justify-center w-full ">
-            {{-- ini bagian atas --}}
-            <div class="flex mb-6 lg:text-lg">
-                <div class="pr-5 lg:pr-8">
-                    <img class="w-28 lg:w-40 rounded-full object-cover" src="{{$event->event_profile}}" alt="">
+            <div class=" mb-6 lg:text-lg flex justify-between">
+                <div class="justify-start flex">
+                    <div class="pr-5 lg:pr-8 flex items-center">
+                        <img class="w-20 h-20 lg:h-36 lg:w-36  object-cover rounded-full" src="{{ asset('event-profile/' . $event->event_profile)}}" alt="">
+                    </div>
+                    <div class="flex-col">
+                        <div class="text-[#555555] pb-2">
+                            @foreach ($event->keyThemes as $keyTheme)
+                                {{ $keyTheme->key_name }}
+                            @endforeach
+                        </div>
+                        <div class="text-xl lg:text-3xl pb-2 lg:pb-3 font-semibold text-[#3b3b3b]">
+                            {{ $event->event_name }}
+                        </div>
+                        <div class="pb-1 text-[#555555] text-sm">
+                            {{ $event->time }}
+                        </div>
+                        <div class="flex text-[#555555] text-sm ">
+                            Attendees:<div class="font-bold" id="attendee">123</div>&nbsp;
+                            Check In :<div class="font-bold" id="checkin">123</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-col">
-                    <div class="text-[#555555] pb-2">
-                        @foreach ($event->keyThemes as $keyTheme)
-                            {{ $keyTheme->key_name }}
-                        @endforeach
-                    </div>
-                    <div class="text-xl lg:text-3xl pb-2 lg:pb-3 font-semibold text-[#3b3b3b]">
-                        {{ $event->event_name }}
-                    </div>
-                    <div class="pb-1 text-[#555555] text-sm">
-                        {{ $event->time }}
-                    </div>
-                    <div class="flex text-[#555555] text-sm ">
-                        Attendees:<div class="font-bold" id="attendee">123</div>&nbsp;
-                        Check In :<div class="font-bold" id="checkin">123</div>
-                    </div>
-                </div>
-                <div>
+                <div class="flex justify-end items-center" >
 
                     
                     
@@ -56,12 +57,24 @@
                     <form action="/admin/show/qr" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$event->event_id}}">
-                        <button type="submit">Show QR</button>
+                        <div class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#34A853]">
+                            <ion-icon class="pr-1 lg:pr-4 text-lg lg:text-3xl" name="qr-code-outline"></ion-icon>
+                            <button type="submit">Attendance</button>
+                        </div>
+                        
                     </form>
                     @elseif (((now()->startOfDay()->diffInDays($event->time,false))>0))
-                        <button>Event has not started,Canot Absen</button>
+                        {{-- <button>Event has not started,Canot Absen</button> --}}
+                        <div>
+                            <div id="aten" class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#555555]">
+                                <ion-icon class="pr-1 lg:pr-4 text-lg lg:text-3xl" name="qr-code-outline"></ion-icon>
+                                <button class="" type="">Attendance</button>  
+                            </div>
+                            <p class="text-red-500 text-xs lg:text-sm pt-1 hidden">Event Finished</p>
+                        </div>
+                        
                     @else
-                        <button>Event has ended,Canot Absen</button>
+                        {{-- <button>Event has ended,Canot Absen</button> --}}
                     @endif
                     
                     
@@ -109,6 +122,11 @@
         const table = document.getElementById('table');
         const input = document.getElementById('input');
         const searcho = document.getElementById('searcho');
+
+        aten.addEventListener('click', function() {
+            aten.nextElementSibling.classList.remove('hidden');
+        });
+
         function name($id) {
                 fetch('/admin/event/'+ $id+'/attendees/get/'+input.value)
                     .then(response => response.json())

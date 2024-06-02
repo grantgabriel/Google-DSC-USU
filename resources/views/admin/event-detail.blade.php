@@ -17,7 +17,7 @@
                 <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
-                <button>Waitlist?</button>
+                <a href="/admin/event/{{$event->event_id}}/qna">QNA</a>
             </div>
             <div class="px-2">
                 <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>
