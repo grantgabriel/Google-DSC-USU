@@ -70,7 +70,7 @@
                                 <ion-icon class="pr-1 lg:pr-4 text-lg lg:text-3xl" name="qr-code-outline"></ion-icon>
                                 <button class="" type="">Attendance</button>  
                             </div>
-                            <p class="text-red-500 text-xs lg:text-sm pt-1 hidden">Event Not Start yet</p>
+                            <p class="text-red-500 text-xs lg:text-sm pt-1 hidden">Event hasn't started</p>
                         </div>
                         
                     @else
@@ -80,7 +80,7 @@
                                 <ion-icon class="pr-1 lg:pr-4 text-lg lg:text-3xl" name="qr-code-outline"></ion-icon>
                                 <button class="" type="">Attendance</button>  
                             </div>
-                            <p class="text-red-500 text-xs lg:text-sm pt-1 hidden">Event Finished</p>
+                            <p class="text-red-500 text-xs lg:text-sm pt-1 hidden">Event finished</p>
                         </div>
                     @endif
                     
