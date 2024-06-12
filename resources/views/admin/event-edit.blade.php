@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="flex justify-end mt-8">
-                            <button id="save" type="submit" class="bg-blue-500 active:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                            <button id="save" type="submit" class="bg-slate-500 text-white font-semibold py-2 px-4 rounded">
                                 Save Changes
                             </button>
                         </div>
@@ -158,6 +158,7 @@
             const icon2 = document.getElementById('focus-icon2');
             const icon3 = document.getElementById('focus-icon3');
             const save = document.getElementById('save');
+            
 
             icon.addEventListener('click', function() {
                 inputField.focus();
@@ -226,7 +227,39 @@
 
             saveButton();
         });
+        function setMinDate() {
+            const dateInput = document.getElementById('date');
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
 
+            const year = tomorrow.getFullYear();
+            const month = ('0' + (tomorrow.getMonth() + 1)).slice(-2); 
+            const day = ('0' + tomorrow.getDate()).slice(-2); 
+
+            const minDate = `${year}-${month}-${day}`;
+            dateInput.setAttribute('min', minDate);
+        }
+
+        function validateDate() {
+            const dateInput = document.getElementById('date');
+            const selectedDate = new Date(dateInput.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            const dateValid = document.getElementById('dateValid');
+            if (selectedDate < tomorrow) {
+                dateValid.classList.remove('hidden');
+            } else {
+                dateValid.classList.add('hidden');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', setMinDate);
+
+        document.getElementById('date').addEventListener('change', validateDate);
         function saveButton(){
             if(deskripsiSubmit && eventnameSubmit){
                 save.disabled = false;
