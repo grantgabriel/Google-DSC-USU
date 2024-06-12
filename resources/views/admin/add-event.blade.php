@@ -73,10 +73,18 @@
                             <p id="speakValid2" class="hidden text-red-500">Max 255 characters</p>
                             <p id="speakValid3" class="hidden text-red-500">At least 1 characters</p>
                         </div>
-                        <div class= "my-5 ">
+
+
+
+                        <div class="my-5">
                             <div class="font-semibold ">Speaker Image</div>
-                            <input id="speakimg" class="border-[1px] px-4 py-2 w-full  border-[#b3b3b3]" name="speakimg" type="text">
+                            <div class="flex justify-start items-center">
+                                <img class="rounded-full object-cover w-32" src="http://127.0.0.1:8000/event-profile/default.webp" alt="">
+                                <input accept=".jpg, .jpeg, .png, .webp" id="thumbnail" class=" px-4 py-2 w-full  " type="file" name="speakimg">
+                            </div>                           
                         </div>
+
+
 
                         <div class= "my-5">
                             <div class="font-semibold ">Choose Categories :</div>
