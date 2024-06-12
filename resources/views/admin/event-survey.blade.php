@@ -16,7 +16,7 @@
                         <button class="border-b-2 pb-2 border-black">Survey</button>
                 </div>
                 <div class="px-2">
-                    <a href="/admin/event/{{$event->event_id}}/qna">QNA</a>
+                    <a href="/admin/event/{{$event->event_id}}/qna">Q&A</a>
                 </div>
                 <div class="px-2">
                         <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>

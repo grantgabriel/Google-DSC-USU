@@ -57,7 +57,6 @@ class QnasSeeder extends Seeder
             'question' => 'Why kotlin did not use semicolon?',
             'created_at' => now(),
             'updated_at' => now(),
-            
         ]);
 
         DB::table('qnas')->insert([

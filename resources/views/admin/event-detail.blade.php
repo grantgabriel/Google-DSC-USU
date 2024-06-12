@@ -17,7 +17,7 @@
                 <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
-                <a href="/admin/event/{{$event->event_id}}/qna">QNA</a>
+                <a href="/admin/event/{{$event->event_id}}/qna">Q&A</a>
             </div>
             <div class="px-2">
                 <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>
