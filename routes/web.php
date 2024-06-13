@@ -54,6 +54,7 @@ Route::get('/about', function () {
 Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin', [AdminController::class, 'analytic']);
     Route::get('/admin/member', [AdminController::class, 'member']);
+    Route::get('/admin/member/{id}', [AdminController::class, 'memberdeath']);
     Route::get('/admin/analytic', [AdminController::class, 'analytic']);
     Route::get('/admin/event', [AdminController::class, 'event']);
     Route::get('/admin/event/{id}', [AdminController::class, 'eventdetail']);
@@ -69,6 +70,8 @@ Route::middleware(['role:Member'])->group(function () {
     Route::post('/admin/show/qr', [AdminController::class, 'qr']);
     Route::post('/admin/add/resource/{id}', [AdminController::class, 'resource']);
     Route::post('/admin/remove/resource/{id}', [AdminController::class, 'resourcerm']);
+    Route::post('/admin/remove/documentation/{id}', [AdminController::class, 'docrm']);
+    Route::post('/admin/add/documentation/{id}', [AdminController::class, 'adddoc']);
     
     
 
