@@ -16,6 +16,12 @@ class AdminController extends Controller
         return view('admin.chapter-member');
     }
 
+    public function memberdeath($id){
+        $user = User::find($id);
+        $rsvp = Rsvp::where('user_id', $id)->get();
+        return view('admin.profile',compact('user','rsvp'));
+    }
+
     public function qr(Request $request){
         $event = Event::find($request->id);
         return view('admin.admin-show-qr',compact('event'));
@@ -192,6 +198,13 @@ class AdminController extends Controller
         return back();
     }
 
+    public function docrm($id){
+        $event = Event::find($id);
+        $event->documentation = NULL;
+        $event->save();
+        return back();
+    }
+
     public function updateattend(Request $request){
         
         $attendance = Rsvp::where('event_id', $request->eventId)
@@ -292,5 +305,22 @@ class AdminController extends Controller
     public function eventqna($id){
         $event = Qna::where('event_id', $id)->get();
         return view('admin.event-qna',compact('event','id'));
+    }
+
+    public function adddoc(Request $request, $id){
+        $event = Event::find($id);
+
+        if ($request->hasFile('docu')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('docu')->getClientOriginalExtension();
+            $imageName = time().'-'.'.'.$extension;
+            $request->file('docu')->move(public_path('documentation'), $imageName);
+            $event->documentation = $imageName;
+        }
+
+        $event->save();
+        return back();
     }
 }

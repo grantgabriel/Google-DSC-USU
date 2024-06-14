@@ -105,7 +105,19 @@
                                   </svg>
                                 </summary>
                                 <div class="mt-4 pl-4 lg:pl-20 flex flex-col">
-                                    <p>Lihat dokumentasi <a class="text-blue-600" href="{{ $event->documentation }}">disini</a></p>
+                                    @if ($event->documentation)
+                                        <img src="http://127.0.0.1:8000/documentation/{{$event->documentation}}" alt="">
+                                        <form action="/admin/remove/documentation/{{$event->event_id}}" method="POST">
+                                            @csrf
+                                            <button class="bg-red-400" type="submit">Hapus Dokumentasi</button>
+                                        </form>
+                                    @else
+                                        <form action="/admin/add/documentation/{{$event->event_id}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="file" name="docu" placeholder="Masukkan Link Dokumentasi">
+                                            <button class="bg-yellow-700" type="submit">Tambah Dokumentasi</button>
+                                        </form>
+                                    @endif
                                 </div>
                             </details>
 
