@@ -54,7 +54,7 @@ Route::get('/about', function () {
 Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin', [AdminController::class, 'analytic']);
     Route::get('/admin/member', [AdminController::class, 'member']);
-    Route::get('/admin/member/sertifikat', [AdminController::class, 'sertifikat']);
+    Route::get('/admin/member/sertificate', [AdminController::class, 'sertifikat']);
     Route::get('/admin/member/{id}', [AdminController::class, 'memberdeath']);
     Route::get('/admin/analytic', [AdminController::class, 'analytic']);
     Route::get('/admin/event', [AdminController::class, 'event']);

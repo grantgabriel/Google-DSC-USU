@@ -7,10 +7,14 @@
     <div class="shadow-lg rounded-xl bg-white py-6 px-6">
         <div class="justify-between flex mb-4">
             <div id="membercount" class="text-2xl font-semibold"></div>
+            <a href="/admin/member/sertificate" class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#f8aa52]">
+                <ion-icon class="pr-1 lg:pr-3 text-lg lg:text-3xl" name="trophy-outline"></ion-icon>
+                <div class="">Sertificate</div>  
+            </a>
         </div>
         <div class="mb-3 relative">
             <input id="input" class="w-[50%] sm:w-[40%] lg:w-[33%] px-2 py-2 border rounded-md" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search for a member" type="text">
-                <ion-icon name="search-outline" id="searcho" class="text-[#555555] absolute left-3 top-2"></ion-icon>
+                <ion-icon name="search-outline" id="searcho" class="text-[#555555] absolute left-3 top-3"></ion-icon>
             </input>
             
         </div>
@@ -66,7 +70,7 @@
                                             <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                                         </div>
                                     </button>
-                                    <div class="dropdownn absolute hidden bg-white border border-gray-200 shadow-md rounded right-6 top-0">
+                                    <div class="dropdownn absolute hidden bg-white border border-gray-200 shadow-md rounded right-8 top-3 md:top-0">
                                         <ul class="whitespace-nowrap">
                                             <li><a href="/admin/member/${datas.user_id}" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Profile & Tickets</a></li>
                                             <hr>
@@ -109,7 +113,7 @@
                                             <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                                         </div>
                                     </button>
-                                    <div class="dropdownn absolute hidden bg-white border border-gray-200 shadow-md rounded right-6 top-0">
+                                    <div class="dropdownn absolute hidden bg-white border border-gray-200 shadow-md rounded right-8 top-3 md:top-0">
                                         <ul class="whitespace-nowrap">
                                             <li><a href="/admin/member/${datas.user_id}" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Profile & Tickets</a></li>
                                             <hr>
