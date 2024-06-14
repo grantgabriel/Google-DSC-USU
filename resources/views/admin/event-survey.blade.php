@@ -28,7 +28,7 @@
                         
                         <div class="flex-col w-full ">
                                 <div class=" text-lg font-semibold pb-2">
-                                        Survey for : EVENT NAME
+                                        Survey for : {{$event->event_name}}
                                 </div>
                                 
                                 <table class="w-full">

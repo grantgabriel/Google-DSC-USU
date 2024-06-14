@@ -58,7 +58,7 @@
                             <tr class="border-b relative">
                                 <td class="py-6 px-4 text-[#555555]">${datas.first_name} ${datas.last_name}</td>
                                 <td class="py-6 px-4 text-[#555555]">${datas.email}</td>
-                                <td class="py-6 px-4 text-[#555555]">${datas.created_at}</td>
+                                <td class="py-6 px-4 text-[#555555]">${datas.created_at.slice(0, 10)}</td>
                                 <td class="py-6 px-4 text-[#555555]">${datas.rsvp.length}</td>
                                 <td class="relative">
                                     <button onclick="toggleDropdownn(this)">
@@ -68,7 +68,7 @@
                                     </button>
                                     <div class="dropdownn absolute hidden bg-white border border-gray-200 shadow-md rounded right-6 top-0">
                                         <ul class="whitespace-nowrap">
-                                            <li><a href="#" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Profile & Tickets</a></li>
+                                            <li><a href="/admin/member/${datas.user_id}" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Profile & Tickets</a></li>
                                             <hr>
                                             <li><a href="#" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Settings & Privacy</a></li>
                                         </ul>
@@ -101,7 +101,7 @@
                             <tr class="border-b relative">
                                 <td class="py-6 px-4 text-[#555555]">${datas.first_name} ${datas.last_name}</td>
                                 <td class="py-6 px-4 text-[#555555]">${datas.email}</td>
-                                <td class="py-6 px-4 text-[#555555]">${datas.created_at}</td>
+                                <td class="py-6 px-4 text-[#555555]">${datas.created_at.slice(0, 10)}</td>
                                 <td class="py-6 px-4 text-[#555555]">${datas.rsvp.length}</td>
                                 <td class="relative">
                                     <button onclick="toggleDropdownn(this)">

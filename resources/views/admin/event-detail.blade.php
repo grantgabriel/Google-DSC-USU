@@ -2,6 +2,38 @@
 
 @section('content_warning')
 
+<div id="logoutModal1" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg overflow-hidden shadow-lg w-11/12 max-w-sm">
+        <div class="p-6">
+            <h2 class="text-lg font-bold mb-4">Confirm Logout</h2>
+            <p class="mb-6">Are you sure you want to delete this documentation?</p>
+            <div class="flex justify-end">
+                <button id="cancelLogout1" class="px-4 py-2 bg-gray-200 rounded mr-2">Cancel</button>
+                <form action="/admin/remove/documentation/{{$event->event_id}}" method="POST">
+                    @csrf
+                    <button class="px-4 py-2 bg-red-500 text-white rounded" type="submit">Delete</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="logoutModal2" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg overflow-hidden shadow-lg w-11/12 max-w-sm">
+        <div class="p-6">
+            <h2 class="text-lg font-bold mb-4">Confirm Logout</h2>
+            <p class="mb-6">Are you sure you want to delete this resource?</p>
+            <div class="flex justify-end">
+                <button id="cancelLogout2" class="px-4 py-2 bg-gray-200 rounded mr-2">Cancel</button>
+                <form action="/admin/remove/resource/{{$event->event_id}}" method="POST">
+                    @csrf
+                    <button class="px-4 py-2 bg-red-500 text-white rounded" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="py-6 px-4 sm:px-12 lg:px-36 xl:px-48">
         <div class="flex justify-start font-semibold mb-4">
             <div class="px-2">
@@ -106,16 +138,36 @@
                                 </summary>
                                 <div class="mt-4 pl-4 lg:pl-20 flex flex-col">
                                     @if ($event->documentation)
-                                        <img src="http://127.0.0.1:8000/documentation/{{$event->documentation}}" alt="">
-                                        <form action="/admin/remove/documentation/{{$event->event_id}}" method="POST">
-                                            @csrf
-                                            <button class="bg-red-400" type="submit">Hapus Dokumentasi</button>
-                                        </form>
+                                        <div class="flex justify-center">
+                                            <img class="w-2/3" src="http://127.0.0.1:8000/documentation/{{$event->documentation}}" alt="">
+                                        </div>
+                                       
+                                            <div class="flex justify-end">
+                                                <button onclick="showLogoutModal1()" class="flex justify-center items-center border rounded-md px-2 py-2 mt-5 text-white bg-red-500">
+                                                    <ion-icon name="trash-outline"></ion-icon>
+                                                    <div class=" ml-2 text-xs" >Delete Documentation</div>
+                                                </button>
+                                            </div>
+
                                     @else
+                                        <div class="mb-4 font-semibold">
+                                            Documentation isn't available, add one!
+                                        </div>
                                         <form action="/admin/add/documentation/{{$event->event_id}}" method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="file" name="docu" placeholder="Masukkan Link Dokumentasi">
-                                            <button class="bg-yellow-700" type="submit">Tambah Dokumentasi</button>
+                                            <div class="lg:flex lg:justify-around">
+                                                <input accept=".jpg, .jpeg, .png, .webp" type="file" name="docu" id="docu" placeholder="Masukkan Link Dokumentasi">
+                                                <div class="justify-end flex">
+                                                    <button disabled id="save2" type="submit" class="flex justify-center items-center border rounded-md px-2 py-2 mt-2 text-white bg-slate-500">
+                                                        <ion-icon name="image-outline"></ion-icon>
+                                                        <ion-icon name="add-outline"></ion-icon>
+                                                        <div class=" ml-2 text-xs" >Add Documentation</div>
+                                                    </button>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            
                                         </form>
                                     @endif
                                 </div>
@@ -137,16 +189,32 @@
                                     <p>
                                 
                                             @if ($event->resource)
-                                                <a class="text-blue-500" href="{{$event->resource}}">ini button</a>
-                                                <form action="/admin/remove/resource/{{$event->event_id}}" method="POST">
-                                                    @csrf
-                                                    <button class="bg-red-400" type="submit">Hapus Materi</button>
-                                                </form>
+                                                <a class="text-blue-500" href="{{$event->resource}}">Click here to go to the resource!</a>
+                                                
+                                                    <div class="flex justify-end">
+                                                        <div class="flex justify-end">
+                                                            <button onclick="showLogoutModal2()" type="submit" class="flex justify-center items-center border rounded-md px-2 py-2 mt-5 text-white bg-red-500">
+                                                                <ion-icon name="trash-outline"></ion-icon>
+                                                                <div class=" ml-2 text-xs" >Delete Resource</div>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                
                                             @else 
+                                                <div class="mb-4 font-semibold">
+                                                    Resource isn't available, add one!
+                                                </div>
                                                 <form action="/admin/add/resource/{{$event->event_id}}" method="POST">
                                                     @csrf
-                                                    <input type="text" name="resource" placeholder="Masukkan Link Materi">
-                                                    <button class="bg-blue-400" type="submit">Tambah Materi</button>
+                                                    <input type="text" class="border rounded-md py-1 px-2 w-full" id="resource" name="resource" placeholder="Resource Link Here...">
+                                                    <div class="flex justify-end">
+                                                        <button disabled id="save" type="submit" class="flex justify-center items-center border rounded-md px-2 py-2 mt-2 text-white bg-slate-500">
+                                                            <ion-icon name="document-outline"></ion-icon>
+                                                            <ion-icon name="add-outline"></ion-icon>
+                                                            <div class=" ml-2 text-xs" >Add Resource</div>
+                                                        </button>
+                                                    </div>
+                                                    
                                                 </form>
 
                                             @endif
@@ -164,4 +232,59 @@
             </div>
         </div>
     </div>
+    <script>
+        function showLogoutModal1() {
+            document.getElementById('logoutModal1').classList.remove('hidden');
+        }
+
+        function hideLogoutModal1() {
+            document.getElementById('logoutModal1').classList.add('hidden');
+        }
+
+        document.getElementById('cancelLogout1').addEventListener('click', hideLogoutModal1);
+
+        function showLogoutModal2() {
+            document.getElementById('logoutModal2').classList.remove('hidden');
+        }
+
+        function hideLogoutModal2() {
+            document.getElementById('logoutModal2').classList.add('hidden');
+        }
+
+        document.getElementById('cancelLogout2').addEventListener('click', hideLogoutModal2);
+
+        const save = document.getElementById('save');
+        const save2 = document.getElementById('save2');
+        const docu = document.getElementById('docu');
+        const resource = document.getElementById('resource');
+        
+        if (docu != null){
+            docu.addEventListener('input', function() {
+            if (docu.files.length <= 0) {
+                save2.disabled = true;
+                save2.classList.add('bg-slate-500');
+                save2.classList.remove('bg-[#313140]');
+            } else {
+                save2.disabled = false;
+                save2.classList.add('bg-[#313140]');
+                save2.classList.remove('bg-slate-500');
+            }
+        });
+        }
+        
+    
+        resource.addEventListener('input', function() {
+            let value = resource.value.trim(); 
+            if (value === "") {
+                save.disabled = true;
+                save.classList.remove('bg-[#313140]');
+                save.classList.add('bg-slate-500');
+            } else {
+                save.disabled = false;
+                save.classList.add('bg-[#313140]');
+                save.classList.remove('bg-slate-500');
+            }
+        });
+    </script>
+    
 @endsection
