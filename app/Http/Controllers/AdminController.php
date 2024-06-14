@@ -353,7 +353,7 @@ class AdminController extends Controller
             $totalEvents = $totalEventsPerCategory[$category->categories] ?? 0;
             $attendancePercentage = $totalEvents > 0 ? ($category->total_attended / $totalEvents) * 100 : 0;
 
-            if ($attendancePercentage >     20) {
+            if ($attendancePercentage >     0) {
                 $user['categories'][] = [
                     'category' => $category->categories,
                     'attendance_percentage' => $attendancePercentage
