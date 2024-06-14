@@ -323,4 +323,49 @@ class AdminController extends Controller
         $event->save();
         return back();
     }
+
+    public function sertifikat(){
+        $totalEventsPerCategory = DB::table('events')
+        ->select('categories', DB::raw('COUNT(*) as total'))
+        ->groupBy('categories')
+        ->pluck('total', 'categories');
+
+    $users = DB::table('users')
+        ->join('rsvps', 'users.user_id', '=', 'rsvps.user_id')
+        ->join('events', 'rsvps.event_id', '=', 'events.event_id')
+        ->select('users.user_id', 'users.first_name', 'users.last_name', 'users.email', 'events.categories', DB::raw('COUNT(rsvps.event_id) as total_attended'))
+        ->groupBy('users.user_id', 'users.first_name', 'users.last_name', 'users.email', 'events.categories')
+        ->get()
+        ->groupBy('user_id');
+
+    $userAttendance = [];
+
+    foreach ($users as $userId => $categories) {
+        $user = [
+            'user_id' => $categories->first()->user_id,
+            'first_name' => $categories->first()->first_name,
+            'last_name' => $categories->first()->last_name,
+            'email' => $categories->first()->email,
+            'categories' => []
+        ];
+
+        foreach ($categories as $category) {
+            $totalEvents = $totalEventsPerCategory[$category->categories] ?? 0;
+            $attendancePercentage = $totalEvents > 0 ? ($category->total_attended / $totalEvents) * 100 : 0;
+
+            if ($attendancePercentage >     20) {
+                $user['categories'][] = [
+                    'category' => $category->categories,
+                    'attendance_percentage' => $attendancePercentage
+                ];
+            }
+        }
+
+        if (!empty($user['categories'])) {
+            $userAttendance[] = $user;
+        }
+    }
+
+    return view('admin.admin-sertif', compact('userAttendance'));
+    }
 }
