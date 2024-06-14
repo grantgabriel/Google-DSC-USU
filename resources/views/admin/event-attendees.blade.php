@@ -57,29 +57,29 @@
                     <form action="/admin/show/qr" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$event->event_id}}">
-                        <div class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#34A853]">
+                        <button type="submit" class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#34A853]">
                             <ion-icon class="pr-1 lg:pr-4 text-lg lg:text-3xl" name="qr-code-outline"></ion-icon>
-                            <button type="submit">Attendance</button>
-                        </div>
+                            <div>Attendance</div>
+                        </button>
                         
                     </form>
                     @elseif (((now()->startOfDay()->diffInDays($event->time,false))>0))
                         {{-- <button>Event has not started,Canot Absen</button> --}}
                         <div>
-                            <div id="aten" class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#555555]">
+                            <button type="" id="aten" class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#555555]">
                                 <ion-icon class="pr-1 lg:pr-4 text-lg lg:text-3xl" name="qr-code-outline"></ion-icon>
-                                <button class="" type="">Attendance</button>  
-                            </div>
+                                <div class="">Attendance</div>  
+                            </button>
                             <p class="text-red-500 text-xs lg:text-sm pt-1 hidden">Event hasn't started</p>
                         </div>
                         
                     @else
                         {{-- <button>Event has ended,Canot Absen</button> --}}
                         <div>
-                            <div id="aten" class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#555555]">
+                            <button type="" id="aten" class="justify-center flex lg:text-lg text-xs items-center border rounded-md px-2 py-2 lg:py-3 lg:px-4 text-white bg-[#555555]">
                                 <ion-icon class="pr-1 lg:pr-4 text-lg lg:text-3xl" name="qr-code-outline"></ion-icon>
-                                <button class="" type="">Attendance</button>  
-                            </div>
+                                <div class="" >Attendance</div>  
+                            </button>
                             <p class="text-red-500 text-xs lg:text-sm pt-1 hidden">Event finished</p>
                         </div>
                     @endif

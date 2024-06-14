@@ -27,26 +27,30 @@
                         
                         
                         <div class="flex-col w-full ">
-                                <div class=" text-lg font-semibold pb-2">
-                                        Survey for : EVENT NAME
+                                <div class="flex justify-between pb-2">
+                                    <div class=" text-lg font-semibold pb-2">
+                                        Survey result for : {{$event->event_name}}
+                                    </div>
+                                    <div class="text-xs flex items-end">Press score to sort by value!</div>
                                 </div>
+                               
                                 
                                 <table class="w-full">
                                         <thead class="bg-blue-50">
                                             <tr>
-                                                <th class="py-3 hover:cursor-pointer pl-6 px-4 items-center hover:bg-blue-100 flex" data-sort="score">
+                                                <th class="py-3 hover:cursor-pointer pl-6 px-4 items-center hover:bg-blue-100 flex text-left" data-sort="score">
                                                     Score
                                                     <ion-icon id="up1" class="pl-1" name="caret-up-outline"></ion-icon>
                                                     <ion-icon id="down1" class="pl-1" name="caret-down-outline"></ion-icon>
                                                 </th>
                                                 
-                                                <th class="py-3 px-4">Suggestion</th>
-                                                <th class="py-3 hover:cursor-pointer px-4 items-center hover:bg-blue-100 flex" data-sort="speaker_score">
+                                                <th class="py-3 px-4 text-left">Suggestion</th>
+                                                <th class="py-3 text-left hover:cursor-pointer px-4 items-center hover:bg-blue-100 flex" data-sort="speaker_score">
                                                         Speaker Score
                                                         <ion-icon id="up2" class="pl-1" name="caret-up-outline"></ion-icon>
                                                         <ion-icon id="down2" class="pl-1" name="caret-down-outline"></ion-icon>
                                                     </th>
-                                                <th class="py-3 pr-6 px-4">Speaker Suggestion</th>
+                                                <th class="py-3 pr-6 px-4 text-left">Suggestion for Speaker</th>
                                             </tr>
                                         </thead>
                                         <tbody id="body" class="text-[#555555]">

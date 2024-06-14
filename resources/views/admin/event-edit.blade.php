@@ -112,7 +112,7 @@
                                 <div class="mt-4 px-4 leading-relaxed flex">
                                     <article class="rounded-xl border border-555555]  p-4 w-full">
                                         <div class="flex items-center gap-4 lg:px-12">
-                                        <img src="{{ $event->speaker_img }}" class="size-16 lg:size-40 rounded-full object-cover"/>
+                                        <img src="{{ asset('speaker/' . $event->speaker_img)}}" class="size-16 lg:size-40 rounded-full object-cover"/>
                                         <input type="file" name="speakimg">
                                         <h3 class="text-lg text-[#555555] font-medium mx-auto">
                                             <input type="text" name="speakname" value="{{ $event->speaker_name }}">
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="flex justify-end mt-8">
-                            <button id="save" type="submit" class="bg-slate-500 text-white font-semibold py-2 px-4 rounded">
+                            <button id="save" type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded">
                                 Save Changes
                             </button>
                         </div>
