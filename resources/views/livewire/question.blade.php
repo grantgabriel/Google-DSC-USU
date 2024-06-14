@@ -1,4 +1,4 @@
-<div class="relative " id="qna-all">
+<div class="relative h-full" id="qna-all">
     <nav class="shadow-md order-b p-4 sticky top-0 bg-white">
         <h1 class="font-bold pr-8 text-3xl gap-1 lg:text-6xl text-slate-900 flex">
             <a href="{{ route('home') }}">
@@ -8,7 +8,14 @@
         </h1>
     </nav>
     <div class="questions">
+        @if( count($questions) < 1)
+         <div class=" h-96 grid place-content-center place-items-center">
+            <p class="text-3xl font-bold">No Question Yet</p>
+            <p>Be the first to ask 🤗</p>
+         </div>
+        @else
         @foreach ($questions as $question)
+            
             <div class="rounded-xl bg-slate-100 m-2 border-2 border-dashed border-black">
                 <div class="flex justify-between items-center p-4">
                     <div>
@@ -18,6 +25,7 @@
                 </div>
             </div>
         @endforeach
+        @endif
     </div>
     <div id="fab-qna" class="fixed bottom-5 right-5">
         <button class="bg-amber-400 hover:bg-amber-600 active:bg-amber-700 px-5 py-3 rounded-xl text-lg font-extrabold text-white z-10">+</button>
