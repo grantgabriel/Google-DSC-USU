@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Event;
 use App\Models\Qna;
 use Livewire\Component;
 
@@ -24,10 +25,11 @@ class Question extends Component
     }
     public function render()
     {
+        $event = Event::find($this->eventId);
         $question = Qna::where('event_id', $this->eventId)->get();
         return view('livewire.question', [
-            'questions' => $question
-
+            'questions' => $question,
+            'event' => $event
         ]);
     }
 }

@@ -1,11 +1,25 @@
 @extends('layout.header-blank')
 
 @section('content')
-    <section class="grid h-full lg:grid-cols-2">
-        <div class="w-1/3">
-            
-        </div>
-        <livewire:question eventId="{{ $qna['id'] }}"/>
-        
+    <section class="">
+        @livewire('question', ['eventId' =>  $qna['id']])
     </section>
+@endsection
+
+@section('script')
+    <script>
+        const fab = document.getElementById('fab-qna');
+        const askQuestion = document.getElementById('askQuestion');
+        const questions = document.getElementById('questions');
+        const closebtn = document.getElementById('closeBtn');
+
+        fab.addEventListener('click', () => {
+            askQuestion.classList.toggle('translate-y-full');
+        });
+
+        closebtn.addEventListener('click', (e) => {
+            askQuestion.classList.add('translate-y-full');
+        });
+        
+    </script>
 @endsection
