@@ -9,7 +9,7 @@
     @vite('resources/css/app.css')
     @yield('js')
 </head>
-<body>
+<body class="h-full">
     @yield('content')
 </body>
 @yield('script')

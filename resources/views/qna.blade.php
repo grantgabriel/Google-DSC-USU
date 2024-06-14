@@ -1,7 +1,7 @@
 @extends('layout.header-blank')
 
 @section('content')
-    <section class="">
+    <section class="h-full">
         @livewire('question', ['eventId' =>  $qna['id']])
     </section>
 @endsection
