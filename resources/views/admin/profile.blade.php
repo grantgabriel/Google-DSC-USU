@@ -41,27 +41,43 @@ $city = $parts[1] ?? '';
 <div class="mx-4 lg:mx-40 my-6 lg:mt-8">
 
   
-  <div id="profile" class="tabcontent mx-4">
-    <div class="text-5xl mt-12">Rsvp</div>
-    
-    <table>
-        <tr>
-            <td class="text-red-500">Event Name</td>
-            <td class="text-red-500">Attendance Detail</td>
-        </tr>
-        @foreach ($rsvp as $item)
-
-            <tr>
-                <td><a href="/admin/event/{{$item->event_id}}">{{ $item->event->event_name }}</a></td>
-                <td>{{ $item->attendance_detail }}</td>
-            </tr>
-            
-        @endforeach
-    </table>
+  <div id="profile" class=" mx-4">
 
   </div>
   
+    <div class="rounded-lg border border-gray-200">
+    <div class="overflow-x-auto rounded-lg">
+        <table class="min-w-full divide-y-2 divide-gray-200 bg-slate-50 text-lg">
+        <thead class="text-start font-bold">
+            <tr class="bg-blue-200">
+            <td class="whitespace-nowrap px-4 py-2 font-bold text-gray-900">Name</td>
+            <td class="whitespace-nowrap px-4 py-2 font-bold text-gray-900">Attendance Detail</td>
+            </tr>
+        </thead>
 
+        <tbody class="divide-y divide-gray-200">
+            @foreach ($rsvp as $item)
+            <tr class="odd:bg-gray-200 even:bg-white">
+            <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"><a href="/admin/event/{{$item->event_id}}">{{ $item->event->event_name }}</a></td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                @if ($item->attendance_detail == 'Attend')
+                <span class="rounded-full outline p-1 px-2 bg-white
+                    outline-green-200 text-green-700
+                ">
+                @else
+                <span class="rounded-full outline p-1 px-2 bg-white
+                    outline-red-200 text-red-700
+                ">
+                @endif
+                    {{ $item->attendance_detail }}
+                </span>
+            </td>
+            </tr>
+            @endforeach
+        </tbody>
+        </table>
+    </div>
+    </div>
 </div>
 
 
