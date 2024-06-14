@@ -54,6 +54,7 @@ Route::get('/about', function () {
 Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin', [AdminController::class, 'analytic']);
     Route::get('/admin/member', [AdminController::class, 'member']);
+    Route::get('/admin/member/{id}', [AdminController::class, 'memberdeath']);
     Route::get('/admin/analytic', [AdminController::class, 'analytic']);
     Route::get('/admin/event', [AdminController::class, 'event']);
     Route::get('/admin/event/{id}', [AdminController::class, 'eventdetail']);
@@ -63,11 +64,14 @@ Route::middleware(['role:Member'])->group(function () {
     Route::get('/admin/add/event', [AdminController::class, 'addevent']);
     Route::post('/admin/add/event/draft', [AdminController::class, 'addeventdraft']);
     Route::post('/admin/add/event/create', [AdminController::class, 'addeventcreate']);
-
     Route::get('/admin/event/{id}/statistic', [AdminController::class, 'eventstat']);
     Route::get('/admin/event/{id}/survey', [AdminController::class, 'eventsurvey']);
+    Route::get('/admin/event/{id}/qna', [AdminController::class, 'eventqna']); //YG INI QNA
     Route::post('/admin/show/qr', [AdminController::class, 'qr']);
     Route::post('/admin/add/resource/{id}', [AdminController::class, 'resource']);
+    Route::post('/admin/remove/resource/{id}', [AdminController::class, 'resourcerm']);
+    Route::post('/admin/remove/documentation/{id}', [AdminController::class, 'docrm']);
+    Route::post('/admin/add/documentation/{id}', [AdminController::class, 'adddoc']);
     
     
 

@@ -26,18 +26,20 @@
                     <div class= "my-5 ">
                         <p class="font-semibold ">Tags</p>
                         <input id="tags" class="border-[1px] px-4 py-2 w-full  border-[#b3b3b3]" name="tags" type="text">
+                        <p id="tagsValid2" class="hidden text-red-500">Max 255 characters</p>
+                        <p id="tagsValid3" class="hidden text-red-500">At least 1 characters</p>
                     </div>
                     <div class="my-5">
                         <div class="font-semibold ">Banner & Thumbnail</div>
                         <div class="relative">
                             <img class="" src="http://127.0.0.1:8000/banner/default.webp" alt="">
-                            <input id="banner" class="absolute bottom-2 left-2 px-4 py-2 w-full  " type="file" name="banner">
+                            <input accept=".jpg, .jpeg, .png, .webp" id="banner" class="absolute bottom-2 left-2 px-4 py-2 w-full  " type="file" name="banner">
                         </div>
                     </div>
                     <div class="my-5">
                         <div class="flex justify-start items-center">
                             <img class="rounded-full object-cover w-32" src="http://127.0.0.1:8000/event-profile/default.webp" alt="">
-                            <input id="thumbnail" class=" px-4 py-2 w-full  " type="file" name="profile">
+                            <input accept=".jpg, .jpeg, .png, .webp" id="thumbnail" class=" px-4 py-2 w-full  " type="file" name="profile">
                         </div>                           
                     </div>
 
@@ -71,12 +73,20 @@
                             <input id="speak" class="border-[1px] px-4 py-2 w-full  border-[#b3b3b3]" name="speak" type="text">
                             <p id="speakValid" class="hidden text-red-500">Speaker name can only contain alphabet characters</p>
                             <p id="speakValid2" class="hidden text-red-500">Max 255 characters</p>
-                            <p id="speakValid3" class="hidden text-red-500">At least 1 characters</p>
+                            <p id="speakValid3" class="hidden text-red-500">At least alphabet 1 characters</p>
                         </div>
-                        <div class= "my-5 ">
+
+
+
+                        <div class="my-5">
                             <div class="font-semibold ">Speaker Image</div>
-                            <input id="speakimg" class="border-[1px] px-4 py-2 w-full  border-[#b3b3b3]" name="speakimg" type="text">
+                            <div class="flex justify-start items-center">
+                                <img class="rounded-full object-cover w-32" src="http://127.0.0.1:8000/event-profile/default.webp" alt="">
+                                <input accept=".jpg, .jpeg, .png, .webp" id="thumbnail" class=" px-4 py-2 w-full  " type="file" name="speakimg">
+                            </div>                           
                         </div>
+
+
 
                         <div class= "my-5">
                             <div class="font-semibold ">Choose Categories :</div>
@@ -103,16 +113,22 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div>
-                            <di class="font-semibold "v>Event Location gugelmap</div>
-                            <input type="text" name="map" id="">
-                        </div>
-
-                        <div>
+                        <div class= "my-5 ">
                             <div class="font-semibold ">Event Location</div>
-                            <input type="text" name="location" id="">
+                            <input type="text" class="border-[1px] px-4 py-2 w-full  border-[#b3b3b3]" name="lokasi" id="lokasi">
+                            <p id="lokasiValid2" class="hidden text-red-500">Max 255 characters</p>
+                            <p id="lokasiValid3" class="hidden text-red-500">At least alphabet 1 characters</p>
                         </div>
+                        <div class= "my-5 ">
+                            <div class="font-semibold">Event lokasi gugelmap</div>
+                            <input type="text" class="border-[1px] px-4 py-2 w-full  border-[#b3b3b3]" name="map" id="map">
+                            <p id="mapValid2" class="hidden text-red-500">Max 1000 characters</p>
+                            <p id="mapValid3" class="hidden text-red-500">At least alphabet 1 characters</p>
+                        </div>
+
+                        
+
+
                         <div class="border-b-[1px] my-5"></div>
                         <div class="flex justify-end">
                             <button  id="draft" type="submit" class="bg-yellow-500 mr-2 savee active:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
@@ -134,125 +150,173 @@
 </div>
 
 <script>
-    const save = document.getElementById('save');
-    let dateSubmit = false;
-    let nameeSubmit = false;
-    let descSubmit = false;
-    save.disabled = true;
-    function saveButton(){
-        if(nameeSubmit && descSubmit && dateSubmit){
-            save.disabled = false;
-            save.classList.add('bg-blue-500');
-            save.classList.remove('bg-slate-500');
-            save.classList.add('active:bg-blue-600');
+    document.addEventListener('DOMContentLoaded', function() {
+    const saveButton = document.getElementById('save');
+    const draftButton = document.getElementById('draft');
+    const form = document.getElementById('form');
+
+    let isNameValid = false;
+    let isDescValid = false;
+    let isTagsValid = false;
+    let isDateValid = false;
+    let isSpeakValid = false;
+    let isLocationValid = false;
+    let isMapValid = false;
+
+    function updateSaveButtonState() {
+        if (isNameValid && isDescValid && isTagsValid && isDateValid && isSpeakValid && isLocationValid && isMapValid) {
+            saveButton.disabled = false;
+            saveButton.classList.add('bg-blue-500');
+            saveButton.classList.remove('bg-slate-500');
+            saveButton.classList.add('active:bg-blue-600');
         } else {
-            save.disabled = true;
-            save.classList.remove('bg-blue-500');
-            save.classList.add('bg-slate-500');
-            save.classList.remove('active:bg-blue-600');
+            saveButton.disabled = true;
+            saveButton.classList.remove('bg-blue-500');
+            saveButton.classList.add('bg-slate-500');
+            saveButton.classList.remove('active:bg-blue-600');
         }
-    };
-    namee.addEventListener('input', function(){
-        const namee = document.getElementById('namee');
-        const nameeValid2 = document.getElementById('nameeValid2');
-        const nameeValid3 = document.getElementById('nameeValid3');
-        let value = namee.value;
-        if (value.length <= 255 && value.length > 0 ) {
-            nameeValid2.classList.add('hidden');
-            nameeValid3.classList.add('hidden');
-            namee.classList.add('border-green-500');
-            namee.classList.remove('border-red-500');
-            namee.classList.remove('border-[#b3b3b3]');
-            nameeSubmit = true; 
+    }
+
+    function validateInput(input, maxLength, validMessage, invalidMessage, condition) {
+        const value = input.value;
+        if (value.length > 0 && value.length <= maxLength && condition(value)) {
+            validMessage.classList.add('hidden');
+            invalidMessage.classList.add('hidden');
+            input.classList.add('border-green-500');
+            input.classList.remove('border-red-500');
+            input.classList.remove('border-[#b3b3b3]');
+            return true;
         } else {
-            nameeSubmit = false;
-            namee.classList.add('border-red-500');
-            namee.classList.remove('border-green-500');
-            namee.classList.remove('border-[#b3b3b3]');
-            if (value.length > 255) {
-                nameeValid2.classList.remove('hidden');
-            } else if(value.length <= 0){
-                nameeValid3.classList.remove('hidden');
+            input.classList.add('border-red-500');
+            input.classList.remove('border-green-500');
+            input.classList.remove('border-[#b3b3b3]');
+            if (value.length > maxLength) {
+                validMessage.classList.remove('hidden');
+            } else if (value.length <= 0 || !condition(value)) {
+                invalidMessage.classList.remove('hidden');
             }
+            return false;
         }
+    }
 
-        saveButton();
+    document.getElementById('namee').addEventListener('input', function() {
+        isNameValid = validateInput(
+            this,
+            255,
+            document.getElementById('nameeValid2'),
+            document.getElementById('nameeValid3'),
+            () => true
+        );
+        updateSaveButtonState();
     });
-    desc.addEventListener('input', function(){
-        const desc = document.getElementById('desc');
-        const descValid2 = document.getElementById('descValid2');
-        const descValid3 = document.getElementById('descValid3');
-        let value = desc.value;
-        if (value.length <= 1000 && value.length > 0 ) {
-            descValid2.classList.add('hidden');
-            descValid3.classList.add('hidden');
-            desc.classList.add('border-green-500');
-            desc.classList.remove('border-red-500');
-            desc.classList.remove('border-[#b3b3b3]');
-            descSubmit = true; 
+
+    document.getElementById('desc').addEventListener('input', function() {
+        isDescValid = validateInput(
+            this,
+            1000,
+            document.getElementById('descValid2'),
+            document.getElementById('descValid3'),
+            () => true
+        );
+        updateSaveButtonState();
+    });
+
+    document.getElementById('tags').addEventListener('input', function() {
+        isTagsValid = validateInput(
+            this,
+            255,
+            document.getElementById('tagsValid2'),
+            document.getElementById('tagsValid3'),
+            () => true
+        );
+        updateSaveButtonState();
+    });
+
+    document.getElementById('lokasi').addEventListener('input', function() {
+        isLocationValid = validateInput(
+            this,
+            255,
+            document.getElementById('lokasiValid2'),
+            document.getElementById('lokasiValid3'),
+            () => true
+        );
+        updateSaveButtonState();
+    });
+
+    document.getElementById('map').addEventListener('input', function() {
+        isMapValid = validateInput(
+            this,
+            1000,
+            document.getElementById('mapValid2'),
+            document.getElementById('mapValid3'),
+            () => true
+        );
+        updateSaveButtonState();
+    });
+
+    document.getElementById('speak').addEventListener('input', function() {
+        const regex = /^[a-zA-Z ]+$/;
+        isSpeakValid = validateInput(
+            this,
+            255,
+            document.getElementById('speakValid2'),
+            document.getElementById('speakValid3'),
+            value => regex.test(value)
+        );
+        updateSaveButtonState();
+    });
+
+    document.getElementById('date').addEventListener('change', function() {
+        const value = this.value;
+        isDateValid = value !== '';
+        if (isDateValid) {
+            document.getElementById('dateValid').classList.add('hidden');
         } else {
-            descSubmit = false;
-            desc.classList.add('border-red-500');
-            desc.classList.remove('border-green-500');
-            desc.classList.remove('border-[#b3b3b3]');
-            if (value.length > 1000) {
-                descValid2.classList.remove('hidden');
-            } else if(value.length <= 0){
-                descValid3.classList.remove('hidden');
-            }
+            document.getElementById('dateValid').classList.remove('hidden');
         }
-
-        saveButton();
+        updateSaveButtonState();
     });
-    speak.addEventListener('input', function(){
-        let regex = /^[a-zA-Z ]+$/;
-        const speak = document.getElementById('speak');
-        const speakValid2 = document.getElementById('speakValid2');
-        const speakValid3 = document.getElementById('speakValid3');
-        let value = speak.value;
-        if (value.length <= 255 && value.length > 0 && regex.test(value)) {
-            speakValid.classList.add('hidden');
-            speakValid2.classList.add('hidden');
-            speakValid3.classList.add('hidden');
-            speak.classList.add('border-green-500');
-            speak.classList.remove('border-red-500');
-            speak.classList.remove('border-[#b3b3b3]');
-            speakSubmit = true; 
+
+    function setMinDate() {
+        const dateInput = document.getElementById('date');
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        const year = tomorrow.getFullYear();
+        const month = ('0' + (tomorrow.getMonth() + 1)).slice(-2);
+        const day = ('0' + tomorrow.getDate()).slice(-2);
+
+        const minDate = `${year}-${month}-${day}`;
+        dateInput.setAttribute('min', minDate);
+    }
+
+    function validateDate() {
+        const dateInput = document.getElementById('date');
+        const selectedDate = new Date(dateInput.value);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        if (selectedDate < tomorrow) {
+            document.getElementById('dateValid').classList.remove('hidden');
+            isDateValid = false;
         } else {
-            speakSubmit = false;
-            speak.classList.add('border-red-500');
-            speak.classList.remove('border-green-500');
-            speak.classList.remove('border-[#b3b3b3]');
-            if (value.length > 255) {
-                speakValid2.classList.remove('hidden');
-            } else if(value.length <= 0){
-                speakValid3.classList.remove('hidden');
-            } else if(!regex.test(value)){
-                speakValid.classList.remove('hidden');
-            }
+            document.getElementById('dateValid').classList.add('hidden');
+            isDateValid = true;
         }
+        updateSaveButtonState();
+    }
 
-        saveButton();
+    setMinDate();
+    document.getElementById('date').addEventListener('change', validateDate);
+
+    draftButton.addEventListener('click', function() {
+        form.action = '/event/draft';
+        form.submit();
     });
-    date.addEventListener('input', function(){
-        const date = document.getElementById('date');
-        const dateValid = document.getElementById('dateValid');
-        let value = date.value;
-        if (value != '') {
-            dateValid.classList.add('hidden');
-            dateSubmit = true; 
-        } else {
-            dateValid.classList.remove('hidden');
-            dateSubmit = false;
-        }
+});
 
-        saveButton();
-    });
-
-    document.getElementById('draft').addEventListener('click', function() {
-            var form = document.getElementById('form');
-            form.action = 'event/draft';
-            form.submit();
-        });
 </script>
 @endsection

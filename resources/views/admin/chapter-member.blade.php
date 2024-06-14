@@ -111,7 +111,7 @@
                                     </button>
                                     <div class="dropdownn absolute hidden bg-white border border-gray-200 shadow-md rounded right-6 top-0">
                                         <ul class="whitespace-nowrap">
-                                            <li><a href="#" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Profile & Tickets</a></li>
+                                            <li><a href="/admin/member/${datas.user_id}" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Profile & Tickets</a></li>
                                             <hr>
                                             <li><a href="#" class="block px-4 py-[7px] text-sm text-gray-700 hover:bg-gray-100">Settings & Privacy</a></li>
                                         </ul>

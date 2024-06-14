@@ -7,12 +7,19 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\KeyTheme;
 use App\Models\Rsvp;
+use App\Models\Qna;
 
 class AdminController extends Controller
 {
     public function member(){
     
         return view('admin.chapter-member');
+    }
+
+    public function memberdeath($id){
+        $user = User::find($id);
+        $rsvp = Rsvp::where('user_id', $id)->get();
+        return view('admin.profile',compact('user','rsvp'));
     }
 
     public function qr(Request $request){
@@ -184,7 +191,19 @@ class AdminController extends Controller
         return back();
     }
 
+    public function resourcerm($id){
+        $event = Event::find($id);
+        $event->resource = NULL;
+        $event->save();
+        return back();
+    }
 
+    public function docrm($id){
+        $event = Event::find($id);
+        $event->documentation = NULL;
+        $event->save();
+        return back();
+    }
 
     public function updateattend(Request $request){
         
@@ -283,4 +302,25 @@ class AdminController extends Controller
         return view('admin.analytic',compact('event','user','registrationCount','eventCount'));
     }
 
+    public function eventqna($id){
+        $event = Qna::where('event_id', $id)->get();
+        return view('admin.event-qna',compact('event','id'));
+    }
+
+    public function adddoc(Request $request, $id){
+        $event = Event::find($id);
+
+        if ($request->hasFile('docu')) {
+            // $request->validate([
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // ]);
+            $extension = $request->file('docu')->getClientOriginalExtension();
+            $imageName = time().'-'.'.'.$extension;
+            $request->file('docu')->move(public_path('documentation'), $imageName);
+            $event->documentation = $imageName;
+        }
+
+        $event->save();
+        return back();
+    }
 }

@@ -15,10 +15,10 @@
                 <button class="border-b-2 pb-2 border-black">Edit</button>
             </div>
             <div class="px-2">
-                <button>Forms</button>
+                <a href="/admin/event/{{$event->event_id}}/survey">Survey</a>
             </div>
             <div class="px-2">
-                <button>Waitlist?</button>
+                <a href="/admin/event/{{$event->event_id}}/qna">Q&A</a>
             </div>
             <div class="px-2">
                 <a href="/admin/event/{{$event->event_id}}/statistic">Statistic</a>
@@ -39,7 +39,7 @@
                         <div class="flex justify-center items-center">
                             <div class="w-fit lg:w-full relative"> 
                                 <img class="rounded-lg lg:object-cover lg:max-fit lg:min-w-full" src="{{ asset('banner/' . $event->event_banner) }}" alt="">
-                                <input class="absolute bottom-6 left-6 text-white" type="file" class="form-control" name="banner" id="banner">
+                                <input class="absolute bottom-6 left-6 text-white" accept=".jpg, .jpeg, .png, .webp" type="file" class="form-control" name="banner" id="banner">
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                     
                     <div class="flex justify-start  mt-20 items-center">
                         <img class="w-24 h-24 lg:h-36 lg:w-36 mr-6 object-cover rounded-full" src="http://127.0.0.1:8000/event-profile/{{$event->event_profile}}" alt="">
-                        <input type="file" class="form-control" name="pp" id="pp">
+                        <input type="file" class="form-control" name="pp" id="pp" accept=".jpg, .jpeg, .png, .webp">
                     </div>
                     
 
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="flex justify-end mt-8">
-                            <button id="save" type="submit" class="bg-blue-500 active:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                            <button id="save" type="submit" class="bg-slate-500 text-white font-semibold py-2 px-4 rounded">
                                 Save Changes
                             </button>
                         </div>
@@ -158,6 +158,7 @@
             const icon2 = document.getElementById('focus-icon2');
             const icon3 = document.getElementById('focus-icon3');
             const save = document.getElementById('save');
+            
 
             icon.addEventListener('click', function() {
                 inputField.focus();
@@ -226,7 +227,39 @@
 
             saveButton();
         });
+        function setMinDate() {
+            const dateInput = document.getElementById('date');
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
 
+            const year = tomorrow.getFullYear();
+            const month = ('0' + (tomorrow.getMonth() + 1)).slice(-2); 
+            const day = ('0' + tomorrow.getDate()).slice(-2); 
+
+            const minDate = `${year}-${month}-${day}`;
+            dateInput.setAttribute('min', minDate);
+        }
+
+        function validateDate() {
+            const dateInput = document.getElementById('date');
+            const selectedDate = new Date(dateInput.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            const dateValid = document.getElementById('dateValid');
+            if (selectedDate < tomorrow) {
+                dateValid.classList.remove('hidden');
+            } else {
+                dateValid.classList.add('hidden');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', setMinDate);
+
+        document.getElementById('date').addEventListener('change', validateDate);
         function saveButton(){
             if(deskripsiSubmit && eventnameSubmit){
                 save.disabled = false;

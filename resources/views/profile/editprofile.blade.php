@@ -35,7 +35,7 @@
                     <input id="firstname" name="firstname" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ Auth::user()->first_name }}">
                     <p id="firstnameValid" class="hidden text-red-500">First name can only contain alphabet characters with no space</p>
                     <p id="firstnameValid2" class="hidden text-red-500">Max 255 characters</p>
-                    <p id="firstnameValid3" class="hidden text-red-500">At least 1 characters</p>
+                    <p id="firstnameValid3" class="hidden text-red-500">At least 1 alphabet characters</p>
                 </div>
 
                 <div class="my-5">
@@ -43,7 +43,7 @@
                     <input id="lastname" name="lastname" type="text" class="border-[1px] px-4 py-2 w-full text-[#555555] border-[#b3b3b3]" value="{{ Auth::user()->last_name }}">
                     <div id="lastnameValid" class="hidden text-red-500">Last name can only contain alphabet characters with no space</div>
                     <div id="lastnameValid2" class="hidden text-red-500">Max 255 characters</div> 
-                    <p id="lastnameValid3" class="hidden text-red-500">At least 1 characters</p>
+                    <p id="lastnameValid3" class="hidden text-red-500">At least 1 alphabet characters</p>
                 </div>
 
                 <div class="my-5">

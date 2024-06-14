@@ -10,7 +10,7 @@ class Question extends Component
 {
     
     public $question;
-    // public $anonym;
+    public $anonym;
     public $eventId;
     public function mount($eventId)
     {
